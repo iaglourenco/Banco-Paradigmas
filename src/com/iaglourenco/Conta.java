@@ -25,8 +25,7 @@
 
 package com.iaglourenco;
 
-class Conta {
-
+abstract class Conta {
 
     private String nomeCorrentista;
     private String nConta;
@@ -77,7 +76,7 @@ class Conta {
 
     public boolean sacar(double valor){
 
-        if (getSaldo() > 0) {
+        if (getSaldo() > 0) {//nao tem como sacar negativo
             this.saldo-=valor;
             return true;
         }
@@ -86,8 +85,10 @@ class Conta {
 
     public boolean depositar(double valor){
 
+        if(valor<=0) // depositar negativo tem outro nome, e nao vale depositar nada
+            return false;
         this.saldo+=valor;
-        return true;
+        return true;//a true da true novamente
     }
 
     public void info(){

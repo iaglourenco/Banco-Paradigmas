@@ -29,16 +29,16 @@ import java.util.Scanner;
 
 class Programa {
 
-    private static final int MAX_CONTAS = 1000 ;
+    private static final int MAX_CONTAS = 1000 ;//define o maximo de contas
 
     public static void main(String[] args){
 
-        Scanner input = new Scanner(System.in);
-        String key,key2,optionString,nConta,nCorr;
-        int option,contasCadastradas=0;
+        Scanner input = new Scanner(System.in);//abertura do scanner
+        String key,key2,optionString,nConta,nCorr;//strings para entrada de dados
+        int option,contasCadastradas=0;//segue o baile
         double valor,limite;
-        boolean bool=false;
-        Conta[] contas = new Conta[MAX_CONTAS];
+        boolean bool=false;//booleano de uso geral
+        Conta[] contas = new Conta[MAX_CONTAS];//array de Objects
 
         do{
             System.out.print("\n.:BANCO:.\n\n");
@@ -46,8 +46,8 @@ class Programa {
             System.out.print("2 - Cliente\n");
             System.out.print("0 - Sair\n>>>");
             optionString = input.next();
-            try{
-                option = Integer.parseInt(optionString);
+            try{//permite a entrada de qualquer dado, tratando o erro
+                option = Integer.parseInt(optionString);//transforma string em int
             }catch(Exception e) {
                 option = -1;
             }
@@ -137,7 +137,7 @@ class Programa {
                     nConta=input.next();
                     System.out.print("\nDigite a senha\n>>>");
                     key=input.next();
-                    for(int i=0;i<contasCadastradas;i++){
+                    for(int i=0;i<contasCadastradas;i++){//o for procura, e faz o menu quando encontra
                         if(contas[i].getnConta().equals(nConta) && contas[i].verificaSenha(key)){
                             do {
                                 System.out.print("\nOlá, " + contas[i].getNomeCorrentista() + "\n\n");
@@ -156,11 +156,13 @@ class Programa {
                                     case 1://Sacar
                                         System.out.print("\nDigite valor\n>>>");
                                         valor = input.nextDouble();
+                                        //um if lindo de se ver e facil de entender
                                         System.out.print(contas[i].sacar(valor) ? "\n!!!SUCESSO!!!\n" : "\n!!ERRO!!\n");
                                         break;
                                     case 2://Depositar
                                         System.out.print("\nDigite valor\n>>>");
                                         valor = input.nextDouble();
+                                        //olha outro aqui
                                         System.out.print(contas[i].depositar(valor) ? "\n!!!SUCESSO!!!\n" : "\n!!ERRO!!\n");
                                         break;
                                     case 3://Minha conta
@@ -171,6 +173,7 @@ class Programa {
                                         key = input.next();
                                         System.out.print("\nDigite sua senha nova\n>>>");
                                         key2=input.next();
+                                        //another one
                                         System.out.print(contas[i].alteraSenha(key, key2) ? "\n!!!SUCESSO!!!\n" : "\n!!ERRO!!\n");
                                         break;
                                     case 0:

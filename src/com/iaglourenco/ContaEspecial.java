@@ -56,11 +56,11 @@ public class ContaEspecial extends Conta   {
         if(super.getSaldo()<=valor){
 
             super.sacar(valor);//saldo tera um valor negativo
-            limite+=super.getSaldo();
+            limite+=super.getSaldo();//que sera refletido no limite
             return true;
         }
 
-        return super.sacar(valor);
+        return super.sacar(valor);//carteira cheia
 
     }
 
@@ -69,18 +69,19 @@ public class ContaEspecial extends Conta   {
 
         if(valor<=0) return false;
 
-        if(super.getSaldo()<0){
+        if(super.getSaldo()<0){//hora de pagar as dividas
 
-            double limAnt = limite-(super.getSaldo());
+            double limAnt = limite-(super.getSaldo());//acho o limite que o cara tem
 
-            limite+=valor;
-            super.depositar(valor);
+            limite+=valor;//restauro primeiro o limite
+            super.depositar(valor);//como o saldo ta mais baixo que um anao e ,(-saldo) + valor = sua grana,
+                                                                                // no final da tudo certo
 
-            if(limite>limAnt){
+            if(limite>limAnt){//pro limite nao ficar nas alturas, restauro ao padrao
                 limite = limAnt;
             }
 
-            return true;
+            return true;//retorno a true da true
         }
 
 
