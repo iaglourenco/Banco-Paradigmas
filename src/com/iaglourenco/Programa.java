@@ -1,7 +1,26 @@
 /*
- * Copyright (c) Iago Lourenço. Este código foi feito por mim, a não ser que "mim" tenha deixado.
- * vossa senhoria não tem permissão para usa-lo seja para o que for.
- * salvo se sua vida estiver em risco. Ahoy!
+ * MIT License
+ *
+ * Copyright (c) 2018 Iago Lourenço
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 
 package com.iaglourenco;
@@ -27,10 +46,11 @@ class Programa {
             System.out.print("2 - Cliente\n");
             System.out.print("0 - Sair\n>>>");
             optionString = input.next();
-            if(!optionString.isEmpty()){
+            try{
                 option = Integer.parseInt(optionString);
-            }else
-                option=-1;
+            }catch(Exception e) {
+                option = -1;
+            }
             switch (option){
                 case 1://Gerente
                     do{
@@ -39,10 +59,11 @@ class Programa {
                         System.out.print("2 - Info de contas\n");
                         System.out.print("0 - Voltar\n>>>");
                         optionString=input.next();
-                        if(!optionString.isEmpty()){
+                        try{
                             option = Integer.parseInt(optionString);
-                        }else
-                            option=-1;
+                        }catch(Exception e) {
+                            option = -1;
+                        }
                         switch (option){
                             case 1:
                                 if(contasCadastradas>=MAX_CONTAS){
@@ -60,10 +81,11 @@ class Programa {
                                     System.out.print("2 - Conta Poupanca\n");
                                     System.out.print("3 - Conta Especial\n");
                                     optionString = input.next();
-                                    if (!optionString.isEmpty()) {
+                                    try{
                                         option = Integer.parseInt(optionString);
-                                    } else
+                                    }catch(Exception e) {
                                         option = -1;
+                                    }
                                     switch (option) {
 
                                         case 1:
@@ -125,10 +147,11 @@ class Programa {
                                 System.out.print("4 - Alterar minha senha\n");
                                 System.out.print("0 - Sair\n");
                                 optionString = input.next();
-                                if (!optionString.isEmpty()) {
+                                try{
                                     option = Integer.parseInt(optionString);
-                                } else
+                                }catch(Exception e) {
                                     option = -1;
+                                }
                                 switch (option) {
                                     case 1://Sacar
                                         System.out.print("\nDigite valor\n>>>");
@@ -155,6 +178,9 @@ class Programa {
                                         break;
 
 
+                                    default:
+                                        System.out.print("\n!!OPCAO INVALIDA!!\n");
+                                        break;
                                 }
                             }while (option!=0);
 
