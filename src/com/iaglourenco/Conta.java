@@ -23,7 +23,7 @@ class Conta {
 
     }
 
-    public boolean alteraSenha(String senhaAntiga, String senhaNova){
+    boolean alteraSenha(String senhaAntiga, String senhaNova){
 
         if(senhaAntiga.equals(senha)){
             this.senha = senhaNova;
@@ -34,9 +34,9 @@ class Conta {
 
     }
 
-    public boolean verificaSenha(String senha){return this.senha.equals(senha);}
+    boolean verificaSenha(String senha){return this.senha.equals(senha);}
 
-    public String getNomeCorrentista() {
+    String getNomeCorrentista() {
         return nomeCorrentista;
     }
 
@@ -44,7 +44,7 @@ class Conta {
         this.nomeCorrentista = nomeCorrentista;
     }
 
-    public String getnConta() {
+    String getnConta() {
         return nConta;
     }
 
@@ -58,8 +58,11 @@ class Conta {
 
     public boolean sacar(double valor){
 
-        this.saldo-=valor;
-        return true;
+        if (getSaldo() > 0) {
+            this.saldo-=valor;
+            return true;
+        }
+        return false;
     }
 
     public boolean depositar(double valor){

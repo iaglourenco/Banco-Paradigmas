@@ -17,10 +17,4 @@ class ContaSimples extends Conta {
     }
 
 
-    @Override
-    public boolean sacar(double valor) {
-        if(super.getSaldo()<=0) return false;
-
-        return super.sacar(valor);
-    }
 }
