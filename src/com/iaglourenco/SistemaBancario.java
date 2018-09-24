@@ -678,15 +678,257 @@
 
 package com.iaglourenco;
 
-class Programa {
+import java.util.Scanner;
 
+class SistemaBancario {
 
+    private static final int MAX_CONTAS = 1000;//define o maximo de contas
+    private int contasCadastradas = 0;//o nome ja fala
 
-    public static void main(String[] args){
+    private Conta[] contas = new Conta[MAX_CONTAS];//array de Objects Conta
+    private Scanner input = new Scanner(System.in);//abertura do scanner
 
-        SistemaBancario sys = new SistemaBancario();
-        sys.iniciaSistema();
+    private String optionString;//String para pegar as opcoes
+    private int option;//que sera convertida pra int
+
+    void iniciaSistema() {
+        do {
+            System.out.print("\n.:BANCO:.\n\n");
+            System.out.print("1 - Gerente\n");
+            System.out.print("2 - Cliente\n");
+            System.out.print("0 - Sair\n>>>");
+            optionString = input.next();
+            try {//permite a entrada de qualquer dado, tratando o erro
+                option = Integer.parseInt(optionString);//transforma string em int
+            } catch (Exception e) {
+                option = -1;
+            }
+            switch (option) {
+                case 1://Gerente
+                    menuGerente();
+                    break;
+                case 2://Cliente
+                    menuCliente();
+                    break;
+                case 0://Sair
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.print("\n!!OPCAO INVALIDA!!\n");
+                    break;
+
+            }
+
+        } while (true);
 
     }
 
+    private boolean contaExiste(String accNumber){
+        for(int i=0;i<contasCadastradas;i++){
+            if(contas[i].getnConta().equals(accNumber)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void menuGerente() {
+        boolean ok=true;
+            System.out.printf("\n<:Gerente:>\n\t\t\tContas Cadastradas = %d/%d\n", contasCadastradas, MAX_CONTAS);
+            System.out.print("\n1 - Criar conta\n");
+            System.out.print("2 - Info de uma conta\n");
+            System.out.print("3 - Incrementar juros\n");
+            System.out.print("4 - Realizar cobranca de juros\n");
+            System.out.print("5 - Info de todas as contas\n");
+            System.out.print("0 - Voltar\n>>>");
+            optionString = input.next();
+            try {
+                option = Integer.parseInt(optionString);
+            } catch (Exception e) {
+                option = -1;
+            }
+            switch (option) {
+                case 1:
+                    System.out.print("\n+:Criar conta:+\n");
+                    System.out.print("Digite o nome do futuro correntista\n>>>");
+                    String nCorr = input.next();
+                    System.out.print("\nDigite o numero da futura conta, digite rand para gerar automaticamente\n>>>");
+                    String nConta = input.next();
+
+                    if (nConta.equals("rand")) {
+                        double randConta = 1000 + Math.random() * 9999;
+                        while (contaExiste(Integer.toString((int)randConta))) {
+                            randConta = 1000 + Math.random() * 9999;
+                        }
+                        nConta = Integer.toString((int)randConta);
+                    }
+                    do {
+                        System.out.print("Escolha o tipo de conta\n\n");
+                        System.out.print("1 - Conta Simples\n");
+                        System.out.print("2 - Conta Poupanca\n");
+                        System.out.print("3 - Conta Especial\n");
+                        optionString = input.next();
+                        try {
+                            option = Integer.parseInt(optionString);
+                        } catch (Exception e) {
+                            System.out.print("\n!!OPCAO INVALIDA!!\n");
+                            ok = false;
+                        }
+                    } while(!ok);
+                    if(criarConta(nCorr, nConta, option)){
+                        System.out.print("\nCONTA CRIADA\n");
+                    }else{
+                        System.out.print("\n!!ERRO - MAXIMO DE CONTAS ATINGIDO!!\n");
+                    }
+                    break;
+
+                case 2://info de 1 conta
+                    System.out.print("\n-:Informaçoes sobre conta:-\n");
+                    System.out.print("Digite o numero da conta\n>>>");
+                    nConta = input.next();
+                    infoConta(nConta);
+                    break;
+
+                case 3:
+                    System.out.print("\n>-Incrementar rendimentos-<\n\nDigite o numero da conta\n>>>");
+                    nConta = input.next();
+                    if(incrementarJuros(nConta)){
+                        System.out.print("\n!!SUCESSO!!\n");
+                    }else{
+                        System.out.print("\n!!ERRO!!\n");
+                    }
+                    break;
+                case 4://TODO Realizar cobrança de juros
+                    System.out.print("\n=+Realizar cobrança de juros+=\n");
+                    break;
+
+                case 5://imprimir info de todas as contas
+                    System.out.print("\n-:Informaçoes sobre todas as contas:-\n");
+                    if(contasCadastradas==0) break;
+                    for (int i = 0; i < contasCadastradas; i++)
+                        if(contas[i]!=null)
+                            contas[i].info();
+                    break;
+                case 0:
+                    return;
+                default:
+                    System.out.print("\n!!OPCAO INVALIDA!!\n");
+                    break;
+            }
+
+
+    }
+
+    private void infoConta(String conta) {
+
+        if(contasCadastradas==0) return;
+        for (int i = 0; i < contasCadastradas; i++) {
+            if (contas[i].getnConta().equals(conta)) {
+                contas[i].info();
+            }
+        }
+    }
+
+    private boolean incrementarJuros(String conta) {
+
+        for(int i=0;i<contasCadastradas;i++){
+            if(contas[i].getnConta().equals(conta) && contas[i] instanceof ContaPoupanca){
+                ((ContaPoupanca)contas[i]).render();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void cobrarJuros(String conta) {
+    }
+
+    private boolean criarConta(String nCorr, String nConta, int accType) {
+
+        if (contasCadastradas >= MAX_CONTAS) return false;
+
+        switch (accType) {
+
+            case 1:
+                contas[contasCadastradas++] = new ContaSimples(nCorr, nConta);
+                return true;
+
+            case 2:
+                System.out.print("\nDigite a taxa de rendimento\n>>>");
+                double taxa = input.nextDouble();
+                contas[contasCadastradas++] = new ContaPoupanca(nCorr, nConta,taxa);
+                return true;
+
+            case 3:
+                System.out.print("\nDigite o limite\n>>>");
+                double limite = input.nextDouble();
+                contas[contasCadastradas++] = new ContaEspecial(nCorr, nConta, limite);
+                return true;
+
+
+        }
+        return false;
+    }
+
+
+    private void menuCliente() {
+        System.out.print("\n>-Cliente-<\n");
+        System.out.print("\nDigite o numero da conta\n>>>");
+        String nConta = input.next();
+        System.out.print("\nDigite a senha\n>>>");
+        String key = input.next();
+        //o for procura, e faz o menu quando encontra
+        for (int i = 0; i < contasCadastradas; i++) {
+            if (contas[i].getnConta().equals(nConta) && contas[i].verificaSenha(key)) {
+                do {
+                    System.out.print("\nOlá, " + contas[i].getNomeCorrentista() + "\n\n");
+                    System.out.print("1 - Sacar\n");
+                    System.out.print("2 - Depositar\n");
+                    System.out.print("3 - Minha conta\n");
+                    System.out.print("4 - Alterar minha senha\n");
+                    System.out.print("0 - Sair\n");
+                    optionString = input.next();
+                    try {
+                        option = Integer.parseInt(optionString);
+                    } catch (Exception e) {
+                        option = -1;
+                    }
+                    switch (option) {
+                        case 1://Sacar
+                            System.out.print("\nDigite valor\n>>>");
+                            double valor = input.nextDouble();
+                            //um if lindo de se ver e facil de entender
+                            System.out.print(contas[i].sacar(valor) ? "\n!!!SUCESSO!!!\n" : "\n!!ERRO!!\n");
+                            break;
+                        case 2://Depositar
+                            System.out.print("\nDigite valor\n>>>");
+                            valor = input.nextDouble();
+                            //olha outro aqui
+                            System.out.print(contas[i].depositar(valor) ? "\n!!!SUCESSO!!!\n" : "\n!!ERRO!!\n");
+                            break;
+                        case 3://Minha conta
+                            infoConta(contas[i].getnConta());
+                            break;
+                        case 4:
+                            System.out.print("\nDigite sua senha atual\n>>>");
+                            key = input.next();
+                            System.out.print("\nDigite sua senha nova\n>>>");
+                            String key2 = input.next();
+                            //another one
+                            System.out.print(contas[i].alteraSenha(key, key2) ? "\n!!!SUCESSO!!!\n" : "\n!!ERRO!!\n");
+                            break;
+                        case 0:
+                            option = 0;
+                            break;
+
+
+                        default:
+                            System.out.print("\n!!OPCAO INVALIDA!!\n");
+                            break;
+                    }
+                } while (option != 0);
+            }
+        }
+
+    }
 }
