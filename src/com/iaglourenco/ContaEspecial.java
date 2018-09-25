@@ -681,12 +681,13 @@ package com.iaglourenco;
 public class ContaEspecial extends Conta   {
 
     private double limite;
+    private final double limitePadrao=limite;
 
 
 
     ContaEspecial(String nomeCorrentista,String nConta,double limite){
         super(nomeCorrentista,nConta);
-        this.limite =limite;
+        this.limite = limite;
     }
 
 
@@ -724,7 +725,7 @@ public class ContaEspecial extends Conta   {
 
         if(super.getSaldo()<0){//hora de pagar as dividas
 
-            double limAnt = limite-(super.getSaldo());//acho o limite que o cara tem
+            double limAnt =getLimitePadrao();//acho o limite que o cara tem
 
             limite+=valor;//restauro primeiro o limite
             super.depositar(valor);//como o saldo ta mais baixo que um anao e ,(-saldo) + valor = sua grana,
@@ -744,9 +745,14 @@ public class ContaEspecial extends Conta   {
 
     void juros(double taxaJuros){
 
-        super.sacar(super.getSaldo()*taxaJuros);
+        double juros=(super.getSaldo()*(taxaJuros/100));
+
+        super.sacar(Math.abs(juros));
 
     }
 
 
+    private double getLimitePadrao() {
+        return limitePadrao;
+    }
 }

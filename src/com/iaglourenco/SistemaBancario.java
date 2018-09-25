@@ -678,16 +678,18 @@
 
 package com.iaglourenco;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Scanner;
 
 
 class SistemaBancario {
 
-    private static final int MAX_CONTAS = 1000;//define o maximo de contas
+    private final int MAX_CONTAS = 1000;//define o maximo de contas
     private int contasCadastradas = 0;//o nome ja fala
 
-    private Conta[] contas = new Conta[MAX_CONTAS];//array de Objects Conta
-    private Scanner input = new Scanner(System.in);//abertura do scanner
+    private final Conta[] contas = new Conta[MAX_CONTAS];//array de Objects Conta
+    private final Scanner input = new Scanner(System.in);//abertura do scanner
 
     private String optionString;//String para pegar as opcoes
     private int option;//que sera convertida pra int
@@ -727,10 +729,10 @@ class SistemaBancario {
     private int contaExiste(String accNumber){
         for(int i=0;i<contasCadastradas;i++){
             if(contas[i].getnConta().equals(accNumber)){
-                return i;
+                return i;//retorna a posicao da conta no array
             }
         }
-        return -1;
+        return -1;//se nao -1
     }
 
     private void statusOfSystem(){
@@ -780,7 +782,7 @@ class SistemaBancario {
 
 
         System.out.printf("\nCONTAS ESPECIAIS DEVEDORAS = %d\n",counterDevedores);
-        System.out.printf("\tQUANTIA TOTAL DE DIVIDAS NO BANCO\t=\t%.2f\n",totalDividasEspecial);
+        System.out.printf("\tQUANTIA TOTAL DE DIVIDAS COM O BANCO\t=\t%.2f\n",totalDividasEspecial);
 
 
 
@@ -834,7 +836,7 @@ class SistemaBancario {
                 return true;
 
             case 2:
-                System.out.print("\nDigite a taxa de rendimento\n>>>");
+                System.out.print("\nDigite a taxa de rendimento em %\n>>>");
                 double taxa = input.nextDouble();
                 contas[contasCadastradas++] = new ContaPoupanca(nCorr, nConta,taxa);
                 return true;
@@ -850,6 +852,7 @@ class SistemaBancario {
         return false;
     }
 
+    @NotNull
     private String gerarConta(){
         double randConta = 1000 + Math.random() * 9999;
         while (contaExiste(Integer.toString((int)randConta)) != -1) {
@@ -932,7 +935,7 @@ class SistemaBancario {
                 break;
             case 4://Cobrança de juros
                 System.out.print("\n=+Cobrança de juros cheque especial+=\n");
-                System.out.print("\nDigite a taxa de juros a ser cobrada\n>>>");
+                System.out.print("\nDigite a taxa de juros a ser cobrada em %\n>>>");
                 double taxaJuros = input.nextDouble();
                 System.out.print("\nConfirma?(S/N)\n>>>");
                 answer =input.next();

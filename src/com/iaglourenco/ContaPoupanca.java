@@ -683,7 +683,7 @@ class ContaPoupanca extends Conta {
 
 
     //NAO PODE TER SALDO NEGATIVO, MAS TEM RENDIMENTO MENSAL
-    private double taxaRendimento;
+    private final double taxaRendimento;
 
     ContaPoupanca(String nomeCorrentista,String nConta,double taxaRendimento){
         super(nomeCorrentista,nConta);
