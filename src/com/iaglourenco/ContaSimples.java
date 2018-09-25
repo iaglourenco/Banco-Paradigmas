@@ -688,5 +688,14 @@ package com.iaglourenco;
             super(nomeCorrentista,nConta);
         }
 
+        @Override
+        public boolean sacar(double valor){
+
+            if (getSaldo() > 0) {//nao tem como sacar negativo
+                super.sacar(valor);
+                return true;
+            }
+            return false;
+        }
 
 }

@@ -678,7 +678,8 @@
 
 package com.iaglourenco;
 
-class ContaPoupanca extends ContaSimples {
+
+class ContaPoupanca extends Conta {
 
 
     //NAO PODE TER SALDO NEGATIVO, MAS TEM RENDIMENTO MENSAL
@@ -690,11 +691,19 @@ class ContaPoupanca extends ContaSimples {
     }
 
 
-    public void render(){
+    void render(){
 
             super.depositar(super.getSaldo()*taxaRendimento);
     }
 
+    @Override
+    public boolean sacar(double valor){
 
+        if (getSaldo() > 0) {//nao tem como sacar negativo
+            super.sacar(valor);
+            return true;
+        }
+        return false;
+    }
 
 }

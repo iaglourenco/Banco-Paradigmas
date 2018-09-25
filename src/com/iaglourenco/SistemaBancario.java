@@ -680,6 +680,7 @@ package com.iaglourenco;
 
 import java.util.Scanner;
 
+
 class SistemaBancario {
 
     private static final int MAX_CONTAS = 1000;//define o maximo de contas
@@ -723,102 +724,69 @@ class SistemaBancario {
 
     }
 
-    private boolean contaExiste(String accNumber){
+    private int contaExiste(String accNumber){
         for(int i=0;i<contasCadastradas;i++){
             if(contas[i].getnConta().equals(accNumber)){
-                return true;
+                return i;
             }
         }
-        return false;
+        return -1;
     }
 
-    private void menuGerente() {
-        boolean ok=true;
-            System.out.printf("\n<:Gerente:>\n\t\t\tContas Cadastradas = %d/%d\n", contasCadastradas, MAX_CONTAS);
-            System.out.print("\n1 - Criar conta\n");
-            System.out.print("2 - Info de uma conta\n");
-            System.out.print("3 - Incrementar juros\n");
-            System.out.print("4 - Realizar cobranca de juros\n");
-            System.out.print("5 - Info de todas as contas\n");
-            System.out.print("0 - Voltar\n>>>");
-            optionString = input.next();
-            try {
-                option = Integer.parseInt(optionString);
-            } catch (Exception e) {
-                option = -1;
+    private void statusOfSystem(){
+
+        int counterPoupanca=0,counterEspecial=0,counterSimples=0,counterDevedores=0;
+        double totalMoneyPoupanca=0;
+        double totalMoneyEspecial=0;
+        double totalMoneySimples=0;
+        double totalDividasEspecial=0;
+
+        for(int i=0;i<contasCadastradas;i++){
+            if(contas[i] instanceof ContaSimples) {
+                totalMoneySimples+=contas[i].getSaldo();
+                counterSimples++;
             }
-            switch (option) {
-                case 1:
-                    System.out.print("\n+:Criar conta:+\n");
-                    System.out.print("Digite o nome do futuro correntista\n>>>");
-                    String nCorr = input.next();
-                    System.out.print("\nDigite o numero da futura conta, digite rand para gerar automaticamente\n>>>");
-                    String nConta = input.next();
-
-                    if (nConta.equals("rand")) {
-                        double randConta = 1000 + Math.random() * 9999;
-                        while (contaExiste(Integer.toString((int)randConta))) {
-                            randConta = 1000 + Math.random() * 9999;
-                        }
-                        nConta = Integer.toString((int)randConta);
-                    }
-                    do {
-                        System.out.print("Escolha o tipo de conta\n\n");
-                        System.out.print("1 - Conta Simples\n");
-                        System.out.print("2 - Conta Poupanca\n");
-                        System.out.print("3 - Conta Especial\n");
-                        optionString = input.next();
-                        try {
-                            option = Integer.parseInt(optionString);
-                        } catch (Exception e) {
-                            System.out.print("\n!!OPCAO INVALIDA!!\n");
-                            ok = false;
-                        }
-                    } while(!ok);
-                    if(criarConta(nCorr, nConta, option)){
-                        System.out.print("\nCONTA CRIADA\n");
-                    }else{
-                        System.out.print("\n!!ERRO - MAXIMO DE CONTAS ATINGIDO!!\n");
-                    }
-                    break;
-
-                case 2://info de 1 conta
-                    System.out.print("\n-:Informaçoes sobre conta:-\n");
-                    System.out.print("Digite o numero da conta\n>>>");
-                    nConta = input.next();
-                    infoConta(nConta);
-                    break;
-
-                case 3:
-                    System.out.print("\n>-Incrementar rendimentos-<\n\nDigite o numero da conta\n>>>");
-                    nConta = input.next();
-                    if(incrementarJuros(nConta)){
-                        System.out.print("\n!!SUCESSO!!\n");
-                    }else{
-                        System.out.print("\n!!ERRO!!\n");
-                    }
-                    break;
-                case 4://TODO Realizar cobrança de juros
-                    System.out.print("\n=+Realizar cobrança de juros+=\n");
-                    break;
-
-                case 5://imprimir info de todas as contas
-                    System.out.print("\n-:Informaçoes sobre todas as contas:-\n");
-                    if(contasCadastradas==0) break;
-                    for (int i = 0; i < contasCadastradas; i++)
-                        if(contas[i]!=null)
-                            contas[i].info();
-                    break;
-                case 0:
-                    return;
-                default:
-                    System.out.print("\n!!OPCAO INVALIDA!!\n");
-                    break;
+            if(contas[i] instanceof ContaPoupanca) {
+                totalMoneyPoupanca+=contas[i].getSaldo();
+                counterPoupanca++;
             }
+            if(contas[i] instanceof ContaEspecial) {
+                counterEspecial++;
+                if(contas[i].getSaldo()<0){
+                    totalDividasEspecial += contas[i].getSaldo();
+                    counterDevedores++;
+                }else {
+                    totalMoneyEspecial += contas[i].getSaldo();
+                }
+            }
+
+        }
+
+        System.out.print("\nSTATUS DO SISTEMA\n");
+
+        System.out.printf("\nCONTAS CADASTRADAS\t= %d\n",contasCadastradas);
+
+        System.out.printf("\nCONTAS SIMPLES CADASTRADAS = %d\n",counterSimples);
+        System.out.printf("\tQUANTIA TOTAL APLICADA NO BANCO\t=\t%.2f\n",totalMoneySimples);
+
+        System.out.printf("\nCONTAS POUPANCA CADASTRADAS = %d\n",counterPoupanca);
+        System.out.printf("\tQUANTIA TOTAL APLICADA NO BANCO\t=\t%.2f\n",totalMoneyPoupanca);
+
+        System.out.printf("\nCONTAS ESPECIAL CADASTRADAS = %d\n",counterEspecial);
+        System.out.printf("\tQUANTIA TOTAL APLICADA NO BANCO\t=\t%.2f\n",totalMoneyEspecial);
+
+        System.out.print("\t                                \t-------\n");
+        System.out.printf("\t        TOTAL APLICADO NO BANCO\t=\t%.2f\n",totalMoneyEspecial+totalMoneyPoupanca+totalMoneySimples);
+
+
+        System.out.printf("\nCONTAS ESPECIAIS DEVEDORAS = %d\n",counterDevedores);
+        System.out.printf("\tQUANTIA TOTAL DE DIVIDAS NO BANCO\t=\t%.2f\n",totalDividasEspecial);
+
+
 
 
     }
-
+//-----------------------------------Gerente Actions-------------------------
     private void infoConta(String conta) {
 
         if(contasCadastradas==0) return;
@@ -829,18 +797,30 @@ class SistemaBancario {
         }
     }
 
-    private boolean incrementarJuros(String conta) {
+    private int incrementarJuros() {
 
+        int counter=0;
         for(int i=0;i<contasCadastradas;i++){
-            if(contas[i].getnConta().equals(conta) && contas[i] instanceof ContaPoupanca){
+            if(contas[i] instanceof ContaPoupanca){
                 ((ContaPoupanca)contas[i]).render();
-                return true;
+                counter++;
             }
         }
-        return false;
+        return counter;
     }
 
-    private void cobrarJuros(String conta) {
+    private int cobrarJuros(double taxaJuros) {
+
+        int counter=0;
+        for(int i=0;i<contasCadastradas;i++){
+
+            if(contas[i] instanceof ContaEspecial && contas[i].getSaldo()<0){
+                ((ContaEspecial)contas[i]).juros(taxaJuros);
+                counter++;
+            }
+        }
+        return counter;
+
     }
 
     private boolean criarConta(String nCorr, String nConta, int accType) {
@@ -870,7 +850,119 @@ class SistemaBancario {
         return false;
     }
 
+    private String gerarConta(){
+        double randConta = 1000 + Math.random() * 9999;
+        while (contaExiste(Integer.toString((int)randConta)) != -1) {
+            randConta = 1000 + Math.random() * 9999;
+            System.out.print(".");
+        }
+        return Integer.toString((int)randConta);
 
+    }
+
+    private void menuGerente() {
+        boolean ok=true;
+        System.out.printf("\n<:Gerente:>\n\t\t\tContas Cadastradas = %d/%d\n", contasCadastradas, MAX_CONTAS);
+        System.out.print("\n1 - Criar conta\n");
+        System.out.print("2 - Info de uma conta\n");
+        System.out.print("3 - Efetuar rendimento de poupanca\n");
+        System.out.print("4 - Realizar cobranca de juros cheque especial\n");
+        System.out.print("5 - Info de todas as contas\n");
+        System.out.print("0 - Voltar\n>>>");
+        optionString = input.next();
+        try {
+            option = Integer.parseInt(optionString);
+        } catch (Exception e) {
+            option = -1;
+        }
+        switch (option) {
+            case 1:
+                System.out.print("\n+:Criar conta:+\n");
+                System.out.print("Digite o nome do futuro correntista\n>>>");
+                String nCorr = input.next();
+                System.out.print("\nDigite o numero da futura conta, digite \"rand\" para gerar automaticamente\n>>>");
+                String nConta = input.next();
+
+                if (nConta.equalsIgnoreCase("rand")) {
+                    nConta = gerarConta();
+                }else if(contaExiste(nConta)!=-1){
+                    System.out.print("CONTA EXISTENTE DETECTADA, DESEJA CONTINUAR?(S/N)" +
+                            "\n*OUTRO NUMERO DE CONTA SERA GERADO*\n");
+                    String answer =input.next();
+                    if(answer.equalsIgnoreCase("S")) {
+                        nConta=gerarConta();
+                    }else
+                        break;
+                }
+                do {
+                    System.out.print("Escolha o tipo de conta\n\n");
+                    System.out.print("1 - Conta Simples\n");
+                    System.out.print("2 - Conta Poupanca\n");
+                    System.out.print("3 - Conta Especial\n");
+                    optionString = input.next();
+                    try {
+                        option = Integer.parseInt(optionString);
+                    } catch (Exception e) {
+                        System.out.print("\n!!OPCAO INVALIDA!!\n");
+                        ok = false;
+                    }
+                } while(!ok);
+                if(criarConta(nCorr, nConta, option)){
+                    System.out.printf("\nCONTA No:%s CRIADA\n",nConta);
+                }else{
+                    System.out.print("\n!!ERRO - MAXIMO DE CONTAS ATINGIDO!!\n");
+                }
+                break;
+
+            case 2://info de 1 conta
+                System.out.print("\n-:Informaçoes sobre conta:-\n");
+                System.out.print("Digite o numero da conta\n>>>");
+                nConta = input.next();
+                infoConta(nConta);
+                break;
+
+            case 3://render poupanca
+                System.out.print("\n>-Efetuar rendimentos de poupanca-<\n\nConfirma?(S/N)\n>>>");
+                String answer = input.next();
+
+                if(answer.equalsIgnoreCase("S")) {
+
+                    System.out.printf("\nRendimento efetuado em %d contas poupancas\n",incrementarJuros());
+                }
+                break;
+            case 4://Cobrança de juros
+                System.out.print("\n=+Cobrança de juros cheque especial+=\n");
+                System.out.print("\nDigite a taxa de juros a ser cobrada\n>>>");
+                double taxaJuros = input.nextDouble();
+                System.out.print("\nConfirma?(S/N)\n>>>");
+                answer =input.next();
+                if(answer.equalsIgnoreCase("S")){
+                    System.out.printf("Cobranca efetuada em %d contas especiais",cobrarJuros(taxaJuros));
+                }
+
+                break;
+
+            case 5://imprimir info de todas as contas
+                System.out.print("\n-:Informaçoes sobre todas as contas:-\n");
+                if(contasCadastradas==0) break;
+                for (int i = 0; i < contasCadastradas; i++)
+                    if(contas[i]!=null)
+                        contas[i].info();
+                break;
+            case -99:
+                statusOfSystem();
+                break;
+            case 0:
+                return;
+            default:
+                System.out.print("\n!!OPCAO INVALIDA!!\n");
+                break;
+        }
+
+
+    }
+
+//-----------------------------------Cliente Actions-----------------------------
     private void menuCliente() {
         System.out.print("\n>-Cliente-<\n");
         System.out.print("\nDigite o numero da conta\n>>>");
@@ -878,57 +970,59 @@ class SistemaBancario {
         System.out.print("\nDigite a senha\n>>>");
         String key = input.next();
         //o for procura, e faz o menu quando encontra
-        for (int i = 0; i < contasCadastradas; i++) {
-            if (contas[i].getnConta().equals(nConta) && contas[i].verificaSenha(key)) {
-                do {
-                    System.out.print("\nOlá, " + contas[i].getNomeCorrentista() + "\n\n");
-                    System.out.print("1 - Sacar\n");
-                    System.out.print("2 - Depositar\n");
-                    System.out.print("3 - Minha conta\n");
-                    System.out.print("4 - Alterar minha senha\n");
-                    System.out.print("0 - Sair\n");
-                    optionString = input.next();
-                    try {
-                        option = Integer.parseInt(optionString);
-                    } catch (Exception e) {
-                        option = -1;
-                    }
-                    switch (option) {
-                        case 1://Sacar
-                            System.out.print("\nDigite valor\n>>>");
-                            double valor = input.nextDouble();
-                            //um if lindo de se ver e facil de entender
-                            System.out.print(contas[i].sacar(valor) ? "\n!!!SUCESSO!!!\n" : "\n!!ERRO!!\n");
-                            break;
-                        case 2://Depositar
-                            System.out.print("\nDigite valor\n>>>");
-                            valor = input.nextDouble();
-                            //olha outro aqui
-                            System.out.print(contas[i].depositar(valor) ? "\n!!!SUCESSO!!!\n" : "\n!!ERRO!!\n");
-                            break;
-                        case 3://Minha conta
-                            infoConta(contas[i].getnConta());
-                            break;
-                        case 4:
-                            System.out.print("\nDigite sua senha atual\n>>>");
-                            key = input.next();
-                            System.out.print("\nDigite sua senha nova\n>>>");
-                            String key2 = input.next();
-                            //another one
-                            System.out.print(contas[i].alteraSenha(key, key2) ? "\n!!!SUCESSO!!!\n" : "\n!!ERRO!!\n");
-                            break;
-                        case 0:
-                            option = 0;
-                            break;
+        int i=contaExiste(nConta);
+        if (i != -1 && contas[i].verificaSenha(key)) {
 
+            dashboard(i);
 
-                        default:
-                            System.out.print("\n!!OPCAO INVALIDA!!\n");
-                            break;
-                    }
-                } while (option != 0);
-            }
         }
 
     }
+
+    private void dashboard(int i){
+        while(true) {
+            System.out.print("\nOlá, " + contas[i].getNomeCorrentista() + "\n\n");
+            System.out.print("1 - Sacar\n");
+            System.out.print("2 - Depositar\n");
+            System.out.print("3 - Minha conta\n");
+            System.out.print("4 - Alterar minha senha\n");
+            System.out.print("0 - Sair\n");
+            optionString = input.next();
+            try {
+                option = Integer.parseInt(optionString);
+            } catch (Exception e) {
+                option = -1;
+            }
+            switch (option) {
+                case 1://Sacar
+                    System.out.print("\nDigite valor\n>>>");
+                    double valor = input.nextDouble();
+                    System.out.print(contas[i].sacar(valor) ? "\n!!!SUCESSO!!!\n" : "\n!!ERRO!!\n");
+                    break;
+                case 2://Depositar
+                    System.out.print("\nDigite valor\n>>>");
+                    valor = input.nextDouble();
+                    System.out.print(contas[i].depositar(valor) ? "\n!!!SUCESSO!!!\n" : "\n!!ERRO!!\n");
+                    break;
+                case 3://Minha conta
+                    infoConta(contas[i].getnConta());
+                    break;
+                case 4:
+                    System.out.print("\nDigite sua senha atual\n>>>");
+                    String key = input.next();
+                    System.out.print("\nDigite sua senha nova\n>>>");
+                    String key2 = input.next();
+                    System.out.print(contas[i].alteraSenha(key, key2) ? "\n!!!SUCESSO!!!\n" : "\n!!ERRO!!\n");
+                    break;
+                case 0:
+                    return;
+
+                default:
+                    System.out.print("\n!!OPCAO INVALIDA!!\n");
+                    break;
+            }
+        }
+    }
+
+
 }

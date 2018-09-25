@@ -741,4 +741,12 @@ public class ContaEspecial extends Conta   {
 
         return super.depositar(valor);
     }
+
+    void juros(double taxaJuros){
+
+        super.sacar(super.getSaldo()*taxaJuros);
+
+    }
+
+
 }

@@ -729,7 +729,7 @@ abstract class Conta {
 
     public boolean sacar(double valor){
 
-        if (getSaldo() > 0) {//nao tem como sacar negativo
+        if (valor>0) {
             this.saldo-=valor;
             return true;
         }
@@ -749,7 +749,7 @@ abstract class Conta {
         String accType = getClass().getName()
                 .replace("com.iaglourenco.","")
                 .replace("ContaSimples","Conta Simples")
-                .replace("ContaPOupanca","Conta Poupanca")
+                .replace("ContaPoupanca","Conta Poupanca")
                 .replace("ContaEspecial","Conta Especial");
 
         System.out.print("\n\nNome do individuo: "+nomeCorrentista+"\n");
