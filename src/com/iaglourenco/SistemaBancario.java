@@ -782,7 +782,7 @@ class SistemaBancario {
 
 
         System.out.printf("\nCONTAS ESPECIAIS DEVEDORAS = %d\n",counterDevedores);
-        System.out.printf("\tQUANTIA TOTAL DE DIVIDAS COM O BANCO\t=\t%.2f\n",totalDividasEspecial);
+        System.out.printf("QUANTIA TOTAL DE DIVIDAS COM O BANCO\t=\t%.2f\n",totalDividasEspecial);
 
 
 
@@ -967,17 +967,31 @@ class SistemaBancario {
 
 //-----------------------------------Cliente Actions-----------------------------
     private void menuCliente() {
+        String confKey;
         System.out.print("\n>-Cliente-<\n");
         System.out.print("\nDigite o numero da conta\n>>>");
         String nConta = input.next();
         System.out.print("\nDigite a senha\n>>>");
         String key = input.next();
-        //o for procura, e faz o menu quando encontra
         int i=contaExiste(nConta);
         if (i != -1 && contas[i].verificaSenha(key)) {
+            if(contas[i].verificaSenha("0000")){
+                do {
+                    System.out.print("!!SENHA PADRAO DETECTADA!!\nPOR FAVOR DEFINA UMA SENHA MAIS SEGURA\nDIGITE >>>");
+                    key = input.next();
+                    System.out.print("REPITA A SENHA\n>>>");
+                    confKey = input.next();
+                if(!key.equals(confKey)){
+                    System.out.print("!!SENHAS NAO CONFEREM!!");
+                }else{
+                    break;
+                }
+                }while (true);
 
-            dashboard(i);
-
+                dashboard(i);
+            }
+        } else {
+            System.out.print("\n!!CONTA OU SENHA INCORRETA!!\n");
         }
 
     }
