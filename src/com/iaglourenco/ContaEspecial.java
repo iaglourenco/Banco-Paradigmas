@@ -19,10 +19,10 @@ public class ContaEspecial extends Conta   {
 
 
     @Override
-    public void info() {
-        super.info();
-        System.out.printf("Limite disponivel: %.2f\n",limite);
-        System.out.printf("Saldo disponivel + Limite: %.2f\n",super.getSaldo()>=0 ? super.getSaldo()+limite : limite);
+    public String info() {
+
+        return   super.info()+"Limite disponível "+ Double.toString(limite)+"\n"+
+                "Saldo disponivel + Limite "+Double.toString(super.getSaldo()>=0 ? super.getSaldo()+limite : limite)+"\n";
     }
 
     @Override

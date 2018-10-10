@@ -6,7 +6,7 @@
 package com.iaglourenco;
 
 @SuppressWarnings({"WeakerAccess", "SameParameterValue"})
-final class Gerente {
+class Gerente {
 
     static final int MAX_CONTAS = 1000;//define o maximo de contas
     static final int ACC_SPECIAL = 1;
@@ -18,13 +18,17 @@ final class Gerente {
         return Integer.toString((int)(1000 + Math.random() * 9999));
     }
 
-    static int contaExiste(Conta[] contas,String numeroConta){
+    static Conta contaExiste(Conta[] contas,String numeroConta){
+
+
         for(int i=0;i<MAX_CONTAS;i++){
-            if(contas[i].getnConta().equals(numeroConta)){
-                return i;//retorna a posicao da conta no array
+            if (contas[i] != null) {
+                if (contas[i].getnConta().equals(numeroConta)) {
+                    return contas[i];//retorna a conta
+                }
             }
         }
-        return -1;//se nao -1
+        return null;//se nao null
     }
 
 

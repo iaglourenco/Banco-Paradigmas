@@ -5,12 +5,14 @@
 
 package com.iaglourenco;
 
+import java.util.Arrays;
+
 abstract class Conta {
 
     private String nomeCorrentista;
     private String nConta;
     private double saldo;
-    private String senha;
+    private char[] senha;
     private static int contasCadastradas=0;
     static Conta[] contas = new Conta[Gerente.MAX_CONTAS];//array de Objects Conta
 
@@ -21,22 +23,20 @@ abstract class Conta {
         setnConta(nConta);
         setNomeCorrentista(nomeCorrentista);
         saldo=0.0;
-        senha="0000";
+        senha = "0000".toCharArray();
         contasCadastradas++;
     }
 
-    boolean alteraSenha(String senhaAntiga, String senhaNova){
+    boolean alteraSenha(char[] senhaAntiga, char[] senhaNova){
 
-        if(senhaAntiga.equals(senha)){
-            this.senha = senhaNova;
+        if(Arrays.equals(senhaAntiga, senha)){
+            senha = Arrays.copyOf(senhaNova,senhaNova.length);
             return true;
         }
         return false;
-
-
     }
 
-    boolean verificaSenha(String senha){ return this.senha.equals(senha);}
+    boolean verificaSenha(char[] senha){ return Arrays.equals(this.senha, senha);}
 
     String getNomeCorrentista() {
         return nomeCorrentista;
@@ -75,7 +75,7 @@ abstract class Conta {
         return true;//a true da true novamente
     }
 
-    public void info(){
+    public String info(){
 
         String accType = getClass().getName()
                 .replace("com.iaglourenco.","")
@@ -83,12 +83,12 @@ abstract class Conta {
                 .replace("ContaPoupanca","Conta Poupanca")
                 .replace("ContaEspecial","Conta Especial");
 
-        System.out.print("\n\nNome do individuo: "+nomeCorrentista+"\n");
-        System.out.print("Conta do individuo: "+nConta+"\n");
-        System.out.print("Tipo de conta: "+accType+"\n");
-        System.out.printf("Saldo disponivel: %.2f\n",saldo);
-
+        return "Nome do correntista " + nomeCorrentista+"\n"+
+                "Numero da conta " + nConta+"\n"+
+                "Tipo de Conta " + accType+"\n"+
+                "Saldo disponivel " + Double.toString(saldo)+"\n";
     }
+
 
     public static int getContasCadastradas() {
         return contasCadastradas;
