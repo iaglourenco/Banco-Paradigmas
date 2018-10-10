@@ -32,13 +32,13 @@ class Gerente {
     }
 
 
-    static boolean criarConta(Conta[] contas,String nameCorr, String nConta,int accType,double juros) {
+    static boolean criarConta(Conta[] contas,String nameCorr, String nConta,int accType,double valor) {
 
         if(accType == ACC_POUPANCA)
-            contas[Conta.getContasCadastradas()] = new ContaPoupanca(nameCorr, nConta,juros);
+            contas[Conta.getContasCadastradas()] = new ContaPoupanca(nameCorr, nConta,valor);
 
         if(accType == ACC_SPECIAL)
-            contas[Conta.getContasCadastradas()] = new ContaEspecial(nameCorr, nConta, juros);
+            contas[Conta.getContasCadastradas()] = new ContaEspecial(nameCorr, nConta, valor);
 
         if(accType ==ACC_SIMPLE)
             contas[Conta.getContasCadastradas()] = new ContaSimples(nameCorr, nConta);

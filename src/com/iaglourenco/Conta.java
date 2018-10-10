@@ -83,10 +83,10 @@ abstract class Conta {
                 .replace("ContaPoupanca","Conta Poupanca")
                 .replace("ContaEspecial","Conta Especial");
 
-        return "Nome do correntista " + nomeCorrentista+"\n"+
-                "Numero da conta " + nConta+"\n"+
-                "Tipo de Conta " + accType+"\n"+
-                "Saldo disponivel " + Double.toString(saldo)+"\n";
+        return "Nome do correntista= " + nomeCorrentista+"\n"+
+                "Numero da conta= " + nConta+"\n"+
+                "Tipo de Conta= " + accType+"\n"+
+                "Saldo disponivel= R$ " + Double.toString(saldo)+"\n";
     }
 
 

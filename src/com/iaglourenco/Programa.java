@@ -18,8 +18,9 @@ class Programa {
         sys.setLocation(200,200);
         sys.setSize(400,400);
         sys.menuHome();
+
         sys.setVisible(true);
-        sys.setResizable(true);
+        sys.setResizable(false);
 
 
 

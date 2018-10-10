@@ -21,8 +21,8 @@ public class ContaEspecial extends Conta   {
     @Override
     public String info() {
 
-        return   super.info()+"Limite disponível "+ Double.toString(limite)+"\n"+
-                "Saldo disponivel + Limite "+Double.toString(super.getSaldo()>=0 ? super.getSaldo()+limite : limite)+"\n";
+        return   super.info()+"Limite disponível= R$ "+ Double.toString(limite)+"\n"+
+                "Saldo disponivel + Limite= R$ "+Double.toString(super.getSaldo()>=0 ? super.getSaldo()+limite : limite)+"\n";
     }
 
     @Override
