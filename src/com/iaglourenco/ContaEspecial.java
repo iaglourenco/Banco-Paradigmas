@@ -5,6 +5,9 @@
 
 package com.iaglourenco;
 
+import com.iaglourenco.exceptions.SaldoInsuficienteException;
+import com.iaglourenco.exceptions.ValorInvalidoException;
+
 public class ContaEspecial extends Conta   {
 
     private double limite;
@@ -26,12 +29,12 @@ public class ContaEspecial extends Conta   {
     }
 
     @Override
-    public boolean sacar(double valor) {
+    public boolean sacar(double valor) throws SaldoInsuficienteException, ValorInvalidoException {
 
         if(valor>super.getSaldo()+limite)
-            return false;
+            throw new SaldoInsuficienteException("SALDO INSUFICIENTE");
 
-        if(valor<=0) return false;
+        if(valor<=0) throw new ValorInvalidoException("VALOR INVALIDO");
 
 
         if(super.getSaldo()<=valor){
@@ -41,7 +44,7 @@ public class ContaEspecial extends Conta   {
             return true;
         }
 
-        return super.sacar(valor);//carteira cheia
+        return super.sacar(valor);
 
     }
 
@@ -77,7 +80,6 @@ public class ContaEspecial extends Conta   {
         super.sacar(Math.abs(juros));
 
     }
-
 
     private double getLimitePadrao() {
         return limitePadrao;

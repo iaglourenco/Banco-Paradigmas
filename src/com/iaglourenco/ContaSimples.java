@@ -5,7 +5,9 @@
 
 package com.iaglourenco;
 
-    class ContaSimples extends Conta {
+import com.iaglourenco.exceptions.SaldoInsuficienteException;
+
+class ContaSimples extends Conta {
 
 
         //NAO PODE TER SALDO NEGATIVO
@@ -16,13 +18,13 @@ package com.iaglourenco;
         }
 
         @Override
-        public boolean sacar(double valor){
+        public boolean sacar(double valor) throws SaldoInsuficienteException {
 
             if (getSaldo() > 0) {//nao tem como sacar negativo
                 super.sacar(valor);
                 return true;
             }
-            return false;
+            throw new SaldoInsuficienteException("SALDO INSUFICIENTE");
         }
 
 }

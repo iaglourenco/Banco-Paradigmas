@@ -6,6 +6,8 @@
 package com.iaglourenco;
 
 
+import com.iaglourenco.exceptions.SaldoInsuficienteException;
+
 class ContaPoupanca extends Conta {
 
 
@@ -20,18 +22,17 @@ class ContaPoupanca extends Conta {
 
 
     void render(){
-
-            super.depositar(super.getSaldo()*taxaRendimento);
+            super.depositar(super.getSaldo()*(taxaRendimento/100));
     }
 
     @Override
-    public boolean sacar(double valor){
+    public boolean sacar(double valor)throws SaldoInsuficienteException {
 
         if (getSaldo() > 0) {//nao tem como sacar negativo
             super.sacar(valor);
             return true;
         }
-        return false;
+        throw new SaldoInsuficienteException("SALDO INSUFICIENTE");
     }
 
 }

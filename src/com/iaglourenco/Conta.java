@@ -5,6 +5,9 @@
 
 package com.iaglourenco;
 
+import com.iaglourenco.exceptions.SenhaIncorretaException;
+import com.iaglourenco.exceptions.ValorInvalidoException;
+
 import java.util.Arrays;
 
 abstract class Conta {
@@ -14,7 +17,7 @@ abstract class Conta {
     private double saldo;
     private char[] senha;
     private static int contasCadastradas=0;
-    static Conta[] contas = new Conta[Gerente.MAX_CONTAS];//array de Objects Conta
+    static final Conta[] contas = new Conta[Gerente.MAX_CONTAS];//array de Objects Conta
     static final char[] KEY_PADRAO = "0000".toCharArray();
 
 
@@ -28,16 +31,22 @@ abstract class Conta {
         contasCadastradas++;
     }
 
-    boolean alteraSenha(char[] senhaAntiga, char[] senhaNova){
+    void alteraSenha(char[] senhaAntiga, char[] senhaNova) throws SenhaIncorretaException {
 
-        if(Arrays.equals(senhaAntiga, senha)){
-            senha = Arrays.copyOf(senhaNova,senhaNova.length);
-            return true;
-        }
-        return false;
+        if (!Arrays.equals(senhaAntiga, senha)) {
+            throw new SenhaIncorretaException("SENHA INCORRETA");
+        } else {
+            senha = Arrays.copyOf(senhaNova, senhaNova.length);
+            }
     }
 
-    boolean verificaSenha(char[] senha){ return Arrays.equals(this.senha, senha);}
+    void verificaSenha(char[] senha)throws SenhaIncorretaException {
+        if (!Arrays.equals(this.senha, senha)) {
+            throw new SenhaIncorretaException("SENHA INCORRETA");
+        }
+
+    }
+
 
     String getNomeCorrentista() {
         return nomeCorrentista;
@@ -59,13 +68,13 @@ abstract class Conta {
         return saldo;
     }
 
-    public boolean sacar(double valor){
+    public boolean sacar(double valor)throws ValorInvalidoException {
 
         if (valor>0) {
             this.saldo-=valor;
             return true;
         }
-        return false;
+        throw new ValorInvalidoException("VALOR INVALIDO");
     }
 
     public boolean depositar(double valor){
@@ -90,11 +99,9 @@ abstract class Conta {
                 "Saldo disponivel= R$ " + Double.toString(saldo)+"\n";
     }
 
-
     static int getContasCadastradas() {
         return contasCadastradas;
     }
-
 
     static String getStatusOfSystem(){
 
