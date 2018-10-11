@@ -9,9 +9,10 @@ package com.iaglourenco;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Arrays;
 import java.util.Scanner;
 
-import static com.iaglourenco.Conta.contas;
+
 
 
 
@@ -32,11 +33,11 @@ class SistemaBancario extends JFrame {
     private JButton buttonExit;
 
     //Instanciaçao dos listeners
-    private final HomeButtonListener HomeListener = new HomeButtonListener();
-    private final GerenteButtonListener GerenteListener = new GerenteButtonListener();
-    private final DashboardButtonListener DashboardListener = new DashboardButtonListener();
-    private final LoginButtonListener LoginListener = new LoginButtonListener();
-    private final SacarButtonListener SacarListener = new SacarButtonListener();
+    private HomeButtonListener HomeListener = new HomeButtonListener();
+    private GerenteButtonListener GerenteListener = new GerenteButtonListener();
+    private DashboardButtonListener DashboardListener = new DashboardButtonListener();
+    private LoginButtonListener LoginListener = new LoginButtonListener();
+    private SacarButtonListener SacarListener = new SacarButtonListener();
     private DepositarButtonListener DepositarListener = new DepositarButtonListener();
     private MyAccButtonListener MyAccListener = new MyAccButtonListener();
     private AlterSenhaButtonListener AlterSenhaListener = new AlterSenhaButtonListener();
@@ -45,8 +46,7 @@ class SistemaBancario extends JFrame {
     private InfoAllContaButtonListener InfoAllContaListener = new InfoAllContaButtonListener();
     private InfoContaButtonListener InfoContaListener = new InfoContaButtonListener();
     private JurosButtonListener JurosListener = new JurosButtonListener();
-    private RenderButtonListener RenderListener = new RenderButtonListener();
-    private final NumberKeyListener NumberListener = new NumberKeyListener();
+    private NumberKeyListener NumberListener = new NumberKeyListener();
     private Dimension buttonsDimensions = new Dimension(100,100);
 
 
@@ -58,20 +58,25 @@ class SistemaBancario extends JFrame {
     private JRadioButton radioButtonSimpleAcc;
     private JRadioButton radioButtonSpecialAcc;
     private JRadioButton radioButtonPoupancaAcc;
+    private int radioAccType=0;
     private ButtonGroup radioGroup = new ButtonGroup();
 
     private JButton buttonInfoConta;
+    private JTextField textFieldInfoConta;
+    private JLabel labelInfoConta;
+    private JButton buttonOkInfoConta = new JButton("OK");
     private JButton buttonBackInfoConta = new JButton("Voltar");
 
     private JButton buttonInfoAll;
-    private JTextArea infoAllTextArea;
     private JButton buttonBackInfoAllConta = new JButton("Voltar");
 
     private JButton buttonRender;
+    private JTextField textFieldRender;
     private JButton buttonOKRender = new JButton("OK");
     private JButton buttonBackRender = new JButton("Voltar");
 
     private JButton buttonJuros;
+    private JTextField textFieldJuros;
     private JButton buttonOKJuros = new JButton("OK");
     private JButton buttonBackJuros= new JButton("Voltar");
 
@@ -107,7 +112,6 @@ class SistemaBancario extends JFrame {
 
     private JButton buttonMyAcc;
     private final JButton buttonBackMyAcc= new JButton("Voltar");//Button de uso geral, volta um menu
-    private JTextArea myAccTextArea;
 
     private JButton buttonAlterSenha;
     private JButton buttonOKAlterSenha= new JButton("OK");//Button de uso geral, confirma
@@ -121,7 +125,6 @@ class SistemaBancario extends JFrame {
     private JPanel panelGerente;
     private JPanel panelCriarConta,panelInfoConta,panelInfoAllConta,panelRender,panelJuros,panelResumo;
 
-    private JTextArea resumoTextArea;
     private JButton buttonBackResumo = new JButton("Voltar");
     private JButton buttonResumo;
 
@@ -154,7 +157,7 @@ class SistemaBancario extends JFrame {
 
     //Menu Home
     void menuHome(){
-
+        setTitle("Banco Paradigmas");
         panelHome.add(label);
 
         buttonGerente = new JButton("Gerente");
@@ -176,7 +179,7 @@ class SistemaBancario extends JFrame {
 
     //Menu de login
     private void menuLoginCliente() {
-
+        setTitle("Login");
         panelLoginCliente.add(labelLogin);
         JLabel labelContaFieldCliente = new JLabel("Digite a conta");
         contaFieldCliente = new JTextField();
@@ -201,7 +204,7 @@ class SistemaBancario extends JFrame {
 
     //Submenu de cliente
     private void menuDashboard(){
-
+        setTitle("Minha Conta: "+contaAtual.getnConta());
         JLabel welcomeLabel = new JLabel("Olá, "+contaAtual.getNomeCorrentista().toUpperCase());
         JLabel welcomeLabel1 = new JLabel("O que deseja fazer?");
         buttonSacar = new JButton("Sacar");
@@ -228,7 +231,7 @@ class SistemaBancario extends JFrame {
     }
     //Submenus da conta
     private void menuSacar(){
-
+        setTitle("SAQUE");
         JLabel labelSacar = new JLabel("Digite o valor do saque");
         valueFieldSacar = new JTextField();
         valueFieldSacar.addKeyListener(NumberListener);
@@ -244,6 +247,7 @@ class SistemaBancario extends JFrame {
     }
 
     private void menuDepositar(){
+        setTitle("DEPóSITO");
         JLabel labelDepositar = new JLabel("Digite o valor do deposito");
         valueFieldDepositar = new JTextField();
         valueFieldDepositar.addKeyListener(NumberListener);
@@ -258,8 +262,9 @@ class SistemaBancario extends JFrame {
     }
 
     private void menuMinhaConta(){
+        setTitle("MINHA CONTA");
         JLabel labelMyAcc = new JLabel("Informaçoes da sua conta");
-        myAccTextArea = new JTextArea();
+        JTextArea myAccTextArea = new JTextArea();
         myAccTextArea.append(contaAtual.info());
         myAccTextArea.setEditable(false);
         JScrollPane myAccScrollPane = new JScrollPane(myAccTextArea);
@@ -272,6 +277,7 @@ class SistemaBancario extends JFrame {
     }
 
     private void menuAlteraSenha(){
+        setTitle("ALTERAR SENHA");
         JLabel labelAlterSenha1 = new JLabel("Digite a senha atual");
         alterPasswordField = new JPasswordField();
         JLabel labelAlterSenha2 = new JLabel("Digite a senha nova");
@@ -293,7 +299,7 @@ class SistemaBancario extends JFrame {
 
     //Menu de gerencia
     private void menuGerente() {
-
+        setTitle("GERENTE");
         panelGerente.add(label);
         buttonCriarConta = new JButton("Criar conta");
         panelGerente.add(buttonCriarConta);
@@ -329,7 +335,7 @@ class SistemaBancario extends JFrame {
 
     //Submenus gerencia
     private void menuCriarConta(){
-
+        setTitle("CRIAR CONTA");
         JLabel labelCreateAcc = new JLabel("Criar conta:");
         JLabel labelName = new JLabel("Nome do correntista");
         nameFieldGerente = new JTextField();
@@ -369,11 +375,17 @@ class SistemaBancario extends JFrame {
         panelCriarConta.add(labelPass2);
         panelCriarConta.add(passwordFieldConfirmGerente);
         panelCriarConta.add(labelTConta);
+        panelCriarConta.add(radioButtonPoupancaAcc);
+        panelCriarConta.add(radioButtonSimpleAcc);
+        panelCriarConta.add(radioButtonSpecialAcc);
+        panelCriarConta.add(buttonOKCriarConta);
+        panelCriarConta.add(buttonBackCriarConta);
+
+
+
         radioButtonSimpleAcc.addItemListener(TipoContaListener);
         radioButtonSpecialAcc.addItemListener(TipoContaListener);
         radioButtonPoupancaAcc.addItemListener(TipoContaListener);
-        panelCriarConta.add(buttonOKCriarConta);
-        panelCriarConta.add(buttonBackCriarConta);
         buttonOKCriarConta.addActionListener(CriarContaListener);
         buttonBackCriarConta.addActionListener(CriarContaListener);
 
@@ -381,19 +393,42 @@ class SistemaBancario extends JFrame {
     }
 
     private void menuInfoConta(){
-        //TODO fazer UI de Info de contas
+        setTitle("INFO DE TODAS AS CONTAS");
+        labelInfoConta = new JLabel("Digite o número da conta");
+        textFieldInfoConta = new JTextField();
+        textFieldInfoConta.addKeyListener(NumberListener);
 
+        panelInfoConta.add(labelInfoConta);
+        panelInfoConta.add(textFieldInfoConta);
+        panelInfoConta.add(buttonOkInfoConta);
+        panelInfoConta.add(buttonBackInfoConta);
 
+        buttonBackInfoConta.addActionListener(InfoContaListener);
+        buttonOkInfoConta.addActionListener(InfoContaListener);
+        panelInfoConta.updateUI();
     }
+
     private void menuJuros(){
-        //TODO fazer UI de cobranca de juros
+        setTitle("COBRAR JUROS");
+        JLabel labelJuros = new JLabel("Digite a taxa");
+        textFieldJuros = new JTextField();
+        textFieldJuros.addKeyListener(NumberListener);
+
+        panelJuros.add(labelJuros);
+        panelJuros.add(textFieldJuros);
+        panelJuros.add(buttonOKJuros);
+        panelJuros.add(buttonBackJuros);
+
+        buttonOKJuros.addActionListener(JurosListener);
+        buttonBackJuros.addActionListener(JurosListener);
+
+        panelJuros.updateUI();
     }
-    private void menuRender(){
-        //TODO fazer UI de rendimento de poupanca
-    }
+
     private void menuInfoAll(){
+        setTitle("INFO DE TODAS AS CONTAS");
         JLabel labelInfoAll = new JLabel("Informações de todas as contas");
-        infoAllTextArea = new JTextArea();
+        JTextArea infoAllTextArea = new JTextArea();
 
         infoAllTextArea.setText("Quantidade de contas cadastradas= "+Integer.toString(Conta.getContasCadastradas())+"\n\n");
         for(int i=0;i<Gerente.MAX_CONTAS;i++){
@@ -413,9 +448,10 @@ class SistemaBancario extends JFrame {
     }
 
     private void menuResumo(){
+        setTitle("STATUS DO SISTEMA");
         JLabel labelResumo = new JLabel("Status do banco");
-        resumoTextArea = new JTextArea();
-        resumoTextArea.append(statusOfSystem());
+        JTextArea resumoTextArea = new JTextArea();
+        resumoTextArea.append(Conta.getStatusOfSystem());
         resumoTextArea.setEditable(false);
         JScrollPane resumoScrollPane = new JScrollPane(resumoTextArea);
         panelResumo.add(labelResumo,BorderLayout.PAGE_START);
@@ -478,14 +514,26 @@ class SistemaBancario extends JFrame {
                 setContentPane(panelCriarConta);
                 menuCriarConta();
             }else if(e.getSource() ==buttonInfoConta){
-                panelInfoConta = new JPanel();
-                panelInfoConta.setLayout(new BoxLayout(panelInfoConta,BoxLayout.Y_AXIS));
+                panelInfoConta = new JPanel(new GridLayout(10,10));
                 setContentPane(panelInfoConta);
                 menuInfoConta();
             }else if(e.getSource() == buttonRender){
-                panelRender = new JPanel(new GridLayout(10,10));
-                setContentPane(panelRender);
-                menuRender();
+
+                int resp = JOptionPane.showOptionDialog(null,"DESEJA EFETUAR OS RENDIMENTOS NAS CONTAS POUPANÇA?","EFETUAR RENDIMENTOS",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,null,null);
+                if(resp == JOptionPane.YES_OPTION){
+
+                    int accRendidas = Gerente.incrementarJuros(Conta.contas);
+
+                    JOptionPane.showMessageDialog(null,"RENDIMENTOS EFETUADOS EM "+ Integer.toString(accRendidas)+" CONTAS POUPANÇA","SUCESSO",JOptionPane.INFORMATION_MESSAGE);
+                    panelGerente = new JPanel(new GridLayout(10,10));
+                    setContentPane(panelGerente);
+                    menuGerente();
+                }else if (resp == JOptionPane.NO_OPTION){
+                    panelGerente = new JPanel(new GridLayout(10,10));
+                    setContentPane(panelGerente);
+                    menuGerente();
+                }
+
             }else if(e.getSource() == buttonJuros){
                 panelJuros = new JPanel(new GridLayout(10,10));
                 setContentPane(panelJuros);
@@ -511,12 +559,69 @@ class SistemaBancario extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
 
+
             if(e.getSource() == buttonOKCriarConta){
+                boolean sucess=true,accError=false;
 
-                //if(Gerente.criarConta(Conta.contas,nameFieldGerente.getText().toString(),contaFieldGerente.getText().toString()))
+                if(contaFieldGerente.getText().isEmpty())sucess=false;
+                if(nameFieldGerente.getText().isEmpty())sucess=false;
+                if(radioAccType == 0)sucess=false;
+                if(passwordFieldGerente.getPassword().length == 0)sucess=false;
+                if(!Arrays.equals(passwordFieldGerente.getPassword(), passwordFieldConfirmGerente.getPassword()))sucess=false;
+                if(Gerente.contaExiste(Conta.contas,contaFieldGerente.getText())!=null)sucess=false;
+                if(sucess) {
+
+                    switch (radioAccType) {
+                        case Gerente.ACC_SIMPLE:
+                            sucess=Gerente.criarConta(Conta.contas, nameFieldGerente.getText(), contaFieldGerente.getText(), Gerente.ACC_SIMPLE, 0);
+                            if(!sucess) {
+                                accError=true;
+                                break;
+                            }
+                            break;
+                        case Gerente.ACC_POUPANCA:
+
+                            double rend = Double.parseDouble(JOptionPane.showInputDialog(null, "Digite o rendimento", "RENDIMENTO", JOptionPane.QUESTION_MESSAGE));
+                            sucess=Gerente.criarConta(Conta.contas, nameFieldGerente.getText(), contaFieldGerente.getText(), Gerente.ACC_POUPANCA, rend);
+                            if (!sucess){
+                                accError=true;
+                                break;
+                            }
+                            break;
+                        case Gerente.ACC_SPECIAL:
+
+                            double lim = Double.parseDouble(JOptionPane.showInputDialog(null, "Digite o limite", "LIMITE", JOptionPane.QUESTION_MESSAGE));
+                            sucess=Gerente.criarConta(Conta.contas, nameFieldGerente.getText(), contaFieldGerente.getText(), Gerente.ACC_SPECIAL, lim);
+                            if(!sucess){
+                                accError=true;
+                                break;
+                            }
+                            break;
+                    }
+                }
+                if(!sucess){
+                    if(!Arrays.equals(passwordFieldGerente.getPassword(), passwordFieldConfirmGerente.getPassword()))
+                        JOptionPane.showMessageDialog(null,"SENHAS NAO CONFEREM","ERRO",JOptionPane.ERROR_MESSAGE);
+
+                    else if(accError) {
+                        JOptionPane.showMessageDialog(null,"ERRO AO CRIAR CONTA","ERRO",JOptionPane.ERROR_MESSAGE);
+                    }
+
+                    else if(Gerente.contaExiste(Conta.contas,contaFieldGerente.getText())!=null)
+                        JOptionPane.showMessageDialog(null,"NUMERO DE CONTA EXISTENTE","ERRO",JOptionPane.ERROR_MESSAGE);
+
+                    else
+                    JOptionPane.showMessageDialog(null,"PREENCHA TODAS AS INFORMAÇÕES","ERRO",JOptionPane.ERROR_MESSAGE);
+                }else{
+                    JOptionPane.showMessageDialog(null,"CONTA CRIADA","SUCESSO",JOptionPane.INFORMATION_MESSAGE);
 
 
-                menuGerente();
+                    removeAllListenersAndComponentsCriarConta();
+                    panelGerente = new JPanel(new GridLayout(10,10));
+                    setContentPane(panelGerente);
+                    menuGerente();
+                }
+
             }else if(e.getSource() == buttonBackCriarConta){
                 removeAllListenersAndComponentsCriarConta();
                 panelGerente = new JPanel(new GridLayout(10,10));
@@ -532,15 +637,50 @@ class SistemaBancario extends JFrame {
         public void itemStateChanged(ItemEvent e) {
 
             if(e.getSource() == radioButtonSimpleAcc){
-
-
+                System.out.print("Conta Simples\n");
+                radioAccType = Gerente.ACC_SIMPLE;
+            }else if(e.getSource() == radioButtonPoupancaAcc){
+                System.out.print("Conta Poupanca\n");
+                radioAccType = Gerente.ACC_POUPANCA;
+            }else if(e.getSource() == radioButtonSpecialAcc) {
+                System.out.print("Conta Especial\n");
+                radioAccType = Gerente.ACC_SPECIAL;
             }
+
         }
     }
 
     private class InfoContaButtonListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
+
+            removeAllListenersAndComponentsInfoConta();
+
+            if(e.getSource() == buttonOkInfoConta){
+                Conta acc = Gerente.contaExiste(Conta.contas,textFieldInfoConta.getText());
+                if(acc!=null){
+                    panelInfoConta.remove(labelInfoConta);
+                    panelInfoConta = new JPanel(new BorderLayout());
+                    setContentPane(panelInfoConta);
+
+                    JTextArea infoContaTextArea = new JTextArea();
+                    infoContaTextArea.append(acc.info());
+                    panelInfoConta.add(infoContaTextArea,BorderLayout.PAGE_START);
+                    panelInfoConta.add(buttonBackInfoConta,BorderLayout.PAGE_END);
+                    panelInfoConta.updateUI();
+
+                }else{
+                    JOptionPane.showMessageDialog(null,"CONTA NAO ENCONTRADA","ERRO",JOptionPane.ERROR_MESSAGE);
+                    panelInfoConta = new JPanel(new GridLayout(10,10));
+                    setContentPane(panelInfoConta);
+                    menuInfoConta();
+                }
+
+            }else if(e.getSource() == buttonBackInfoConta){
+                panelGerente = new JPanel(new GridLayout(10,10));
+                setContentPane(panelGerente);
+                menuGerente();
+            }
 
         }
     }
@@ -558,16 +698,28 @@ class SistemaBancario extends JFrame {
         }
     }
 
-    private class RenderButtonListener implements ActionListener{
-        @Override
-        public void actionPerformed(ActionEvent e) {
-
-        }
-    }
-
     private class JurosButtonListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
+
+            removeAllListenersAndComponentsJuros();
+
+            if(e.getSource() == buttonOKJuros){
+
+                int accJuros = Gerente.cobrarJuros(Conta.contas,Double.parseDouble(textFieldJuros.getText()));
+
+                JOptionPane.showMessageDialog(null,"JUROS COBRADOS DE "+Integer.toString(accJuros)+" CONTAS ESPECIAIS","SUCESSO",JOptionPane.INFORMATION_MESSAGE);
+                panelGerente = new JPanel(new GridLayout(10,10));
+                setContentPane(panelGerente);
+                menuGerente();
+
+            }else if (e.getSource() == buttonBackJuros){
+                panelGerente = new JPanel(new GridLayout(10,10));
+                setContentPane(panelGerente);
+                menuGerente();
+            }
+
+
 
         }
     }
@@ -579,7 +731,7 @@ class SistemaBancario extends JFrame {
         public void actionPerformed(ActionEvent e) {
 
             if(e.getSource() == buttonOKLogin){
-                contaAtual = Gerente.contaExiste(contas,contaFieldCliente.getText());
+                contaAtual = Gerente.contaExiste(Conta.contas,contaFieldCliente.getText());
                 if(contaAtual != null && contaAtual.verificaSenha(passwordField.getPassword())){
                     removeAllListenersAndComponentsLogin();
                     panelDashboard = new JPanel(new GridLayout(10,10));
@@ -787,14 +939,19 @@ class SistemaBancario extends JFrame {
 
     private void removeAllListenersAndComponentsJuros(){
 
-    }
+        remove(panelJuros);
 
-    private void removeAllListenersAndComponentsRender(){
+        buttonBackJuros.removeActionListener(JurosListener);
+        buttonOKJuros.removeActionListener(JurosListener);
 
     }
 
     private void removeAllListenersAndComponentsInfoConta(){
 
+        remove(panelInfoConta);
+
+        buttonOkInfoConta.removeActionListener(InfoContaListener);
+        buttonBackInfoConta.removeActionListener(InfoContaListener);
     }
 
     private void removeAllListenersAndComponentsInfoAllConta(){
@@ -849,53 +1006,6 @@ class SistemaBancario extends JFrame {
         buttonOKAlterSenha.removeActionListener(AlterSenhaListener);
     }
 
-
-    private String statusOfSystem(){
-
-        int counterPoupanca=0,counterEspecial=0,counterSimples=0,counterDevedores=0;
-        double totalMoneyPoupanca=0;
-        double totalMoneyEspecial=0;
-        double totalMoneySimples=0;
-        double totalDividasEspecial=0;
-
-        for(int i=0;i<Conta.getContasCadastradas();i++){
-            if(contas[i] instanceof ContaSimples) {
-                totalMoneySimples+= contas[i].getSaldo();
-                counterSimples++;
-            }
-            if(contas[i] instanceof ContaPoupanca) {
-                totalMoneyPoupanca+=contas[i].getSaldo();
-                counterPoupanca++;
-            }
-            if(contas[i] instanceof ContaEspecial) {
-                counterEspecial++;
-                if(contas[i].getSaldo()<0){
-                    totalDividasEspecial += contas[i].getSaldo();
-                    counterDevedores++;
-                }else {
-                    totalMoneyEspecial += contas[i].getSaldo();
-                }
-            }
-
-        }
-
-        return
-                "TOTAL DE CONTAS CADASTRADAS= "+Integer.toString(Conta.getContasCadastradas())+"\n"+
-
-                        ">>CONTAS SIMPLES CADASTRADAS= " + Integer.toString(counterSimples)+"\n"+
-                        "\t|-QUANTIA TOTAL APLICADA NO BANCO= R$ "+Double.toString(totalMoneySimples)+"\n\n"+
-                        ">>CONTAS POUPANCA CADASTRADAS = "+Integer.toString(counterPoupanca)+"\n"+
-                        "\t|-QUANTIA TOTAL APLICADA NO BANCO= R$ "+Double.toString(totalMoneyPoupanca)+"\n\n"+
-                        ">>CONTAS ESPECIAL CADASTRADAS = "+Integer.toString(counterEspecial)+"\n"+
-                        "\t|-QUANTIA TOTAL APLICADA NO BANCO= R$ "+Double.toString(totalMoneyEspecial)+"\n\n"+
-                        "TOTAL APLICADO NO BANCO= R$ "+Double.toString(totalMoneyEspecial+totalMoneyPoupanca+totalMoneySimples)+"\n\n"+
-                        ">>CONTAS ESPECIAIS DEVEDORAS= R$ "+Integer.toString(counterDevedores)+"\n"+
-                        "\t|-QUANTIA TOTAL DE DIVIDAS= "+Double.toString(totalDividasEspecial);
-
-
-
-
-    }
 
 
 }

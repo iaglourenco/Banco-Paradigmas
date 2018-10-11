@@ -20,7 +20,6 @@ class Gerente {
 
     static Conta contaExiste(Conta[] contas,String numeroConta){
 
-
         for(int i=0;i<MAX_CONTAS;i++){
             if (contas[i] != null) {
                 if (contas[i].getnConta().equals(numeroConta)) {
@@ -33,6 +32,9 @@ class Gerente {
 
 
     static boolean criarConta(Conta[] contas,String nameCorr, String nConta,int accType,double valor) {
+
+        if(Conta.getContasCadastradas()>=MAX_CONTAS) return false;
+
 
         if(accType == ACC_POUPANCA)
             contas[Conta.getContasCadastradas()] = new ContaPoupanca(nameCorr, nConta,valor);
