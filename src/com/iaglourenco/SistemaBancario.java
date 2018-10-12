@@ -9,6 +9,7 @@ package com.iaglourenco;
 import com.iaglourenco.exceptions.*;
 
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicOptionPaneUI.ButtonAreaLayout;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
@@ -40,6 +41,7 @@ class SistemaBancario extends JFrame {
     private final InfoContaButtonListener InfoContaListener = new InfoContaButtonListener();
     private final JurosButtonListener JurosListener = new JurosButtonListener();
     private final NumberKeyListener NumberListener = new NumberKeyListener();
+
 
 
     //Components do menuGerente
@@ -99,6 +101,7 @@ class SistemaBancario extends JFrame {
     private JTextField valueFieldDepositar;
 
     private JButton buttonMyAcc;
+    private JButton buttonExtrato;
     private final JButton buttonBackMyAcc= new JButton("Voltar");//Button de uso geral, volta um menu
 
     private JButton buttonAlterSenha;
@@ -123,6 +126,8 @@ class SistemaBancario extends JFrame {
     private JPanel panelDepositar;
     private JPanel panelMyAcc;
     private JPanel panelAlterSenha;
+    private JPanel panelButtons = new JPanel(new ButtonAreaLayout(true,1));
+
 
     //Label usado por todos
     private final JLabel label = new JLabel("Escolha uma opção:");
@@ -133,8 +138,8 @@ class SistemaBancario extends JFrame {
 
         panelHome = new JPanel();
         panelHome.setLayout(new GridLayout(10,10));
-        setContentPane(panelHome);
 
+        setContentPane(panelHome);
         Gerente.criarConta("iago","1234","1234".toCharArray(),Gerente.ACC_SPECIAL,200);
         Gerente.criarConta("iago","4321","4321".toCharArray(),Gerente.ACC_SIMPLE,2200);
         Gerente.criarConta("iago","1423","1423".toCharArray(),Gerente.ACC_POUPANCA,21100);
@@ -152,9 +157,9 @@ class SistemaBancario extends JFrame {
 
         buttonCliente = new JButton("Cliente");
         panelHome.add(buttonCliente);
-
         buttonExit = new JButton("Sair");
         panelHome.add(buttonExit);
+
 
         panelHome.updateUI();
         buttonExit.addActionListener(HomeListener);
@@ -233,7 +238,7 @@ class SistemaBancario extends JFrame {
     }
 
     private void menuDepositar(){
-        setTitle("DEPóSITO");
+        setTitle("DEPÓSITO");
         JLabel labelDepositar = new JLabel("Digite o valor do deposito");
         valueFieldDepositar = new JTextField();
         valueFieldDepositar.addKeyListener(NumberListener);
@@ -254,10 +259,15 @@ class SistemaBancario extends JFrame {
         myAccTextArea.append(contaAtual.info());
         myAccTextArea.setEditable(false);
         JScrollPane myAccScrollPane = new JScrollPane(myAccTextArea);
-        panelMyAcc.add(labelMyAcc,BorderLayout.PAGE_START);
+        panelMyAcc.add(labelMyAcc,BorderLayout.AFTER_LAST_LINE);
         panelMyAcc.add(myAccScrollPane);
-        panelMyAcc.add(buttonBackMyAcc,BorderLayout.PAGE_END);
+
+        buttonExtrato = new JButton("Gerar extrato na tela");
+        panelButtons.add(buttonExtrato);
+        panelButtons.add(buttonBackMyAcc);
+        panelMyAcc.add(panelButtons,BorderLayout.PAGE_END);
         panelMyAcc.updateUI();
+        buttonExtrato.addActionListener(MyAccListener);
         buttonBackMyAcc.addActionListener(MyAccListener);
     }
 
@@ -365,7 +375,6 @@ class SistemaBancario extends JFrame {
         panelCriarConta.add(radioButtonSpecialAcc);
         panelCriarConta.add(buttonOKCriarConta);
         panelCriarConta.add(buttonBackCriarConta);
-
 
 
         radioButtonSimpleAcc.addItemListener(TipoContaListener);
@@ -489,8 +498,6 @@ class SistemaBancario extends JFrame {
     private class GerenteButtonListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-
-
 
             if(e.getSource() == buttonCriarConta){
                 panelCriarConta = new JPanel();
@@ -797,10 +804,21 @@ class SistemaBancario extends JFrame {
 
                 }catch (SaldoInsuficienteException semGrana){
                         JOptionPane.showMessageDialog(null,"SAQUE NAO EFETUADO","ERRO",JOptionPane.ERROR_MESSAGE);
+                        remove(panelSacar);
+                        panelSacar = new JPanel(new GridLayout(10,10));
+                        setContentPane(panelSacar);
+                        buttonOKSacar.removeActionListener(SacarListener);
+                        buttonBackSacar.removeActionListener(SacarListener);
+                        menuSacar();
                 }catch (ValorInvalidoException invalido){
-                    JOptionPane.showMessageDialog(null,"Digite um valor!","ERRO",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"DIGITE UM VALOR VÁLIDO!","ERRO",JOptionPane.ERROR_MESSAGE);
+                    remove(panelSacar);
+                    panelSacar = new JPanel(new GridLayout(10,10));
+                    setContentPane(panelSacar);
+                    buttonOKSacar.removeActionListener(SacarListener);
+                    buttonBackSacar.removeActionListener(SacarListener);
+                    menuSacar();
                 }
-
 
             }else if(e.getSource() == buttonBackSacar){
                 panelDashboard = new JPanel(new GridLayout(10,10));
@@ -819,7 +837,7 @@ class SistemaBancario extends JFrame {
             if(e.getSource() == buttonOKDepositar){
                 try {
 
-                    if(valueFieldSacar.getText().isEmpty()){
+                    if(valueFieldDepositar.getText().isEmpty()){
                         throw new ValorInvalidoException("VALOR INVALIDO");
                     }
 
@@ -834,10 +852,16 @@ class SistemaBancario extends JFrame {
 
                 }catch (ValorInvalidoException invalido){
                     JOptionPane.showMessageDialog(null,"DIGITE UM VALOR VÁLIDO!","ERRO",JOptionPane.ERROR_MESSAGE);
+                    remove(panelDepositar);
+                    panelDepositar = new JPanel(new GridLayout(10,10));
+                    setContentPane(panelDepositar);
+                    buttonOKDepositar.removeActionListener(DepositarListener);
+                    buttonBackDepositar.removeActionListener(DepositarListener);
+                    menuDepositar();
                 }catch (Exception ex){
                     JOptionPane.showMessageDialog(null,"DEPÓSITO NÃO EFETUADO "+ex.getMessage(),"ERRO",JOptionPane.ERROR_MESSAGE);
                 }
-            }else if(e.getSource() == buttonBackDepositar){
+                }else if(e.getSource() == buttonBackDepositar){
                 panelDashboard = new JPanel(new GridLayout(10,10));
                 setContentPane(panelDashboard);
                 menuDashboard();
@@ -876,7 +900,19 @@ class SistemaBancario extends JFrame {
             if(e.getSource() == buttonBackMyAcc){
                 panelDashboard = new JPanel(new GridLayout(10,10));
                 setContentPane(panelDashboard);
+                panelButtons.remove(buttonExtrato);
+                panelButtons.updateUI();
                 menuDashboard();
+            }else if(e.getSource() == buttonExtrato){
+
+                JTextArea extratoArea = new JTextArea();
+                extratoArea.append(Conta.log);
+                extratoArea.setEditable(false);
+                JScrollPane paneScrollExtrato = new JScrollPane(extratoArea);
+                JOptionPane.showMessageDialog(null,paneScrollExtrato,"EXTRATO",JOptionPane.PLAIN_MESSAGE);
+
+
+
             }
         }
     }

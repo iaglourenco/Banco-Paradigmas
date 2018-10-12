@@ -19,6 +19,7 @@ abstract class Conta {
     private static int contasCadastradas=0;
     static final Conta[] contas = new Conta[Gerente.MAX_CONTAS];//array de Objects Conta
     static final char[] KEY_PADRAO = "0000".toCharArray();
+    static String log;
 
 
 
@@ -29,6 +30,7 @@ abstract class Conta {
         saldo=0.0;
         senha = "0000".toCharArray();
         contasCadastradas++;
+        log ="";
     }
 
     void alteraSenha(char[] senhaAntiga, char[] senhaNova) throws SenhaIncorretaException {
@@ -71,6 +73,7 @@ abstract class Conta {
     public boolean sacar(double valor)throws ValorInvalidoException {
 
         if (valor>0) {
+            log=log+"SAQUE - R$ "+Double.toString(valor)+"-> SALDO - R$ "+Double.toString(this.saldo-valor)+"\n\n";
             this.saldo-=valor;
             return true;
         }
@@ -81,6 +84,8 @@ abstract class Conta {
 
         if(valor<=0) // depositar negativo tem outro nome, e nao vale depositar nada
             return false;
+
+        log=log+"DEPOSITO - R$ "+Double.toString(valor)+"-> SALDO - R$ "+Double.toString(this.saldo+valor)+"\n\n";
         this.saldo+=valor;
         return true;//a true da true novamente
     }

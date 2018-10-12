@@ -11,13 +11,13 @@ import com.iaglourenco.exceptions.ValorInvalidoException;
 public class ContaEspecial extends Conta   {
 
     private double limite;
-    private final double limitePadrao=limite;
+    private double limitePadrao;
 
 
 
     ContaEspecial(String nomeCorrentista,String nConta,double limite){
         super(nomeCorrentista,nConta);
-        this.limite = limite;
+        this.limite = limitePadrao = limite;
     }
 
 
@@ -40,7 +40,7 @@ public class ContaEspecial extends Conta   {
         if(super.getSaldo()<=valor){
 
             super.sacar(valor);//saldo tera um valor negativo
-            limite=limite+super.getSaldo();//que sera refletido no limite
+            limite-=valor;//que sera refletido no limite
             return true;
         }
 
@@ -58,14 +58,13 @@ public class ContaEspecial extends Conta   {
             double limAnt =getLimitePadrao();//acho o limite que o cara tem
 
             limite+=valor;//restauro primeiro o limite
-            super.depositar(valor);//como o saldo ta mais baixo que um anao e ,(-saldo) + valor = sua grana,
-                                                                                // no final da tudo certo
+            super.depositar(valor);//como o saldo esta negativo
 
-            if(limite>limAnt){//pro limite nao ficar nas alturas, restauro ao padrao
+            if(limite>limAnt){//restauro o limite ao padrao caso se tenha depositado a mais
                 limite = limAnt;
             }
 
-            return true;//retorno a true da true
+            return true;
         }
 
 
