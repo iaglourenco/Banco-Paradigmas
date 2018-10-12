@@ -17,7 +17,7 @@ Futuramente gerarei um _Javadoc_.
 
 #### Gerente
 1. Criação de contas, Poupança, Simples e Especial.
-1.1 Geração de número de contas
+     1.1 Geração de número de contas
 2. Informações de todas as contas.
 3. Informações de uma conta específica.
 4. Cobrar juros.
@@ -29,7 +29,7 @@ Futuramente gerarei um _Javadoc_.
 2. Depósito.
 3. Alterar minha senha.
 4. Minha conta
-4.1 Gerar extrato na tela
+     4.1 Gerar extrato na tela
 
 
 ------
