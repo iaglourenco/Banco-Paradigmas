@@ -4,7 +4,7 @@
 
 Caso não tenha o JRE instalado, _google it_ e instale-o. =)
 
-Faça o download do **Banco-Paradigmas-beta1.0.jar** nos _releases_
+Faça o download do **Banco-Paradigmas-beta1.0.jar** nos [_releases_](https://github.com/iaglourenco/Banco-Paradigmas/releases) 
 
 Execute-o.
 
