@@ -16,8 +16,8 @@ class Programa {
         SistemaBancario sys = new SistemaBancario();
         sys.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         sys.setLocation(200,200);
-        sys.menuHome();
         sys.setSize(400,400);
+        sys.menuHome();
         sys.setVisible(true);
         sys.setResizable(false);
 

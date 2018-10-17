@@ -19,13 +19,6 @@ import static com.iaglourenco.Gerente.*;
 
 class SistemaBancario extends JFrame {
 
-    private Conta contaAtual;
-
-    //Buttons do primeiro menu, Home
-    private JButton buttonGerente;
-    private JButton buttonCliente;
-    private JButton buttonExit;
-
     //Instanciaçao dos listeners
     private final HomeButtonListener HomeListener = new HomeButtonListener();
     private final GerenteButtonListener GerenteListener = new GerenteButtonListener();
@@ -41,78 +34,68 @@ class SistemaBancario extends JFrame {
     private final InfoContaButtonListener InfoContaListener = new InfoContaButtonListener();
     private final JurosButtonListener JurosListener = new JurosButtonListener();
     private final NumberKeyListener NumberListener = new NumberKeyListener();
-
-
-
+    private final JButton buttonOKCriarConta = new JButton("Criar conta");
+    private final JButton buttonBackCriarConta = new JButton("Voltar");
+    private final ButtonGroup radioGroup = new ButtonGroup();
+    private final JButton buttonOkInfoConta = new JButton("OK");
+    private final JButton buttonBackInfoConta = new JButton("Voltar");
+    private final JButton buttonBackInfoAllConta = new JButton("Voltar");
+    private final JButton buttonOKJuros = new JButton("OK");
+    private final JButton buttonBackJuros = new JButton("Voltar");
+    private final JButton buttonBackResumo = new JButton("Voltar");
+    private final JButton buttonBackGerente = new JButton("Voltar");//Button de uso geral, volta um menu
+    private final JLabel labelLogin = new JLabel("Login:");
+    private final JButton buttonBackLogin = new JButton("Voltar");//Button de uso geral, volta um menu
+    private final JButton buttonOKLogin = new JButton("OK");//Button de uso geral, confirma
+    private final JButton buttonOKSacar = new JButton("OK");//Button de uso geral, confirma
+    private final JButton buttonBackSacar = new JButton("Voltar");//Button de uso geral, volta um menu
+    private final JButton buttonOKDepositar = new JButton("OK");//Button de uso geral, confirma
+    private final JButton buttonBackDepositar = new JButton("Voltar");//Button de uso geral, volta um menu
+    private final JButton buttonBackMyAcc = new JButton("Voltar");//Button de uso geral, volta um menu
+    private final JButton buttonOKAlterSenha = new JButton("OK");//Button de uso geral, confirma
+    private final JButton buttonBackAlterSenha = new JButton("Voltar");//Button de uso geral, volta um menu
+    //Label usado por todos
+    private final JLabel label = new JLabel("Escolha uma opção:");
+    private Conta contaAtual;
+    //Buttons do primeiro menu, Home
+    private JButton buttonGerente;
+    private JButton buttonCliente;
+    private JButton buttonExit;
     //Components do menuGerente
     private JButton buttonCriarConta;
     private JButton buttonGerarNConta;
-    private final JButton buttonOKCriarConta = new JButton("Criar conta");
-    private final JButton buttonBackCriarConta = new JButton("Voltar");
     private JRadioButton radioButtonSimpleAcc;
     private JRadioButton radioButtonSpecialAcc;
     private JRadioButton radioButtonPoupancaAcc;
-    private int radioAccType=0;
-    private final ButtonGroup radioGroup = new ButtonGroup();
-
+    private int radioAccType = 0;
     private JButton buttonInfoConta;
     private JTextField textFieldInfoConta;
-    private final JButton buttonOkInfoConta = new JButton("OK");
-    private final JButton buttonBackInfoConta = new JButton("Voltar");
-
     private JButton buttonInfoAll;
-    private final JButton buttonBackInfoAllConta = new JButton("Voltar");
-
     private JButton buttonRender;
-
     private JButton buttonJuros;
     private JTextField textFieldJuros;
-    private final JButton buttonOKJuros = new JButton("OK");
-    private final JButton buttonBackJuros= new JButton("Voltar");
-
-    private final JButton buttonBackResumo = new JButton("Voltar");
     private JButton buttonResumo;
-
-    private final JButton buttonBackGerente = new JButton("Voltar");//Button de uso geral, volta um menu
-
     //TextFields Gerente
     private JTextField nameFieldGerente;
     private JTextField contaFieldGerente;
     private JPasswordField passwordFieldGerente;
     private JPasswordField passwordFieldConfirmGerente;
-
     //Components Login
     private JTextField contaFieldCliente;
     private JPasswordField passwordField;
-    private final JLabel labelLogin = new JLabel("Login:");
-    private final JButton buttonBackLogin = new JButton("Voltar");//Button de uso geral, volta um menu
-    private final JButton buttonOKLogin = new JButton("OK");//Button de uso geral, confirma
-
-
     //Components do dashboard do Cliente
     private JButton buttonSacar;
-    private final JButton buttonOKSacar= new JButton("OK");//Button de uso geral, confirma
-    private final JButton buttonBackSacar= new JButton("Voltar");//Button de uso geral, volta um menu
     private JTextField valueFieldSacar;
-
     private JButton buttonDepositar;
-    private final JButton buttonOKDepositar= new JButton("OK");//Button de uso geral, confirma
-    private final JButton buttonBackDepositar= new JButton("Voltar");//Button de uso geral, volta um menu
     private JTextField valueFieldDepositar;
-
     private JButton buttonMyAcc;
     private JButton buttonExtrato;
-    private final JButton buttonBackMyAcc= new JButton("Voltar");//Button de uso geral, volta um menu
-
     private JButton buttonAlterSenha;
-    private final JButton buttonOKAlterSenha= new JButton("OK");//Button de uso geral, confirma
-    private final JButton buttonBackAlterSenha= new JButton("Voltar");//Button de uso geral, volta um menu
     private JPasswordField alterPasswordConfirm;
     private JPasswordField alterPasswordField;
     private JButton buttonBackDashboard = new JButton("Sair");
-
-
     //Panels de cada menu
+    private JPanel rootPanel;
     private JPanel panelHome;
     private JPanel panelGerente;
     private JPanel panelCriarConta;
@@ -126,42 +109,51 @@ class SistemaBancario extends JFrame {
     private JPanel panelDepositar;
     private JPanel panelMyAcc;
     private JPanel panelAlterSenha;
-    private JPanel panelButtons = new JPanel(new ButtonAreaLayout(true,1));
+    private JPanel panelButtons = new JPanel(new ButtonAreaLayout(true, 1));
+    private CardLayout cardLayout = new CardLayout();
+    private GridBagConstraints constraints = new GridBagConstraints();
 
 
-    //Label usado por todos
-    private final JLabel label = new JLabel("Escolha uma opção:");
-
-
-    SistemaBancario(){
+    SistemaBancario() {
         super("BANCO PARADIGMAS");
 
-        panelHome = new JPanel();
-        panelHome.setLayout(new GridLayout(10,10));
+        rootPanel = new JPanel();
+        rootPanel.setLayout(cardLayout);
+        add(rootPanel);
 
-        setContentPane(panelHome);
-        Gerente.criarConta("iago","1234","1234".toCharArray(),Gerente.ACC_SPECIAL,200);
-        Gerente.criarConta("iago","4321","4321".toCharArray(),Gerente.ACC_SIMPLE,2200);
-        Gerente.criarConta("iago","1423","1423".toCharArray(),Gerente.ACC_POUPANCA,21100);
+        constraints.insets=new Insets(2,2,2,2);
+        constraints.gridwidth=10;
+        constraints.ipady=10;
+        constraints.gridx=0;
+        Gerente.criarConta("iago", "1234", "1234".toCharArray(), Gerente.ACC_SPECIAL, 200);
+        Gerente.criarConta("iago", "4321", "4321".toCharArray(), Gerente.ACC_SIMPLE, 2200);
+        Gerente.criarConta("iago", "1423", "1423".toCharArray(), Gerente.ACC_POUPANCA, 21100);
 
     }
 
 
     //Menu Home
-    void menuHome(){
+    void menuHome() {
         setTitle("Banco Paradigmas");
-        panelHome.add(label);
+        panelHome = new JPanel();
+        panelHome.setLayout(new GridBagLayout());
+        rootPanel.add("Home",panelHome);
+        constraints.fill = GridBagConstraints.BOTH;
+
+
+        panelHome.add(label,constraints);
 
         buttonGerente = new JButton("Gerente");
-        panelHome.add(buttonGerente);
+        panelHome.add(buttonGerente,constraints);
 
         buttonCliente = new JButton("Cliente");
-        panelHome.add(buttonCliente);
+
+        panelHome.add(buttonCliente,constraints);
         buttonExit = new JButton("Sair");
-        panelHome.add(buttonExit);
 
+        panelHome.add(buttonExit,constraints);
 
-        panelHome.updateUI();
+        cardLayout.show(rootPanel,"Home");
         buttonExit.addActionListener(HomeListener);
         buttonGerente.addActionListener(HomeListener);
         buttonCliente.addActionListener(HomeListener);
@@ -171,7 +163,13 @@ class SistemaBancario extends JFrame {
     //Menu de login
     private void menuLoginCliente() {
         setTitle("Login");
-        panelLoginCliente.add(labelLogin);
+        panelLoginCliente = new JPanel();
+        panelLoginCliente.setLayout(new GridBagLayout());
+        rootPanel.add("Login",panelLoginCliente);
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+
+
+        panelLoginCliente.add(labelLogin,constraints);
         JLabel labelContaFieldCliente = new JLabel("Digite a conta");
         contaFieldCliente = new JTextField();
         contaFieldCliente.setToolTipText("Digite aqui a sua conta");
@@ -179,24 +177,38 @@ class SistemaBancario extends JFrame {
         passwordField = new JPasswordField();
         passwordField.setToolTipText("Digite aqui a sua senha");
 
-        panelLoginCliente.add(labelContaFieldCliente);
-        panelLoginCliente.add(contaFieldCliente);
-        panelLoginCliente.add(labelPasswordField);
-        panelLoginCliente.add(passwordField);
-        panelLoginCliente.add(buttonOKLogin);
-        panelLoginCliente.add(buttonBackLogin);
+
+        panelLoginCliente.add(labelContaFieldCliente,constraints);
+
+        panelLoginCliente.add(contaFieldCliente,constraints);
+
+        panelLoginCliente.add(labelPasswordField,constraints);
+
+        panelLoginCliente.add(passwordField,constraints);
+
+        panelLoginCliente.add(buttonOKLogin,constraints);
+
+        panelLoginCliente.add(buttonBackLogin,constraints);
 
         contaFieldCliente.addKeyListener(NumberListener);
+
         buttonOKLogin.addActionListener(LoginListener);
         buttonBackLogin.addActionListener(LoginListener);
-        panelLoginCliente.updateUI();
+
+        cardLayout.show(rootPanel, "Login");
 
     }
 
     //Submenu de cliente
-    private void menuDashboard(){
-        setTitle("Minha Conta: "+contaAtual.getnConta());
-        JLabel welcomeLabel = new JLabel("Olá, "+contaAtual.getNomeCorrentista().toUpperCase());
+    private void menuDashboard() {
+        setTitle("Minha Conta: " + contaAtual.getnConta());
+        panelDashboard = new JPanel();
+        panelDashboard.setLayout(new GridBagLayout());
+        rootPanel.add("Dashboard",panelDashboard);
+        constraints.fill = GridBagConstraints.BOTH;
+
+
+        JLabel welcomeLabel = new JLabel("Olá, " + contaAtual.getNomeCorrentista().toUpperCase());
         JLabel welcomeLabel1 = new JLabel("O que deseja fazer?");
         buttonSacar = new JButton("Sacar");
         buttonDepositar = new JButton("Depositar");
@@ -204,14 +216,15 @@ class SistemaBancario extends JFrame {
         buttonMyAcc = new JButton("Minha Conta");
         buttonBackDashboard = new JButton("Sair");
 
-        panelDashboard.add(welcomeLabel);
-        panelDashboard.add(welcomeLabel1);
-        panelDashboard.add(buttonSacar);
-        panelDashboard.add(buttonDepositar);
-        panelDashboard.add(buttonAlterSenha);
-        panelDashboard.add(buttonMyAcc);
-        panelDashboard.add(buttonBackDashboard);
-        panelDashboard.updateUI();
+        panelDashboard.add(welcomeLabel,constraints);
+        panelDashboard.add(welcomeLabel1,constraints);
+        panelDashboard.add(buttonSacar,constraints);
+        panelDashboard.add(buttonDepositar,constraints);
+        panelDashboard.add(buttonAlterSenha,constraints);
+        panelDashboard.add(buttonMyAcc,constraints);
+        panelDashboard.add(buttonBackDashboard,constraints);
+
+        cardLayout.show(rootPanel,"Dashboard");
 
         buttonSacar.addActionListener(DashboardListener);
         buttonDepositar.addActionListener(DashboardListener);
@@ -220,70 +233,96 @@ class SistemaBancario extends JFrame {
         buttonBackDashboard.addActionListener(DashboardListener);
 
     }
+
     //Submenus da conta
-    private void menuSacar(){
+    private void menuSacar() {
         setTitle("SAQUE");
+        panelSacar = new JPanel();
+        panelSacar.setLayout(new GridBagLayout());
+        rootPanel.add("Sacar",panelSacar);
+        constraints.fill = GridBagConstraints.BOTH;
+
         JLabel labelSacar = new JLabel("Digite o valor do saque");
         valueFieldSacar = new JTextField();
         valueFieldSacar.addKeyListener(NumberListener);
-        panelSacar.add(labelSacar);
-        panelSacar.add(valueFieldSacar);
-        panelSacar.add(buttonOKSacar);
-        panelSacar.add(buttonBackSacar);
-        panelSacar.updateUI();
+        panelSacar.add(labelSacar,constraints);
+        panelSacar.add(valueFieldSacar,constraints);
+        panelSacar.add(buttonOKSacar,constraints);
+        panelSacar.add(buttonBackSacar,constraints);
+
+        cardLayout.show(rootPanel,"Sacar");
 
         buttonOKSacar.addActionListener(SacarListener);
         buttonBackSacar.addActionListener(SacarListener);
 
     }
 
-    private void menuDepositar(){
+    private void menuDepositar() {
         setTitle("DEPÓSITO");
+        panelDepositar = new JPanel();
+        panelDepositar.setLayout(new GridBagLayout());
+        rootPanel.add("Depositar",panelDepositar);
+        constraints.fill = GridBagConstraints.BOTH;
+
         JLabel labelDepositar = new JLabel("Digite o valor do deposito");
         valueFieldDepositar = new JTextField();
         valueFieldDepositar.addKeyListener(NumberListener);
         panelDepositar.add(labelDepositar);
-        panelDepositar.add(valueFieldDepositar);
-        panelDepositar.add(buttonOKDepositar);
-        panelDepositar.add(buttonBackDepositar);
+        panelDepositar.add(valueFieldDepositar,constraints);
+        panelDepositar.add(buttonOKDepositar,constraints);
+        panelDepositar.add(buttonBackDepositar,constraints);
         panelDepositar.updateUI();
 
+        cardLayout.show(rootPanel,"Depositar");
         buttonOKDepositar.addActionListener(DepositarListener);
         buttonBackDepositar.addActionListener(DepositarListener);
     }
 
-    private void menuMinhaConta(){
+    private void menuMinhaConta() {
         setTitle("MINHA CONTA");
+        panelMyAcc = new JPanel();
+        panelMyAcc.setLayout(new GridBagLayout());
+        rootPanel.add("MyAcc",panelMyAcc);
+        constraints.fill = GridBagConstraints.BOTH;
+
         JLabel labelMyAcc = new JLabel("Informaçoes da sua conta");
         JTextArea myAccTextArea = new JTextArea();
         myAccTextArea.append(contaAtual.info());
         myAccTextArea.setEditable(false);
         JScrollPane myAccScrollPane = new JScrollPane(myAccTextArea);
-        panelMyAcc.add(labelMyAcc,BorderLayout.AFTER_LAST_LINE);
-        panelMyAcc.add(myAccScrollPane);
+        panelMyAcc.add(labelMyAcc,constraints);
+        panelMyAcc.add(myAccScrollPane,constraints);
 
         buttonExtrato = new JButton("Gerar extrato na tela");
-        panelButtons.add(buttonExtrato);
+        panelButtons.add(buttonExtrato,constraints);
         panelButtons.add(buttonBackMyAcc);
-        panelMyAcc.add(panelButtons,BorderLayout.PAGE_END);
-        panelMyAcc.updateUI();
+        panelMyAcc.add(panelButtons,constraints);
+
+        cardLayout.show(rootPanel,"MyAcc");
         buttonExtrato.addActionListener(MyAccListener);
         buttonBackMyAcc.addActionListener(MyAccListener);
     }
 
-    private void menuAlteraSenha(){
+    private void menuAlteraSenha() {
         setTitle("ALTERAR SENHA");
+        panelAlterSenha = new JPanel();
+        panelAlterSenha.setLayout(new GridBagLayout());
+        rootPanel.add("AlterSenha",panelAlterSenha);
+        constraints.fill = GridBagConstraints.BOTH;
+
         JLabel labelAlterSenha1 = new JLabel("Digite a senha atual");
         alterPasswordField = new JPasswordField();
         JLabel labelAlterSenha2 = new JLabel("Digite a senha nova");
         alterPasswordConfirm = new JPasswordField();
-        panelAlterSenha.add(labelAlterSenha1);
-        panelAlterSenha.add(alterPasswordField);
-        panelAlterSenha.add(labelAlterSenha2);
-        panelAlterSenha.add(alterPasswordConfirm);
-        panelAlterSenha.add(buttonOKAlterSenha);
-        panelAlterSenha.add(buttonBackAlterSenha);
-        panelAlterSenha.updateUI();
+
+        panelAlterSenha.add(labelAlterSenha1,constraints);
+        panelAlterSenha.add(alterPasswordField,constraints);
+        panelAlterSenha.add(labelAlterSenha2,constraints);
+        panelAlterSenha.add(alterPasswordConfirm,constraints);
+        panelAlterSenha.add(buttonOKAlterSenha,constraints);
+        panelAlterSenha.add(buttonBackAlterSenha,constraints);
+
+        cardLayout.show(rootPanel,"AlterSenha");
 
         buttonOKAlterSenha.addActionListener(AlterSenhaListener);
         buttonBackAlterSenha.addActionListener(AlterSenhaListener);
@@ -295,28 +334,34 @@ class SistemaBancario extends JFrame {
     //Menu de gerencia
     private void menuGerente() {
         setTitle("GERENTE");
-        panelGerente.add(label);
+        panelGerente= new JPanel();
+        panelGerente.setLayout(new GridBagLayout());
+        rootPanel.add("Gerente",panelGerente);
+        constraints.fill = GridBagConstraints.BOTH;
+
+        panelGerente.add(label,constraints);
         buttonCriarConta = new JButton("Criar conta");
-        panelGerente.add(buttonCriarConta);
+        panelGerente.add(buttonCriarConta,constraints);
 
         buttonInfoConta = new JButton("Informações de conta");
-        panelGerente.add(buttonInfoConta);
+        panelGerente.add(buttonInfoConta,constraints);
 
         buttonRender = new JButton("Efetuar rendimentos");
-        panelGerente.add(buttonRender);
+        panelGerente.add(buttonRender,constraints);
 
         buttonJuros = new JButton("Cobrar juros");
-        panelGerente.add(buttonJuros);
+        panelGerente.add(buttonJuros,constraints);
 
         buttonInfoAll = new JButton("Informações de todas as contas");
-        panelGerente.add(buttonInfoAll);
+        panelGerente.add(buttonInfoAll,constraints);
 
         buttonResumo = new JButton("Status do sitema");
-        panelGerente.add(buttonResumo);
+        panelGerente.add(buttonResumo,constraints);
 
-        panelGerente.add(buttonBackGerente);
+        panelGerente.add(buttonBackGerente,constraints);
 
-        panelGerente.updateUI();
+        cardLayout.show(rootPanel,"Gerente");
+
         buttonCriarConta.addActionListener(GerenteListener);
         buttonInfoConta.addActionListener(GerenteListener);
         buttonRender.addActionListener(GerenteListener);
@@ -329,8 +374,7 @@ class SistemaBancario extends JFrame {
     }
 
     //Submenus gerencia
-    private void menuCriarConta(){
-        setTitle("CRIAR CONTA");
+    private void menuCriarConta() {
         JLabel labelCreateAcc = new JLabel("Criar conta:");
         JLabel labelName = new JLabel("Nome do correntista");
         nameFieldGerente = new JTextField();
@@ -340,7 +384,7 @@ class SistemaBancario extends JFrame {
         buttonGerarNConta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(e.getSource() == buttonGerarNConta){
+                if (e.getSource() == buttonGerarNConta) {
                     contaFieldGerente.setText(Gerente.gerarConta());
                 }
             }
@@ -384,336 +428,311 @@ class SistemaBancario extends JFrame {
         buttonOKCriarConta.addActionListener(CriarContaListener);
         buttonBackCriarConta.addActionListener(CriarContaListener);
 
-        panelCriarConta.updateUI();
+        cardLayout.show(rootPanel,"Criar Conta");
     }
 
-    private void menuInfoConta(){
+    private void menuInfoConta() {
         setTitle("INFO DE CONTA");
+        panelInfoConta = new JPanel();
+        panelInfoConta.setLayout(new GridBagLayout());
+        rootPanel.add("InfoConta",panelInfoConta);
+        constraints.fill = GridBagConstraints.BOTH;
+
         JLabel labelInfoConta = new JLabel("Digite o número da conta");
         textFieldInfoConta = new JTextField();
         textFieldInfoConta.addKeyListener(NumberListener);
 
-        panelInfoConta.add(labelInfoConta);
-        panelInfoConta.add(textFieldInfoConta);
-        panelInfoConta.add(buttonOkInfoConta);
-        panelInfoConta.add(buttonBackInfoConta);
+        panelInfoConta.add(labelInfoConta,constraints);
+        panelInfoConta.add(textFieldInfoConta,constraints);
+        panelInfoConta.add(buttonOkInfoConta,constraints);
+        panelInfoConta.add(buttonBackInfoConta,constraints);
 
+        cardLayout.show(rootPanel,"InfoConta");
         buttonBackInfoConta.addActionListener(InfoContaListener);
         buttonOkInfoConta.addActionListener(InfoContaListener);
-        panelInfoConta.updateUI();
+
     }
 
-    private void menuJuros(){
+    private void menuJuros() {
         setTitle("COBRAR JUROS");
+        panelJuros = new JPanel();
+        panelJuros.setLayout(new GridBagLayout());
+        rootPanel.add("Juros",panelJuros);
+        constraints.fill = GridBagConstraints.BOTH;
+
         JLabel labelJuros = new JLabel("Digite a taxa");
         textFieldJuros = new JTextField();
         textFieldJuros.addKeyListener(NumberListener);
 
-        panelJuros.add(labelJuros);
-        panelJuros.add(textFieldJuros);
-        panelJuros.add(buttonOKJuros);
-        panelJuros.add(buttonBackJuros);
+        panelJuros.add(labelJuros,constraints);
+        panelJuros.add(textFieldJuros,constraints);
+        panelJuros.add(buttonOKJuros,constraints);
+        panelJuros.add(buttonBackJuros,constraints);
 
         buttonOKJuros.addActionListener(JurosListener);
         buttonBackJuros.addActionListener(JurosListener);
 
-        panelJuros.updateUI();
+        cardLayout.show(rootPanel,"Juros");
     }
 
-    private void menuInfoAll(){
+    private void menuInfoAll() {
         setTitle("INFO DE TODAS AS CONTAS");
+        panelInfoAllConta= new JPanel();
+        panelInfoAllConta.setLayout(new BorderLayout());
+        rootPanel.add("InfoAllConta",panelInfoAllConta);
+        constraints.fill = GridBagConstraints.BOTH;
+
         JLabel labelInfoAll = new JLabel("Informações de todas as contas");
         JTextArea infoAllTextArea = new JTextArea();
 
-        infoAllTextArea.setText("Quantidade de contas cadastradas= "+Integer.toString(Conta.getContasCadastradas())+"\n\n");
-        for(int i=0;i<Gerente.MAX_CONTAS;i++){
-            if(Conta.contas[i]!=null)
-                infoAllTextArea.append(Conta.contas[i].info()+"-------\n\n");
+        infoAllTextArea.setText("Quantidade de contas cadastradas= " + Integer.toString(Conta.getContasCadastradas()) + "\n\n");
+        for (int i = 0; i < Gerente.MAX_CONTAS; i++) {
+            if (Conta.contas[i] != null)
+                infoAllTextArea.append(Conta.contas[i].info() + "-------\n\n");
         }
-
-
         infoAllTextArea.setEditable(false);
-        JScrollPane myAccScrollPane = new JScrollPane(infoAllTextArea);
+        JScrollPane myAccScrollPane = new JScrollPane(infoAllTextArea);//fixme: Layout fica "colapsado" e nao da pra ver nada
+
         panelInfoAllConta.add(labelInfoAll,BorderLayout.PAGE_START);
         panelInfoAllConta.add(myAccScrollPane);
         panelInfoAllConta.add(buttonBackInfoAllConta,BorderLayout.PAGE_END);
-        panelInfoAllConta.updateUI();
+
         buttonBackInfoAllConta.addActionListener(InfoAllContaListener);
+
+        cardLayout.show(rootPanel,"InfoAllConta");
     }
 
-    private void menuResumo(){
+    private void menuResumo() {
         setTitle("STATUS DO SISTEMA");
+        panelResumo= new JPanel();
+        panelResumo.setLayout(new GridBagLayout());
+        rootPanel.add("Resumo",panelResumo);
+        constraints.fill = GridBagConstraints.BOTH;
+
         JLabel labelResumo = new JLabel("Status do banco");
         JTextArea resumoTextArea = new JTextArea();
         resumoTextArea.append(Conta.getStatusOfSystem());
         resumoTextArea.setEditable(false);
         JScrollPane resumoScrollPane = new JScrollPane(resumoTextArea);
-        panelResumo.add(labelResumo,BorderLayout.PAGE_START);
-        panelResumo.add(resumoScrollPane);
-        panelResumo.add(buttonBackResumo,BorderLayout.PAGE_END);
-        panelResumo.updateUI();
+
+        panelResumo.add(labelResumo,constraints);
+        panelResumo.add(resumoScrollPane,constraints);
+        panelResumo.add(buttonBackResumo, constraints);
+
+        cardLayout.show(rootPanel,"Resumo");
+
         buttonBackResumo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 remove(panelResumo);
                 buttonBackResumo.removeActionListener(this);
-                panelGerente = new JPanel(new GridLayout(10,10));
-                setContentPane(panelGerente);
                 menuGerente();
             }
         });
     }
 
-//Listeners
+    //Listeners
     private class HomeButtonListener implements ActionListener {
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-        if (e.getSource() == buttonExit) {
-
-            int res = JOptionPane.showConfirmDialog(null, "Tem certeza?", "SAIR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-            if (res == JOptionPane.YES_OPTION) {
-                System.exit(0);
-            }
-            panelHome = new JPanel(new GridLayout(10, 10));
-            setContentPane(panelHome);
-            menuHome();
-        } else if (e.getSource() == buttonCliente) {
-            panelLoginCliente = new JPanel(new GridLayout(10, 10));
-            setContentPane(panelLoginCliente);
-            menuLoginCliente();
-        } else if (e.getSource() == buttonGerente) {
-            panelGerente = new JPanel(new GridLayout(10, 10));
-            setContentPane(panelGerente);
-            menuGerente();
-        }
-
-
-
-    }
-}
-
-    //===================================================================
-
-    private class GerenteButtonListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            if(e.getSource() == buttonCriarConta){
+            if (e.getSource() == buttonExit) {
+
+                int res = JOptionPane.showConfirmDialog(null, "Tem certeza?", "SAIR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if (res == JOptionPane.YES_OPTION) {
+                    System.exit(0);
+                }
+                menuHome();
+            } else if (e.getSource() == buttonCliente) {
+                menuLoginCliente();
+            } else if (e.getSource() == buttonGerente) {
+                menuGerente();
+            }
+
+
+        }
+    }
+
+    //===================================================================
+
+    private class GerenteButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            if (e.getSource() == buttonCriarConta) {
                 panelCriarConta = new JPanel();
-                panelCriarConta.setLayout(new BoxLayout(panelCriarConta,BoxLayout.Y_AXIS));
-                setContentPane(panelCriarConta);
+                panelCriarConta.setLayout(new BoxLayout(panelCriarConta, BoxLayout.Y_AXIS));
+                rootPanel.add("Criar Conta",panelCriarConta);
                 menuCriarConta();
-            }else if(e.getSource() ==buttonInfoConta){
-                panelInfoConta = new JPanel(new GridLayout(10,10));
-                setContentPane(panelInfoConta);
+            } else if (e.getSource() == buttonInfoConta) {
                 menuInfoConta();
-            }else if(e.getSource() == buttonRender){
+            } else if (e.getSource() == buttonRender) {
 
-                int resp = JOptionPane.showOptionDialog(null,"DESEJA EFETUAR OS RENDIMENTOS NAS CONTAS POUPANÇA?","EFETUAR RENDIMENTOS",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,null,null);
-                if(resp == JOptionPane.YES_OPTION){
-
+                int resp = JOptionPane.showOptionDialog(null, "DESEJA EFETUAR OS RENDIMENTOS NAS CONTAS POUPANÇA?", "EFETUAR RENDIMENTOS", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+                if (resp == JOptionPane.YES_OPTION) {
                     int accRendidas = Gerente.incrementarJuros();
 
-                    JOptionPane.showMessageDialog(null,"RENDIMENTOS EFETUADOS EM "+ Integer.toString(accRendidas)+" CONTAS POUPANÇA","SUCESSO",JOptionPane.INFORMATION_MESSAGE);
-                    panelGerente = new JPanel(new GridLayout(10,10));
-                    setContentPane(panelGerente);
-                    menuGerente();
-                }else if (resp == JOptionPane.NO_OPTION){
-                    panelGerente = new JPanel(new GridLayout(10,10));
-                    setContentPane(panelGerente);
-                    menuGerente();
+                    JOptionPane.showMessageDialog(null, "RENDIMENTOS EFETUADOS EM " + Integer.toString(accRendidas) + " CONTAS POUPANÇA", "SUCESSO", JOptionPane.INFORMATION_MESSAGE);
                 }
 
-            }else if(e.getSource() == buttonJuros){
-                panelJuros = new JPanel(new GridLayout(10,10));
-                setContentPane(panelJuros);
+            } else if (e.getSource() == buttonJuros) {
                 menuJuros();
-            }else if(e.getSource() == buttonInfoAll){
-                panelInfoAllConta = new JPanel(new BorderLayout(5,5));
-                setContentPane(panelInfoAllConta);
+            } else if (e.getSource() == buttonInfoAll) {
                 menuInfoAll();
-            }else if (e.getSource() == buttonBackGerente){
-                panelHome = new JPanel(new GridLayout(10,10));
-                setContentPane(panelHome);
+            } else if (e.getSource() == buttonBackGerente) {
                 menuHome();
-            }else if(e.getSource() == buttonResumo){
-                panelResumo = new JPanel(new BorderLayout(5,5));
-                setContentPane(panelResumo);
+            } else if (e.getSource() == buttonResumo) {
                 menuResumo();
             }
         }
     }
 
-    private class CriarContaButtonListener implements ActionListener{
+    private class CriarContaButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            if(e.getSource() == buttonOKCriarConta) {
+            if (e.getSource() == buttonOKCriarConta) {
 
 
                 try {
-                    if (Conta.getContasCadastradas() >= Gerente.MAX_CONTAS) throw new MaxContasException("MAXIMO DE CONTAS ATINGIDO");
+                    if (Conta.getContasCadastradas() >= Gerente.MAX_CONTAS)
+                        throw new MaxContasException("MAXIMO DE CONTAS ATINGIDO");
 
-                    if(contaFieldGerente.getText().isEmpty())throw new CampoVazioException("CAMPO(S) VAZIO(S)");
-                    if(nameFieldGerente.getText().isEmpty())throw new CampoVazioException("CAMPO(S) VAZIO(S)");
+                    if (contaFieldGerente.getText().isEmpty()) throw new CampoVazioException("CAMPO(S) VAZIO(S)");
+                    if (nameFieldGerente.getText().isEmpty()) throw new CampoVazioException("CAMPO(S) VAZIO(S)");
 
                     if (!Arrays.equals(passwordFieldGerente.getPassword(), passwordFieldConfirmGerente.getPassword()))
                         throw new SenhasDiferemException("SENHAS DIFEREM");
 
 
-                    if(radioAccType == ACC_SIMPLE) {
-                        Gerente.criarConta(nameFieldGerente.getText(),contaFieldGerente.getText(),passwordFieldGerente.getPassword(), ACC_SIMPLE, 0);
-                        JOptionPane.showMessageDialog(null,"CONTA CRIADA","SUCESSO",JOptionPane.INFORMATION_MESSAGE);
-                        panelGerente = new JPanel(new GridLayout(10,10));
-                        setContentPane(panelGerente);
+                    if (radioAccType == ACC_SIMPLE) {
+                        Gerente.criarConta(nameFieldGerente.getText(), contaFieldGerente.getText(), passwordFieldGerente.getPassword(), ACC_SIMPLE, 0);
+                        JOptionPane.showMessageDialog(null, "CONTA CRIADA", "SUCESSO", JOptionPane.INFORMATION_MESSAGE);
                         menuGerente();
-                    }
-                    else if(radioAccType == ACC_POUPANCA) {
+                    } else if (radioAccType == ACC_POUPANCA) {
 
-                        try{
+                        try {
                             double rend = Double.parseDouble(JOptionPane.showInputDialog(null, "Digite o rendimento", "RENDIMENTO", JOptionPane.QUESTION_MESSAGE));
-                            if(rend<0){
+                            if (rend < 0) {
                                 throw new ValorInvalidoException("VALOR INVALIDO");
                             }
-                            Gerente.criarConta(nameFieldGerente.getText(),contaFieldGerente.getText(),passwordFieldGerente.getPassword(),ACC_POUPANCA,rend);
-                            JOptionPane.showMessageDialog(null,"CONTA CRIADA","SUCESSO",JOptionPane.INFORMATION_MESSAGE);
-                            panelGerente = new JPanel(new GridLayout(10,10));
-                            setContentPane(panelGerente);
+                            Gerente.criarConta(nameFieldGerente.getText(), contaFieldGerente.getText(), passwordFieldGerente.getPassword(), ACC_POUPANCA, rend);
+                            JOptionPane.showMessageDialog(null, "CONTA CRIADA", "SUCESSO", JOptionPane.INFORMATION_MESSAGE);
                             menuGerente();
-                        }catch (NumberFormatException num){
+                        } catch (NumberFormatException num) {
                             throw new ValorInvalidoException("VALOR INVALIDO DIGITADO");
                         }
-                    }else if(radioAccType == ACC_SPECIAL ) {
+                    } else if (radioAccType == ACC_SPECIAL) {
 
                         try {
                             double lim = Double.parseDouble(JOptionPane.showInputDialog(null, "Digite o limite", "LIMITE", JOptionPane.QUESTION_MESSAGE));
-                            if(lim<0){
+                            if (lim < 0) {
                                 throw new ValorInvalidoException("VALOR INVALIDO");
                             }
-                            Gerente.criarConta(nameFieldGerente.getText(),contaFieldGerente.getText(),passwordFieldGerente.getPassword(), ACC_SPECIAL, lim);
+                            Gerente.criarConta(nameFieldGerente.getText(), contaFieldGerente.getText(), passwordFieldGerente.getPassword(), ACC_SPECIAL, lim);
                             JOptionPane.showMessageDialog(null, "CONTA CRIADA", "SUCESSO", JOptionPane.INFORMATION_MESSAGE);
-                            panelGerente = new JPanel(new GridLayout(10, 10));
-                            setContentPane(panelGerente);
                             menuGerente();
-                        }catch (NumberFormatException num){
+                        } catch (NumberFormatException num) {
                             throw new ValorInvalidoException("VALOR INVALIDO DIGITADO");
                         }
-                    }else{
+                    } else {
                         throw new CampoVazioException("CAMPO(S) VAZIO(S)");
                     }
 
-                } catch( SenhasDiferemException key) {
+                } catch (SenhasDiferemException key) {
                     JOptionPane.showMessageDialog(null, "SENHAS NAO CONFEREM", "ERRO", JOptionPane.ERROR_MESSAGE);
 
-                }catch ( ContaExistenteException contaExiste) {
+                } catch (ContaExistenteException contaExiste) {
                     JOptionPane.showMessageDialog(null, "NUMERO DE CONTA EXISTENTE", "ERRO", JOptionPane.ERROR_MESSAGE);
 
-                }catch ( CampoVazioException campoVazio) {
+                } catch (CampoVazioException campoVazio) {
                     JOptionPane.showMessageDialog(null, "PREENCHA TODAS AS INFORMAÇÕES", "ERRO", JOptionPane.ERROR_MESSAGE);
 
-                }catch (ValorInvalidoException valorInvalido){
+                } catch (ValorInvalidoException valorInvalido) {
                     JOptionPane.showMessageDialog(null, "VALOR INVÁLIDO DIGITADO", "ERRO", JOptionPane.ERROR_MESSAGE);
 
-                } catch ( Exception exc){
+                } catch (Exception exc) {
                     JOptionPane.showMessageDialog(null, exc.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
                 }
 
-            }else if(e.getSource() == buttonBackCriarConta){
-                panelGerente = new JPanel(new GridLayout(10,10));
-                setContentPane(panelGerente);
+            } else if (e.getSource() == buttonBackCriarConta) {
                 menuGerente();
             }
 
         }
     }
 
-    private class TipoContaRadioListener implements ItemListener{
+    private class TipoContaRadioListener implements ItemListener {
         @Override
         public void itemStateChanged(ItemEvent e) {
 
-            if(e.getSource() == radioButtonSimpleAcc){
+            if (e.getSource() == radioButtonSimpleAcc) {
                 radioAccType = ACC_SIMPLE;
-            }else if(e.getSource() == radioButtonPoupancaAcc){
+            } else if (e.getSource() == radioButtonPoupancaAcc) {
                 radioAccType = ACC_POUPANCA;
-            }else if(e.getSource() == radioButtonSpecialAcc) {
+            } else if (e.getSource() == radioButtonSpecialAcc) {
                 radioAccType = ACC_SPECIAL;
             }
 
         }
     }
 
-    private class InfoContaButtonListener implements ActionListener{
+    private class InfoContaButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            if(e.getSource() == buttonOkInfoConta){
+            if (e.getSource() == buttonOkInfoConta) {
 
                 try {
                     Conta acc = Gerente.contaExiste(textFieldInfoConta.getText());
 
-                    remove(panelInfoConta);
-                    panelInfoConta = new JPanel(new BorderLayout());
-                    setContentPane(panelInfoConta);
-
+                    panelInfoConta = new JPanel(new GridBagLayout());
+                    rootPanel.add("InfoConta2",panelInfoConta);
+                    constraints.fill = GridBagConstraints.BOTH;
                     JTextArea infoContaTextArea = new JTextArea();
                     infoContaTextArea.append(acc.info());
-                    panelInfoConta.add(infoContaTextArea, BorderLayout.PAGE_START);
-                    panelInfoConta.add(buttonBackInfoConta, BorderLayout.PAGE_END);
+                    panelInfoConta.add(infoContaTextArea,constraints);
+                    panelInfoConta.add(buttonBackInfoConta,constraints);
+                    cardLayout.show(rootPanel,"InfoConta2");
                     buttonOkInfoConta.removeActionListener(InfoContaListener);
-                    panelInfoConta.updateUI();
-                }catch (ContaInexistenteException contaNExiste) {
+
+                } catch (ContaInexistenteException contaNExiste) {
                     JOptionPane.showMessageDialog(null, "CONTA NAO ENCONTRADA", "ERRO", JOptionPane.ERROR_MESSAGE);
-                    remove(panelInfoConta);
-                    panelInfoConta = new JPanel(new GridLayout(10,10));
-                    setContentPane(panelInfoConta);
-                    buttonOkInfoConta.removeActionListener(InfoContaListener);
-                    buttonBackInfoConta.removeActionListener(InfoContaListener);
                     menuInfoConta();
                 }
-            }else if(e.getSource() == buttonBackInfoConta){
-                panelGerente = new JPanel(new GridLayout(10,10));
-                setContentPane(panelGerente);
+            } else if (e.getSource() == buttonBackInfoConta) {
                 menuGerente();
             }
 
         }
     }
 
-    private class InfoAllContaButtonListener implements ActionListener{
+    private class InfoAllContaButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            if(e.getSource() == buttonBackInfoAllConta){
-                panelGerente = new JPanel(new GridLayout(10,10));
-                setContentPane(panelGerente);
+            if (e.getSource() == buttonBackInfoAllConta) {
                 menuGerente();
             }
         }
     }
 
-    private class JurosButtonListener implements ActionListener{
+    private class JurosButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
 
 
-
-            if(e.getSource() == buttonOKJuros){
+            if (e.getSource() == buttonOKJuros) {
 
                 int accJuros = Gerente.cobrarJuros(Double.parseDouble(textFieldJuros.getText()));
 
-                JOptionPane.showMessageDialog(null,"JUROS COBRADOS DE "+Integer.toString(accJuros)+" CONTAS ESPECIAIS","SUCESSO",JOptionPane.INFORMATION_MESSAGE);
-                panelGerente = new JPanel(new GridLayout(10,10));
-                setContentPane(panelGerente);
+                JOptionPane.showMessageDialog(null, "JUROS COBRADOS DE " + Integer.toString(accJuros) + " CONTAS ESPECIAIS", "SUCESSO", JOptionPane.INFORMATION_MESSAGE);
                 menuGerente();
 
-            }else if (e.getSource() == buttonBackJuros){
-                panelGerente = new JPanel(new GridLayout(10,10));
-                setContentPane(panelGerente);
+            } else if (e.getSource() == buttonBackJuros) {
                 menuGerente();
             }
-
 
 
         }
@@ -721,207 +740,151 @@ class SistemaBancario extends JFrame {
 
     //===================================================================
 
-    private class LoginButtonListener implements ActionListener{
+    private class LoginButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            if(e.getSource() == buttonOKLogin) {
-                try{
-                contaAtual = Gerente.contaExiste(contaFieldCliente.getText());
-                contaAtual.verificaSenha(passwordField.getPassword()) ;
-                panelDashboard = new JPanel(new GridLayout(10, 10));
-                setContentPane(panelDashboard);
-                menuDashboard();
+            if (e.getSource() == buttonOKLogin) {
+                try {
+                    contaAtual = Gerente.contaExiste(contaFieldCliente.getText());
+                    contaAtual.verificaSenha(passwordField.getPassword());
+                    menuDashboard();
 
-            }catch(SenhaIncorretaException senhaErrada){
-                    JOptionPane.showMessageDialog(null,"Número de conta e/ou senha incorreto(s)!","ERRO",JOptionPane.ERROR_MESSAGE);
-                    remove(panelLoginCliente);
-                    buttonOKLogin.removeActionListener(LoginListener);
-                    buttonBackLogin.removeActionListener(LoginListener);
-                }catch (ContaInexistenteException contaNExiste){
-                    JOptionPane.showMessageDialog(null,"Número de conta e/ou senha incorreto(s)!","ERRO",JOptionPane.ERROR_MESSAGE);
+                } catch (SenhaIncorretaException senhaErrada) {
+                    JOptionPane.showMessageDialog(null, "Número de conta e/ou senha incorreto(s)!", "ERRO", JOptionPane.ERROR_MESSAGE);
+
+                } catch (ContaInexistenteException contaNExiste) {
+                    JOptionPane.showMessageDialog(null, "Número de conta e/ou senha incorreto(s)!", "ERRO", JOptionPane.ERROR_MESSAGE);
                 }
-            }
-            else if(e.getSource() == buttonBackLogin) {
-                panelHome = new JPanel(new GridLayout(10,10));
-                setContentPane(panelHome);
+            } else if (e.getSource() == buttonBackLogin) {
                 menuHome();
             }
         }
     }
 
-    private class DashboardButtonListener implements  ActionListener{
+    private class DashboardButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            if (e.getSource() == buttonSacar){
-                panelSacar = new JPanel(new GridLayout(10,10));
-                setContentPane(panelSacar);
+            if (e.getSource() == buttonSacar) {
                 menuSacar();
-            }else if(e.getSource() == buttonDepositar){
-                panelDepositar = new JPanel(new GridLayout(10,10));
-                setContentPane(panelDepositar);
+            } else if (e.getSource() == buttonDepositar) {
                 menuDepositar();
-            }else if(e.getSource() == buttonAlterSenha){
-                panelAlterSenha = new JPanel(new GridLayout(10,10));
-                setContentPane(panelAlterSenha);
+            } else if (e.getSource() == buttonAlterSenha) {
+
                 menuAlteraSenha();
-            }else if(e.getSource() == buttonMyAcc){
-                panelMyAcc = new JPanel(new BorderLayout());
-                setContentPane(panelMyAcc);
+            } else if (e.getSource() == buttonMyAcc) {
                 menuMinhaConta();
-            }else if (e.getSource() == buttonBackDashboard){
-                int res = JOptionPane.showConfirmDialog(null,"Tem certeza?","SAIR",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-                if(res == JOptionPane.YES_OPTION){
-                    panelHome = new JPanel(new GridLayout(10,10));
-                    setContentPane(panelHome);
+            } else if (e.getSource() == buttonBackDashboard) {
+                int res = JOptionPane.showConfirmDialog(null, "Tem certeza?", "SAIR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if (res == JOptionPane.YES_OPTION) {
                     menuHome();
                 }
             }
         }
     }
 
-    private class SacarButtonListener implements ActionListener{
+    private class SacarButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            if(e.getSource() == buttonOKSacar){
+            if (e.getSource() == buttonOKSacar) {
                 try {
 
-                if(valueFieldSacar.getText().isEmpty()){
-                    throw new ValorInvalidoException("VALOR INVALIDO");
+                    if (valueFieldSacar.getText().isEmpty()) {
+                        throw new ValorInvalidoException("VALOR INVALIDO");
+                    }
+
+                    contaAtual.sacar(Double.parseDouble(valueFieldSacar.getText()));
+                    JOptionPane.showMessageDialog(null, "SAQUE EFETUADO\nSALDO ATUAL = R$ " + Double.toString(contaAtual.getSaldo()), "INFO", JOptionPane.INFORMATION_MESSAGE);
+                    menuDashboard();
+                } catch (SaldoInsuficienteException semGrana) {
+                    JOptionPane.showMessageDialog(null, "X    NAO EFETUADO\n" + semGrana.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
+                } catch (ValorInvalidoException invalido) {
+                    JOptionPane.showMessageDialog(null, "DIGITE UM VALOR VÁLIDO!", "ERRO", JOptionPane.ERROR_MESSAGE);
                 }
 
-                contaAtual.sacar(Double.parseDouble(valueFieldSacar.getText()));
-                JOptionPane.showMessageDialog(null,"SAQUE EFETUADO","INFO",JOptionPane.INFORMATION_MESSAGE);
-                remove(panelSacar);
-                buttonOKSacar.removeActionListener(SacarListener);
-                buttonBackSacar.removeActionListener(SacarListener);
-                panelDashboard = new JPanel(new GridLayout(10,10));
-                setContentPane(panelDashboard);
-                menuDashboard();
-
-                }catch (SaldoInsuficienteException semGrana){
-                        JOptionPane.showMessageDialog(null,"SAQUE NAO EFETUADO","ERRO",JOptionPane.ERROR_MESSAGE);
-                        remove(panelSacar);
-                        panelSacar = new JPanel(new GridLayout(10,10));
-                        setContentPane(panelSacar);
-                        buttonOKSacar.removeActionListener(SacarListener);
-                        buttonBackSacar.removeActionListener(SacarListener);
-                        menuSacar();
-                }catch (ValorInvalidoException invalido){
-                    JOptionPane.showMessageDialog(null,"DIGITE UM VALOR VÁLIDO!","ERRO",JOptionPane.ERROR_MESSAGE);
-                    remove(panelSacar);
-                    panelSacar = new JPanel(new GridLayout(10,10));
-                    setContentPane(panelSacar);
-                    buttonOKSacar.removeActionListener(SacarListener);
-                    buttonBackSacar.removeActionListener(SacarListener);
-                    menuSacar();
-                }
-
-            }else if(e.getSource() == buttonBackSacar){
-                panelDashboard = new JPanel(new GridLayout(10,10));
-                setContentPane(panelDashboard);
+            } else if (e.getSource() == buttonBackSacar) {
                 menuDashboard();
             }
 
         }
     }
 
-    private class DepositarButtonListener implements ActionListener{
+    private class DepositarButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
 
 
-            if(e.getSource() == buttonOKDepositar){
+            if (e.getSource() == buttonOKDepositar) {
                 try {
 
-                    if(valueFieldDepositar.getText().isEmpty()){
+                    if (valueFieldDepositar.getText().isEmpty()) {
                         throw new ValorInvalidoException("VALOR INVALIDO");
                     }
 
                     contaAtual.depositar(Double.parseDouble(valueFieldDepositar.getText()));
-                    JOptionPane.showMessageDialog(null,"DEPÓSITO EFETUADO","INFO",JOptionPane.INFORMATION_MESSAGE);
-                    remove(panelDepositar);
-                    buttonBackDepositar.removeActionListener(DepositarListener);
-                    buttonOKDepositar.removeActionListener(DepositarListener);
-                    panelDashboard = new JPanel(new GridLayout(10,10));
-                    setContentPane(panelDashboard);
+                    JOptionPane.showMessageDialog(null, "DEPÓSITO EFETUADO\nSALDO ATUAL = R$ " + Double.toString(contaAtual.getSaldo()), "INFO", JOptionPane.INFORMATION_MESSAGE);
                     menuDashboard();
 
-                }catch (ValorInvalidoException invalido){
-                    JOptionPane.showMessageDialog(null,"DIGITE UM VALOR VÁLIDO!","ERRO",JOptionPane.ERROR_MESSAGE);
-                    remove(panelDepositar);
-                    panelDepositar = new JPanel(new GridLayout(10,10));
-                    setContentPane(panelDepositar);
-                    buttonOKDepositar.removeActionListener(DepositarListener);
-                    buttonBackDepositar.removeActionListener(DepositarListener);
+                } catch (ValorInvalidoException invalido) {
+                    JOptionPane.showMessageDialog(null, "DIGITE UM VALOR VÁLIDO!", "ERRO", JOptionPane.ERROR_MESSAGE);
                     menuDepositar();
-                }catch (Exception ex){
-                    JOptionPane.showMessageDialog(null,"DEPÓSITO NÃO EFETUADO "+ex.getMessage(),"ERRO",JOptionPane.ERROR_MESSAGE);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "DEPÓSITO NÃO EFETUADO " + ex.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
                 }
-                }else if(e.getSource() == buttonBackDepositar){
-                panelDashboard = new JPanel(new GridLayout(10,10));
-                setContentPane(panelDashboard);
+            } else if (e.getSource() == buttonBackDepositar) {
                 menuDashboard();
 
             }
         }
     }
 
-    private class AlterSenhaButtonListener implements ActionListener{
+    private class AlterSenhaButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            if(e.getSource() == buttonOKAlterSenha) {
+            if (e.getSource() == buttonOKAlterSenha) {
 
-                try{
-                contaAtual.alteraSenha(alterPasswordField.getPassword(), alterPasswordConfirm.getPassword());
-                JOptionPane.showMessageDialog(null, "SENHA ALTERADA COM SUCESSO!", "INFO", JOptionPane.INFORMATION_MESSAGE);
-                panelDashboard = new JPanel(new GridLayout(10, 10));
-                setContentPane(panelDashboard);
-                menuDashboard();
-            }catch (SenhaIncorretaException senhaAntErrada){
-                    JOptionPane.showMessageDialog(null,"SENHA ANTIGA INCORRETA!","ERRO",JOptionPane.ERROR_MESSAGE);
+                try {
+                    contaAtual.alteraSenha(alterPasswordField.getPassword(), alterPasswordConfirm.getPassword());
+                    JOptionPane.showMessageDialog(null, "SENHA ALTERADA COM SUCESSO!", "INFO", JOptionPane.INFORMATION_MESSAGE);
+                    menuDashboard();
+                } catch (SenhaIncorretaException senhaAntErrada) {
+                    JOptionPane.showMessageDialog(null, "SENHA ANTIGA INCORRETA!", "ERRO", JOptionPane.ERROR_MESSAGE);
                 }
-            }else if(e.getSource() == buttonBackAlterSenha){
-                panelDashboard = new JPanel(new GridLayout(10,10));
-                setContentPane(panelDashboard);
+            } else if (e.getSource() == buttonBackAlterSenha) {
                 menuDashboard();
             }
         }
     }
 
-    private class MyAccButtonListener implements ActionListener{
+    private class MyAccButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            if(e.getSource() == buttonBackMyAcc){
-                panelDashboard = new JPanel(new GridLayout(10,10));
-                setContentPane(panelDashboard);
+            if (e.getSource() == buttonBackMyAcc) {
                 panelButtons.remove(buttonExtrato);
                 panelButtons.updateUI();
                 menuDashboard();
-            }else if(e.getSource() == buttonExtrato){
+            } else if (e.getSource() == buttonExtrato) {
 
                 JTextArea extratoArea = new JTextArea();
-                extratoArea.append(Conta.log);
+                extratoArea.append(contaAtual.getLog());
                 extratoArea.setEditable(false);
                 JScrollPane paneScrollExtrato = new JScrollPane(extratoArea);
-                JOptionPane.showMessageDialog(null,paneScrollExtrato,"EXTRATO",JOptionPane.PLAIN_MESSAGE);
-
-
+                JOptionPane.showMessageDialog(null, paneScrollExtrato, "EXTRATO", JOptionPane.PLAIN_MESSAGE);
 
             }
         }
     }
 
-    private class NumberKeyListener implements KeyListener{
+    private class NumberKeyListener implements KeyListener {
         @Override
         public void keyTyped(KeyEvent e) {
             String caracters = "0987654321";
-            if(!caracters.contains(e.getKeyChar()+"")){
+            if (!caracters.contains(e.getKeyChar() + "")) {
                 e.consume();
             }
 
@@ -940,9 +903,6 @@ class SistemaBancario extends JFrame {
     }
 
     //===================================================================
-
-
-
 
 
 }
