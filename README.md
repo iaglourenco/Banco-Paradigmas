@@ -9,7 +9,7 @@ Consiste numa aplicação Java que simula as operações feitas em um banco,(saq
 
 # Caso não tenha o JRE instalado:
      
-     Baixe a versão para seu sistema [aqui](https://www.oracle.com/technetwork/pt/java/javase/downloads/jre8-downloads-2133155.html)
+Baixe a versão para seu sistema [aqui](https://www.oracle.com/technetwork/pt/java/javase/downloads/jre8-downloads-2133155.html)
      
 Faça o download do **Banco-Paradigmas-____X.X.jar** nos [_releases_](https://github.com/iaglourenco/Banco-Paradigmas/releases) 
 
