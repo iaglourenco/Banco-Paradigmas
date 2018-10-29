@@ -1,41 +1,50 @@
-# Banco-Paradigmas
+## Projeto de Paradigmas B - Sistema Bancário
+
+Projeto feito na disciplina de Paradigmas de Programação B, PUC-Campinas, como projeto de avaliação.
+Consiste numa aplicação Java que simula as operações feitas em um banco,(saque,depósito,juros,rendimentos),e que usará mecanismos da linguagem como: polimorfismo,herança,e de IHC (Interface Humano Computador): layouts, _JFrames_, _JButtons_, vistos em sala de aula.
+
+
 
 ## Como executar:
 
-Caso não tenha o JRE instalado, _google it_ e instale-o. =)
-
+# Caso não tenha o JRE instalado:
+     
+     Baixe a versão para seu sistema [aqui](https://www.oracle.com/technetwork/pt/java/javase/downloads/jre8-downloads-2133155.html)
+     
 Faça o download do **Banco-Paradigmas-____X.X.jar** nos [_releases_](https://github.com/iaglourenco/Banco-Paradigmas/releases) 
 
-Execute-o.
+Dois cliques para executa-lo.
 
-**OBS: CASO NÃO CONSIGA EXECUTA-LO, TENTE PELA LINHA DE COMANDO**  
+**OBS: CASO NÃO CONSIGA EXECUTA-LO**
 
-     java -jar caminho/ao/arquivo/jar 
+Verifique se o JRE esta realmente instalado com o comando:
+    
+    java --version
+    
+Caso não apareça a versão atual da JRE, reinstale.
+    
+    Execute pela linha de comando, assim:
+    
+     java -jar .../Banco-Paradigmas-____X.X.jar 
 
-### Funções disponíveis:
-Futuramente gerarei um _Javadoc_.
+Substitua os "..." pelo caminho até o arquivo _.jar_
 
-#### Gerente
-1. Criação de contas, Poupança, Simples e Especial.
-     1.1 Geração de número de contas
-2. Informações de todas as contas.
-3. Informações de uma conta específica.
-4. Cobrar juros.
-5. Efetuar Rendimentos.
-6. Status do sistema.
+## Funcionalidades
 
-#### Cliente
-1. Saque.
-2. Depósito.
-3. Alterar minha senha.
-4. Minha conta
-     4.1 Gerar extrato na tela
+**Para teste há 3 contas cadastradas**
+Número conta 1 = **1234**  Senha= **1234**
+Número conta 2 = **4321**  Senha= **4321**
+Número conta 3 = **1423**  Senha= **1423**
 
+## Projeto criado em:
 
-------
-## Descrição da aplicação:
+[IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
-Projeto de Paradigmas B - Sistema Bancário
+## Autor
 
-Projeto feito na disciplina de Paradigmas de Programação B,PUC-Campinas, como projeto de avaliação.
-Consiste numa aplicação Java que simula as operações feitas em um banco,(saque,depósito,juros,rendimentos),e que usará mecanismos da linguagem como: polimorfismo,herança,e de IHC (Interface Humano Computador): layouts, _JFrames_, _JButtons_, vistos em sala de aula.
+**Iago Lourenço** - Estudante - [iaglourenco](https://github.com/iaglourenco)
+
+## Licença
+
+Este projeto esta licenciado pela General Public License v3.0 - veja [LICENSE.md](LICENSE.md) para mais detalhes.
+
