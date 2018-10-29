@@ -88,7 +88,7 @@ public class ContaEspecial extends Conta   {
 
         double juros=(super.getSaldo()*(taxaJuros/100));
 
-        log=log+"JUROS R$ -"+Double.toString(juros)+"-> SALDO = R$ "+Double.toString(super.getSaldo()-juros)+"\n\n";
+        log=log+"JUROS R$ -"+Double.toString(juros)+"-> SALDO = R$ "+Double.toString(super.getSaldo()-Math.abs(juros))+"\n\n";
 
         super.sacar(Math.abs(juros));
 
