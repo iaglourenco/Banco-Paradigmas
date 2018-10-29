@@ -23,7 +23,7 @@ class ContaSimples extends Conta {
         public boolean sacar(double valor) throws SaldoInsuficienteException {
 
             if (getSaldo() > 0) {//nao tem como sacar negativo
-                log=log+"SAQUE DE R$ "+Double.toString(valor)+"-> SALDO = R$ "+Double.toString(super.getSaldo()-valor)+"\n\n";
+                log=log+"SAQUE = R$ "+Double.toString(valor)+"-> SALDO = R$ "+Double.toString(super.getSaldo()-valor)+"\n\n";
 
                 super.sacar(valor);
                 return true;
@@ -33,7 +33,7 @@ class ContaSimples extends Conta {
 
     @Override
     public boolean depositar(double valor) {
-        log=log+"DEPÓSITO DE R$ "+Double.toString(valor)+"-> SALDO = R$ "+Double.toString(super.getSaldo()+valor)+"\n\n";
+        log=log+"DEPÓSITO = R$ "+Double.toString(valor)+"-> SALDO = R$ "+Double.toString(super.getSaldo()+valor)+"\n\n";
         return super.depositar(valor);
     }
 

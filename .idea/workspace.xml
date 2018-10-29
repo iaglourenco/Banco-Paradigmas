@@ -1,0 +1,1038 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="30b6c9e3-90ac-4272-848b-2b8f22c98e39" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/iagoj.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/iagoj.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/iaglourenco/Conta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iaglourenco/Conta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/iaglourenco/ContaEspecial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iaglourenco/ContaEspecial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/iaglourenco/ContaPoupanca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iaglourenco/ContaPoupanca.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/iaglourenco/ContaSimples.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iaglourenco/ContaSimples.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/iaglourenco/Gerente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iaglourenco/Gerente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/iaglourenco/Programa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iaglourenco/Programa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/iaglourenco/SistemaBancario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iaglourenco/SistemaBancario.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1436199269">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="23" />
+          <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.21" value="1" />
+          <entry key="project.open.time.23" value="1" />
+          <entry key="project.open.time.3" value="3" />
+          <entry key="project.open.time.30" value="1" />
+          <entry key="project.open.time.33" value="1" />
+          <entry key="project.open.time.34" value="2" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.41" value="2" />
+          <entry key="project.open.time.43" value="2" />
+          <entry key="project.open.time.44" value="1" />
+          <entry key="project.open.time.45" value="2" />
+          <entry key="project.open.time.47" value="1" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.61" value="1" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.open.time.80" value="1" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="24" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="LICENSE" value="3" />
+          <entry key="MF" value="2" />
+          <entry key="class" value="8" />
+          <entry key="h" value="1" />
+          <entry key="iml" value="1" />
+          <entry key="java" value="192" />
+          <entry key="xml" value="6" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="C++" value="1" />
+          <entry key="CLASS" value="8" />
+          <entry key="IDEA_MODULE" value="1" />
+          <entry key="JAVA" value="192" />
+          <entry key="Manifest" value="2" />
+          <entry key="PLAIN_TEXT" value="3" />
+          <entry key="XML" value="6" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="48124" />
+          <entry key="txt" value="3881" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="48124" />
+          <entry key="PLAIN_TEXT" value="3881" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages" />
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/iaglourenco/SistemaBancario.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="194">
+              <caret line="105" column="10" selection-start-line="105" selection-start-column="10" selection-end-line="105" selection-end-column="10" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#5864#6972#0" />
+                <element signature="e#6978#7780#0" />
+                <element signature="e#7786#8989#0" />
+                <element signature="e#8995#10492#0" />
+                <element signature="e#10498#11191#0" />
+                <element signature="e#11197#11926#0" />
+                <element signature="e#11932#12881#0" />
+                <element signature="e#12887#13834#0" />
+                <element signature="e#13841#15306#0" />
+                <element signature="e#15312#17908#0" />
+                <element signature="e#17914#18649#0" />
+                <element signature="e#18655#19317#0" />
+                <element signature="e#19323#20427#0" />
+                <element signature="e#20433#21455#0" />
+                <element signature="e#21461#22149#0" />
+                <element signature="e#22230#23517#0" />
+                <element signature="e#23523#27677#0" />
+                <element signature="e#27683#28167#0" />
+                <element signature="e#28173#29442#0" />
+                <element signature="e#29448#29708#0" />
+                <element signature="e#29714#30322#0" />
+                <element signature="e#30403#31344#0" />
+                <element signature="e#31350#32182#0" />
+                <element signature="e#32188#33379#0" />
+                <element signature="e#33385#34614#0" />
+                <element signature="e#34620#35447#0" />
+                <element signature="e#35453#36203#0" />
+                <element signature="e#36209#36643#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>buttonBackCliente</find>
+      <find>buttonOKCliente</find>
+      <find>Util</find>
+      <find>panel</find>
+      <find>removeActionListenerAlterSenha</find>
+      <find>ValueListener</find>
+      <find>add(</find>
+      <find>jContent.add</find>
+      <find>buttonsDime</find>
+      <find>removeAllListenersAndComponentsGerente</find>
+      <find>removeAllListenersAndComponentsInfoAll</find>
+      <find>H</find>
+      <find>(&quot;Voltar&quot;);</find>
+      <find>buttonBackGerente.addActionListener(GerenteListener);</find>
+      <find>addActionListener</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>panelHome</replace>
+      <replace>removeAllListenersAndComponentsAlterSenha</replace>
+      <replace>NumberListener</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Iago Lourenco &lt;iagojlourenco@gmail.com&gt;" />
+        <option value="Iago &lt;iagojlourenco@gmail.com&gt;" />
+        <option value="Iago" />
+      </list>
+    </option>
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/com/iaglourenco/BancoExceptions.java" />
+        <option value="$PROJECT_DIR$/src/com/iaglourenco/listeners/HomeButtonListener.java" />
+        <option value="$PROJECT_DIR$/src/com/iaglourenco/handlers/HomeButtonsHandler.java" />
+        <option value="$PROJECT_DIR$/src/com/iaglourenco/exceptions/SenhaVaziaException.java" />
+        <option value="$PROJECT_DIR$/src/com/iaglourenco/exceptions/ContaExistenteException.java" />
+        <option value="$PROJECT_DIR$/src/com/iaglourenco/exceptions/ContaInexistenteException.java" />
+        <option value="$PROJECT_DIR$/src/com/iaglourenco/exceptions/MaxContasException.java" />
+        <option value="$PROJECT_DIR$/src/com/iaglourenco/exceptions/SaldoInsuficienteException.java" />
+        <option value="$PROJECT_DIR$/src/com/iaglourenco/exceptions/SenhaIncorretaException.java" />
+        <option value="$PROJECT_DIR$/src/com/iaglourenco/exceptions/SenhasDiferemException.java" />
+        <option value="$PROJECT_DIR$/src/com/iaglourenco/exceptions/ValorInvalidoException.java" />
+        <option value="$PROJECT_DIR$/src/com/iaglourenco/exceptions/CampoVazioException.java" />
+        <option value="$PROJECT_DIR$/src/com/iaglourenco/Programa.java" />
+        <option value="$PROJECT_DIR$/src/com/iaglourenco/ContaSimples.java" />
+        <option value="$PROJECT_DIR$/src/com/iaglourenco/ContaEspecial.java" />
+        <option value="$PROJECT_DIR$/src/com/iaglourenco/Conta.java" />
+        <option value="$PROJECT_DIR$/src/com/iaglourenco/Gerente.java" />
+        <option value="$PROJECT_DIR$/src/com/iaglourenco/ContaPoupanca.java" />
+        <option value="$PROJECT_DIR$/src/com/iaglourenco/SistemaBancario.java" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-84" />
+    <option name="y" value="-21" />
+    <option name="width" value="1346" />
+    <option name="height" value="688" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Android</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Lab03" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Lab03" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Lab03" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Lab03" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Lab03" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Lab03" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="iaglourenco" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="323" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="323" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="324" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="323" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="323" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="323" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="324" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="323" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://E:/Repos/PARADIGMAS B/Java IntelliJ/Lab03/src/com/iaglourenco/Gerente.java&#10;replace&#9;ACTION&#9;Replace&#10;verifica&#9;PSI&#9;JAVA://com.iaglourenco.Conta#verificaSenha&#10;manifest&#9;FILE&#9;jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/launcher/manifest_info.h" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539402516760" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/iaglourenco/META-INF" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="aDefault" />
+    <property name="settings.editor.selected.configurable" value="preferences.updates" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Repos\PARADIGMAS B\Java IntelliJ\Lab03\out\artifacts\jarFile" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.iaglourenco.Programa" />
+      <module name="Lab03" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Lab03.jar" type="JarApplication" factoryName="JAR Application" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/jarFile/Lab03.jar" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JAR Application.Lab03.jar" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JAR Application.Lab03.jar" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="30b6c9e3-90ac-4272-848b-2b8f22c98e39" name="Default Changelist" comment="" />
+      <created>1537569202990</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1537569202990</updated>
+    </task>
+    <task id="LOCAL-00001" summary="First commit">
+      <created>1537584289503</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1537584289503</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added copyright">
+      <created>1537584972373</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1537584972373</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Initial commit">
+      <created>1537585956651</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1537585956651</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Code tweaks">
+      <created>1537586424591</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1537586424591</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Code tweaks">
+      <created>1537587883394</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1537587883394</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added joy">
+      <created>1537589033980</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1537589033980</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Updated class Programa&#10;Create class SistemaBancario to handle the menus&#10;Added other methods requested by the teacher">
+      <created>1537818562150</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1537818562150</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Created methods:&#10;statusOfSystem - shows the status (dã.of course)&#10;&#10;split in methods the verifications and some menus &#10;&#10;remove some bugs&#10;&#10;VERSION STABLE. NO BUGS KNOWED">
+      <created>1537847985057</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1537847985057</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Remove some bugs&#10;&#10;VERSION STABLE. NO BUGS KNOWED">
+      <created>1537893726209</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1537893726209</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Now when you create an account, the first login request the user to redefine the password&#10;&#10;Remove some archives useb by the .jar builder ,AKA Manifest&#10;&#10;VERSION STABLE. NO BUGS KNOWED">
+      <created>1538003500647</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1538003500647</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Now the commits messages are in portuguese&#10;&#10;Feita algumas mudanças para usar ao maximo os recursos de java:&#10;Overloads de metódos&#10;Modificador static&#10;Classe final&#10;&#10;Adicionada classe Gerente, que faz toda manipulação nas Contas[]&#10;&#10;Implementando IHC&#10;&#10;Divisão do código em vários metódos para facilitar a criação de JFrames&#10;&#10;Menus criados:&#10;&#10;Menu Home&#10;Menu Gerente&#10;&#10;Apenas funcões de fechar e voltar foram adicionadas aos listeners&#10;&#10;#fé_no_pai_que_este_projeto_sai =)&#10;&#10;Muito código pra fazer!">
+      <created>1539114346155</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1539114346155</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Meu Deus!!&#10;&#10;Fiz coisa pra caramba, passei o dia nessa bagaça&#10;&#10;Menus que faltam:&#10;&#10;Gerente - Buttos feitos, falta listeners&#10;Submenus gerente&#10;&#10;Menus e Submenus Dashboard&#10;&#10;Bug conhecido:&#10;&#10;Gerenciador de layout ta de zoeira comigo&#10;Nao posiciona num lugar legivel, ele faz o que ele quer&#10;&#10;Preciso descansar, mds&#10; &#10;#fé_no_pai_que_este_projeto_sai =)&#10;&#10;Código pra fazer!">
+      <created>1539142760882</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1539142760882</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Mais um commit&#10;&#10;Menu Dashboard OK&#10;Funçoes de saque,deposito,Minha conta,... OK&#10;&#10;Login OK&#10;&#10;Menu gerente&#10;Criar conta +\- feito&#10;Info all OK&#10;Status OK&#10;Info Ta facil de fazer&#10;&#10;chega por hj&#10;&#10;&#10;#fé_no_pai_que_este_projeto_sai =)&#10;&#10;Código pra fazer!">
+      <created>1539203291909</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1539203291909</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Mais um commit&#10;Falei que o ultimo era o ultimo hj, sqn&#10;&#10;To cansado, amanha aula cedo =\&#10;&#10;ta quase acabado essa bagaça&#10;&#10;O que falta&#10;&#10;Embelezar os layouts&#10;Adicionar alguns key listeners: tecla Enter, somente numeros, somente letras&#10;Remover alguns bugs&#10;&#10;The bugs:&#10;&#10;nao consigo alterar a senha no momento da criação da conta da NullPointerEx&#10;n sei pq =|&#10;&#10;&#10;chega por hj&#10;serio vdd&#10;&#10;n vou mexer nele tao cedo, ;)&#10;#sqn&#10;&#10;#fé_no_pai_que_este_projeto_sai =)&#10;&#10;Código pra fazer!">
+      <created>1539232994788</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1539232994788</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Eu dnv&#10;&#10;Ta acabando&#10;&#10;so falta embelezar e&#10;&#10;pra minha desgraça descobri que o metodo sacar da contaEspecial ta bugando&#10;&#10;tenho que analisar e ver se estou fazendo a logica certa&#10;&#10;o limite, dependendo do valor sacar/depositado, buga e trava em 0&#10;&#10;erro de logica, ctz&#10;&#10;mas pelo que vejo so falta isso&#10;&#10;amen&#10;&#10;#fé_no_pai_que_este_projeto_sai =)&#10;&#10;Pouco Código pra fazer!">
+      <created>1539293781690</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1539293781690</updated>
+    </task>
+    <task id="LOCAL-00016" summary="AMEN&#10;&#10;acabei!!&#10;&#10;Sem nenhum bug conhecido, falta fazer teste de stress&#10;&#10;ainda da pra melhorar&#10;&#10;falta embelezar os layouts&#10;&#10;adicionei muita coisa&#10;&#10;Exceptions personalizadas e seus tratamentos&#10;&#10;Extrato na tela&#10;&#10;Status do sistema na tela&#10;&#10;falta a Dani mandar o PDF do projeto pra eu ver se ta ok&#10;&#10;mas acho que nao precisa mudar muito&#10;&#10;publicarei o primeiro alpha release!!&#10;&#10;felizaum =D&#10;&#10;UFA&#10;&#10;#O_PROJETO_SAIU_DA_JAULA =D&#10;&#10;Se quiser, tem codigo pra fazer">
+      <created>1539318079414</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1539318079414</updated>
+    </task>
+    <task id="LOCAL-00017" summary="EU AGAIN!&#10;&#10;primeiro commit da beta&#10;&#10;dei uma mudada nos layouts, Thanks StackOverflow!&#10;&#10;O bug dos listeners ainda ta ai =(&#10;coloquei os erros na aba issues do git&#10;&#10;os layouts estao mais apresentaveis, mas tenho que falar com a Dani se esta ok&#10;&#10;ate agora esses sao os unicos bugs, que eu conheço&#10;&#10;Vou dar uma parada nesse repo pra terminar outro&#10;&#10;Ate segunda ,felows!&#10;&#10;&#10;#O_PROJETO_TA_DE_COLEIRA =D&#10;&#10;Se quiser, tem uns codigo pra fazer">
+      <created>1539789587055</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1539789587055</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" weight="0.29425114" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3295082" />
+      <window_info anchor="bottom" id="Debug" order="2" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="5" weight="0.3295082" />
+      <window_info anchor="bottom" id="Version Control" order="6" weight="0.6622951" />
+      <window_info anchor="bottom" id="Inspection Results" order="7" weight="0.3295082" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3295082" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.3295082" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50075644" side_tool="true" weight="0.79016393" />
+      <window_info anchor="bottom" id="Run" order="11" sideWeight="0.49924356" weight="0.3327869" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24962178" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Maven Projects" order="7" weight="0.32980332" />
+      <window_info anchor="right" x="0" y="0" width="295" height="544" id="Documentation" order="8" side_tool="true" weight="0.32980332" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="First commit" />
+    <MESSAGE value="Added copyright" />
+    <MESSAGE value="Initial commit" />
+    <MESSAGE value="Code tweaks" />
+    <MESSAGE value="Added joy" />
+    <MESSAGE value="Updated class Programa&#10;Create class SistemaBancario to handle the menus&#10;Added other methods requested by the teacher" />
+    <MESSAGE value="Created methods:&#10;statusOfSystem - shows the status (dã.of course)&#10;&#10;split in methods the verifications and some menus &#10;&#10;remove some bugs&#10;&#10;VERSION STABLE. NO BUGS KNOWED" />
+    <MESSAGE value="Remove some bugs&#10;&#10;VERSION STABLE. NO BUGS KNOWED" />
+    <MESSAGE value="Now when you create an account, the first login request the user to redefine the password&#10;&#10;Remove some archives useb by the .jar builder ,AKA Manifest&#10;&#10;VERSION STABLE. NO BUGS KNOWED" />
+    <MESSAGE value="Now the commits messages are in portuguese&#10;&#10;Feita algumas mudanças para usar ao maximo os recursos de java:&#10;Overloads de metódos&#10;Modificador static&#10;Classe final&#10;&#10;Adicionada classe Gerente, que faz toda manipulação nas Contas[]&#10;&#10;Implementando IHC&#10;&#10;Divisão do código em vários metódos para facilitar a criação de JFrames&#10;&#10;Menus criados:&#10;&#10;Menu Home&#10;Menu Gerente&#10;&#10;Apenas funcões de fechar e voltar foram adicionadas aos listeners&#10;&#10;#fé_no_pai_que_este_projeto_sai =)&#10;&#10;Muito código pra fazer!" />
+    <MESSAGE value="Meu Deus!!&#10;&#10;Fiz coisa pra caramba, passei o dia nessa bagaça&#10;&#10;Menus que faltam:&#10;&#10;Gerente - Buttos feitos, falta listeners&#10;Submenus gerente&#10;&#10;Menus e Submenus Dashboard&#10;&#10;Bug conhecido:&#10;&#10;Gerenciador de layout ta de zoeira comigo&#10;Nao posiciona num lugar legivel, ele faz o que ele quer&#10;&#10;Preciso descansar, mds&#10; &#10;#fé_no_pai_que_este_projeto_sai =)&#10;&#10;Código pra fazer!" />
+    <MESSAGE value="Mais um commit&#10;&#10;Menu Dashboard OK&#10;Funçoes de saque,deposito,Minha conta,... OK&#10;&#10;Login OK&#10;&#10;Menu gerente&#10;Criar conta +\- feito&#10;Info all OK&#10;Status OK&#10;Info Ta facil de fazer&#10;&#10;chega por hj&#10;&#10;&#10;#fé_no_pai_que_este_projeto_sai =)&#10;&#10;Código pra fazer!" />
+    <MESSAGE value="Mais um commit&#10;Falei que o ultimo era o ultimo hj, sqn&#10;&#10;To cansado, amanha aula cedo =\&#10;&#10;ta quase acabado essa bagaça&#10;&#10;O que falta&#10;&#10;Embelezar os layouts&#10;Adicionar alguns key listeners: tecla Enter, somente numeros, somente letras&#10;Remover alguns bugs&#10;&#10;The bugs:&#10;&#10;nao consigo alterar a senha no momento da criação da conta da NullPointerEx&#10;n sei pq =|&#10;&#10;&#10;chega por hj&#10;serio vdd&#10;&#10;n vou mexer nele tao cedo, ;)&#10;#sqn&#10;&#10;#fé_no_pai_que_este_projeto_sai =)&#10;&#10;Código pra fazer!" />
+    <MESSAGE value="Eu dnv&#10;&#10;Ta acabando&#10;&#10;so falta embelezar e&#10;&#10;pra minha desgraça descobri que o metodo sacar da contaEspecial ta bugando&#10;&#10;tenho que analisar e ver se estou fazendo a logica certa&#10;&#10;o limite, dependendo do valor sacar/depositado, buga e trava em 0&#10;&#10;erro de logica, ctz&#10;&#10;mas pelo que vejo so falta isso&#10;&#10;amen&#10;&#10;#fé_no_pai_que_este_projeto_sai =)&#10;&#10;Pouco Código pra fazer!" />
+    <MESSAGE value="AMEN&#10;&#10;acabei!!&#10;&#10;Sem nenhum bug conhecido, falta fazer teste de stress&#10;&#10;ainda da pra melhorar&#10;&#10;falta embelezar os layouts&#10;&#10;adicionei muita coisa&#10;&#10;Exceptions personalizadas e seus tratamentos&#10;&#10;Extrato na tela&#10;&#10;Status do sistema na tela&#10;&#10;falta a Dani mandar o PDF do projeto pra eu ver se ta ok&#10;&#10;mas acho que nao precisa mudar muito&#10;&#10;publicarei o primeiro alpha release!!&#10;&#10;felizaum =D&#10;&#10;UFA&#10;&#10;#O_PROJETO_SAIU_DA_JAULA =D&#10;&#10;Se quiser, tem codigo pra fazer" />
+    <MESSAGE value="EU AGAIN!&#10;&#10;primeiro commit da beta&#10;&#10;dei uma mudada nos layouts, Thanks StackOverflow!&#10;&#10;O bug dos listeners ainda ta ai =(&#10;coloquei os erros na aba issues do git&#10;&#10;os layouts estao mais apresentaveis, mas tenho que falar com a Dani se esta ok&#10;&#10;ate agora esses sao os unicos bugs, que eu conheço&#10;&#10;Vou dar uma parada nesse repo pra terminar outro&#10;&#10;Ate segunda ,felows!&#10;&#10;&#10;#O_PROJETO_TA_DE_COLEIRA =D&#10;&#10;Se quiser, tem uns codigo pra fazer" />
+    <option name="LAST_COMMIT_MESSAGE" value="EU AGAIN!&#10;&#10;primeiro commit da beta&#10;&#10;dei uma mudada nos layouts, Thanks StackOverflow!&#10;&#10;O bug dos listeners ainda ta ai =(&#10;coloquei os erros na aba issues do git&#10;&#10;os layouts estao mais apresentaveis, mas tenho que falar com a Dani se esta ok&#10;&#10;ate agora esses sao os unicos bugs, que eu conheço&#10;&#10;Vou dar uma parada nesse repo pra terminar outro&#10;&#10;Ate segunda ,felows!&#10;&#10;&#10;#O_PROJETO_TA_DE_COLEIRA =D&#10;&#10;Se quiser, tem uns codigo pra fazer" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/Class.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="2750" column="13" selection-start-line="2750" selection-start-column="13" selection-end-line="2750" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/javax/swing/JRootPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="618" column="16" selection-start-line="618" selection-start-column="16" selection-end-line="618" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/jre/lib/rt.jar!/sun/util/logging/PlatformLogger.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="96" selection-start-line="96" selection-end-line="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iaglourenco/BancoExceptions.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/iaglourenco/listeners/HomeButtonListener.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/iaglourenco/handlers/HomeButtonsHandler.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/iaglourenco/exceptions/SenhaVaziaException.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/iaglourenco/exceptions/ContaExistenteException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iaglourenco/exceptions/ContaInexistenteException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iaglourenco/exceptions/MaxContasException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/javax/swing/text/Segment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="70" selection-start-line="70" selection-end-line="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/javax/swing/text/GapVector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="81" selection-start-line="81" selection-end-line="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="197" selection-start-line="197" selection-end-line="197" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/javax/swing/text/GapContent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="167" selection-start-line="167" selection-end-line="167" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/javax/swing/text/AbstractDocument.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="766" selection-start-line="766" selection-end-line="766" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="946" selection-start-line="946" selection-end-line="946" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="1262" selection-start-line="1262" selection-end-line="1262" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/util/concurrent/locks/ReentrantLock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="457" selection-start-line="457" selection-end-line="457" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/awt/EventQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="545" selection-start-line="545" selection-end-line="545" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/awt/EventDispatchThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="55">
+          <caret line="109" selection-start-line="109" selection-end-line="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/awt/WaitDispatchSupport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="232" selection-start-line="232" selection-end-line="232" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/awt/Component.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="1270" selection-start-line="1270" selection-end-line="1270" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/awt/Dialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="1200" selection-start-line="1200" selection-end-line="1200" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/awt/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="1147" selection-start-line="1147" selection-end-line="1147" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/javax/swing/text/JTextComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="1696" selection-start-line="1696" selection-end-line="1696" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/RuntimeException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/Throwable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="248" selection-start-line="248" selection-end-line="248" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/Exception.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/NullPointerException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iaglourenco/exceptions/CampoVazioException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="57" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/javax/swing/plaf/basic/BasicOptionPaneUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13940">
+          <caret line="937" column="8" selection-start-line="937" selection-start-column="8" selection-end-line="937" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iaglourenco/exceptions/SenhasDiferemException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iaglourenco/exceptions/SenhaIncorretaException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iaglourenco/exceptions/SaldoInsuficienteException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iaglourenco/exceptions/ValorInvalidoException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#198#199#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/jre/lib/rt.jar!/sun/misc/Unsafe.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="353" column="23" selection-start-line="353" selection-start-column="23" selection-end-line="353" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/util/concurrent/locks/LockSupport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="175" selection-start-line="175" selection-end-line="175" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/awt/Container.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="973" column="5" lean-forward="true" selection-start-line="973" selection-start-column="5" selection-end-line="973" selection-end-column="5" />
+          <folding>
+            <element signature="e#37566#37567#0" expanded="true" />
+            <element signature="e#37612#37613#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/awt/GridBagLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9">
+          <caret line="493" column="11" selection-start-line="493" selection-start-column="11" selection-end-line="493" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/awt/CardLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-366">
+          <caret line="523" column="16" selection-start-line="523" selection-start-column="16" selection-end-line="523" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/javax/swing/JFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="386" column="16" selection-start-line="386" selection-start-column="16" selection-end-line="386" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iaglourenco/ContaEspecial.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iaglourenco/ContaSimples.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="35" column="27" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/javax/swing/JOptionPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-489">
+          <caret line="666" column="44" lean-forward="true" selection-start-line="666" selection-start-column="44" selection-end-line="666" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/util/Arrays.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="2656" column="26" selection-start-line="2656" selection-start-column="26" selection-end-line="2656" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iaglourenco/Conta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="151" column="43" selection-start-line="151" selection-start-column="43" selection-end-line="151" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#alteraSenha#0;class#Conta#0" />
+            <element signature="method#verificaSenha#0;class#Conta#0" />
+            <element signature="method#sacar#0;class#Conta#0" />
+            <element signature="method#depositar#0;class#Conta#0" />
+            <element signature="method#info#0;class#Conta#0" />
+            <element signature="e#3952#3953#0" expanded="true" />
+            <element signature="e#3992#3993#0" expanded="true" />
+            <element signature="method#getStatusOfSystem#0;class#Conta#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iaglourenco/ContaPoupanca.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="43" column="8" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iaglourenco/Gerente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="92" column="87" selection-start-line="92" selection-start-column="87" selection-end-line="92" selection-end-column="87" />
+          <folding>
+            <element signature="method#contaExiste#0;class#Gerente#0" />
+            <element signature="method#criarConta#0;class#Gerente#0" />
+            <element signature="method#cobrarJuros#0;class#Gerente#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iaglourenco/Programa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#393#750#0" expanded="true" />
+            <element signature="e#749#750#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/iaglourenco/SistemaBancario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="105" column="10" selection-start-line="105" selection-start-column="10" selection-end-line="105" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5864#6972#0" />
+            <element signature="e#6978#7780#0" />
+            <element signature="e#7786#8989#0" />
+            <element signature="e#8995#10492#0" />
+            <element signature="e#10498#11191#0" />
+            <element signature="e#11197#11926#0" />
+            <element signature="e#11932#12881#0" />
+            <element signature="e#12887#13834#0" />
+            <element signature="e#13841#15306#0" />
+            <element signature="e#15312#17908#0" />
+            <element signature="e#17914#18649#0" />
+            <element signature="e#18655#19317#0" />
+            <element signature="e#19323#20427#0" />
+            <element signature="e#20433#21455#0" />
+            <element signature="e#21461#22149#0" />
+            <element signature="e#22230#23517#0" />
+            <element signature="e#23523#27677#0" />
+            <element signature="e#27683#28167#0" />
+            <element signature="e#28173#29442#0" />
+            <element signature="e#29448#29708#0" />
+            <element signature="e#29714#30322#0" />
+            <element signature="e#30403#31344#0" />
+            <element signature="e#31350#32182#0" />
+            <element signature="e#32188#33379#0" />
+            <element signature="e#33385#34614#0" />
+            <element signature="e#34620#35447#0" />
+            <element signature="e#35453#36203#0" />
+            <element signature="e#36209#36643#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>jarFile</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="Copyright.UI">
+        <settings>
+          <last-edited>GPL</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Lab03</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

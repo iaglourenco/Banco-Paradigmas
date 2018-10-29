@@ -18,12 +18,12 @@ class ContaPoupanca extends Conta {
     ContaPoupanca(String nomeCorrentista,String nConta,double taxaRendimento){
         super(nomeCorrentista,nConta);
         this.taxaRendimento=taxaRendimento;
-        log=" ";
+        log="";
     }
 
     @Override
     public boolean depositar(double valor) {
-        log=log+"DEPÓSITO DE R$ "+Double.toString(valor)+"-> SALDO = R$ "+Double.toString(super.getSaldo()+valor)+"\n\n";
+        log=log+"DEPÓSITO = R$ "+Double.toString(valor)+"-> SALDO = R$ "+Double.toString(super.getSaldo()+valor)+"\n\n";
         return super.depositar(valor);
     }
 
@@ -35,14 +35,20 @@ class ContaPoupanca extends Conta {
 
 
     void render(){
-            super.depositar(super.getSaldo()*(taxaRendimento/100));
+
+        double rendimento = super.getSaldo()*(taxaRendimento/100);
+
+        log=log+"RENDIMENTO = R$ "+Double.toString(rendimento)+"-> SALDO = R$ "+Double.toString(super.getSaldo()+rendimento)+"\n\n";
+
+        super.depositar(rendimento);
+
     }
 
     @Override
     public boolean sacar(double valor)throws SaldoInsuficienteException {
 
         if (getSaldo() > 0) {//nao tem como sacar negativo
-            log=log+"SAQUE DE R$ "+Double.toString(valor)+"-> SALDO = R$ "+Double.toString(super.getSaldo()-valor)+"\n\n";
+            log=log+"SAQUE = R$ "+Double.toString(valor)+"-> SALDO = R$ "+Double.toString(super.getSaldo()-valor)+"\n\n";
             super.sacar(valor);
             return true;
         }

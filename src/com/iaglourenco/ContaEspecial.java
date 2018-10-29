@@ -11,7 +11,7 @@ import com.iaglourenco.exceptions.ValorInvalidoException;
 public class ContaEspecial extends Conta   {
 
     private double limite;
-    private double limitePadrao;
+    private final double limitePadrao;
     private String log;
 
 
@@ -20,7 +20,7 @@ public class ContaEspecial extends Conta   {
     ContaEspecial(String nomeCorrentista,String nConta,double limite){
         super(nomeCorrentista,nConta);
         this.limite = limitePadrao = limite;
-        log =" ";
+        log ="";
     }
 
 
@@ -42,13 +42,13 @@ public class ContaEspecial extends Conta   {
 
         if(super.getSaldo()<valor){
 
-            log=log+"SAQUE DE R$ "+Double.toString(valor)+"-> SALDO = R$ "+Double.toString(super.getSaldo()-valor)+"\n\n";
+            log=log+"SAQUE = R$ "+Double.toString(valor)+"-> SALDO = R$ "+Double.toString(super.getSaldo()-valor)+"\n\n";
             super.sacar(valor);//saldo tera um valor negativo
             limite-=(Math.abs(super.getSaldo()));//tiro do limite o valor absoluto do saque que esta negativo
             return true;
         }
 
-        log=log+"SAQUE DE R$ "+Double.toString(valor)+"-> SALDO = R$ "+Double.toString(super.getSaldo()-valor)+"\n\n";
+        log=log+"SAQUE = R$ "+Double.toString(valor)+"-> SALDO = R$ "+Double.toString(super.getSaldo()-valor)+"\n\n";
         return super.sacar(valor);
 
     }
@@ -66,7 +66,7 @@ public class ContaEspecial extends Conta   {
 
             double limAnt =getLimitePadrao();//acho o limite que o cara tem
 
-            log=log+"DEPÓSITO DE R$ "+Double.toString(valor)+"-> SALDO = R$ "+Double.toString(super.getSaldo()+valor)+"\n\n";
+            log=log+"DEPÓSITO R$ "+Double.toString(valor)+"-> SALDO = R$ "+Double.toString(super.getSaldo()+valor)+"\n\n";
             limite+=valor;//restauro primeiro o limite
             super.depositar(valor);//saldo eh um espelho de limite
 
@@ -85,7 +85,10 @@ public class ContaEspecial extends Conta   {
 
     void juros(double taxaJuros){
 
+
         double juros=(super.getSaldo()*(taxaJuros/100));
+
+        log=log+"JUROS R$ -"+Double.toString(juros)+"-> SALDO = R$ "+Double.toString(super.getSaldo()-juros)+"\n\n";
 
         super.sacar(Math.abs(juros));
 

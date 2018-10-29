@@ -20,10 +20,20 @@ class Gerente {
     static final int ACC_SIMPLE = 3;
 
 
+    /**
+     * Gera um numero de conta entre 1000 e 9999.
+     * @return Retorna um numero aleatório entre 1000 e 9999
+     */
     static String gerarConta(){
         return Integer.toString((int)(1000 + Math.random() * 9999));
     }
 
+    /**
+     * Verifica a existencia de uma conta no array
+     * @param numeroConta O número da conta a ser procurada.
+     * @return O objeto conta
+     * @throws ContaInexistenteException Quando a conta requisitada não existe.
+     */
     static Conta contaExiste(String numeroConta) throws ContaInexistenteException{
 
         for(int i=0;i<MAX_CONTAS;i++){
@@ -37,16 +47,25 @@ class Gerente {
     }
 
 
+    /**
+     * Cria a conta baseado no <tt>accType</tt>
+     *
+     * @param nameCorr O nome do correntista
+     * @param nConta O numero da conta
+     * @param password A senha
+     * @param accType O tipo de conta, use ACC_SIMPLE=3,ACC_SPECIAL=1 ou ACC_POUPANCA=2.
+     * @param valor valor usado por ACC_SPECIAL e ACC_POUPANCA,sera ignorado caso seja ACC_SIMPLE
+     * @throws MaxContasException Quando o maximo de conta foi atingido
+     * @throws ContaExistenteException Quando a conta ja existe
+     * @throws CampoVazioException se algum parametro for null
+     */
     static void criarConta(String nameCorr, String nConta, char[] password, int accType, double valor)throws MaxContasException,ContaExistenteException,CampoVazioException {
 
         try {
-            contaExiste(nConta);
-        } catch (ContaExistenteException e){
-            throw new ContaExistenteException("CONTA EXISTENTE");
+            if(contaExiste(nConta)!=null){
+                throw new ContaExistenteException("CONTA EXISTENTE");
             }
-
-
-        catch (ContaInexistenteException e) {
+        } catch (ContaInexistenteException e) {
 
                 if (accType == ACC_POUPANCA)
                     Conta.contas[Conta.getContasCadastradas()] = new ContaPoupanca(nameCorr, nConta, valor);
@@ -63,13 +82,15 @@ class Gerente {
     }
 
 
-
-
+    /**
+     * Incrementa o saldo em contas poupança, baseada na taxa de rendimento de cada conta, e adiciona uma linha ao extrato de cada conta.
+     * @return a quantidade de contas poupancas que foram efetuados rendimentos
+     */
     static int incrementarJuros() {
 
         int counter=0;
         for(int i=0;i<MAX_CONTAS;i++){
-            if(Conta.contas[i] instanceof ContaPoupanca){
+            if(Conta.contas[i] instanceof ContaPoupanca && Conta.contas[i].getSaldo()>0){
                 ((ContaPoupanca) Conta.contas[i]).render();
                 counter++;
             }
@@ -77,6 +98,11 @@ class Gerente {
         return counter;
     }
 
+    /**
+     * Dado a taxa de juros, cobra juros de todas as contas especiais negativadas, e adiciona uma linha ao extrato.
+     * @param taxaJuros a taxa que sera usada para cobrança em %
+     * @return a quantidade de contas especias em que foram cobrados juros
+     */
     static int cobrarJuros(double taxaJuros) {
 
         int counter=0;

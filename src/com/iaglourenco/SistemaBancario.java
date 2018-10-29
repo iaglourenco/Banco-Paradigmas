@@ -5,7 +5,6 @@
 
 package com.iaglourenco;
 
-
 import com.iaglourenco.exceptions.*;
 
 import javax.swing.*;
@@ -16,10 +15,9 @@ import java.util.Arrays;
 
 import static com.iaglourenco.Gerente.*;
 
-
 class SistemaBancario extends JFrame {
 
-    //Instanciaçao dos listeners
+    //Instanciação dos listeners
     private final HomeButtonListener HomeListener = new HomeButtonListener();
     private final GerenteButtonListener GerenteListener = new GerenteButtonListener();
     private final DashboardButtonListener DashboardListener = new DashboardButtonListener();
@@ -34,6 +32,7 @@ class SistemaBancario extends JFrame {
     private final InfoContaButtonListener InfoContaListener = new InfoContaButtonListener();
     private final JurosButtonListener JurosListener = new JurosButtonListener();
     private final NumberKeyListener NumberListener = new NumberKeyListener();
+    //JButtons
     private final JButton buttonOKCriarConta = new JButton("Criar conta");
     private final JButton buttonBackCriarConta = new JButton("Voltar");
     private final ButtonGroup radioGroup = new ButtonGroup();
@@ -95,49 +94,67 @@ class SistemaBancario extends JFrame {
     private JPasswordField alterPasswordField;
     private JButton buttonBackDashboard = new JButton("Sair");
     //Panels de cada menu
-    private JPanel rootPanel;
-    private JPanel panelHome;
-    private JPanel panelGerente;
-    private JPanel panelCriarConta;
+    private final JPanel rootPanel;
     private JPanel panelInfoConta;
-    private JPanel panelInfoAllConta;
-    private JPanel panelJuros;
-    private JPanel panelResumo;
-    private JPanel panelLoginCliente;
-    private JPanel panelDashboard;
-    private JPanel panelSacar;
-    private JPanel panelDepositar;
-    private JPanel panelMyAcc;
-    private JPanel panelAlterSenha;
-    private JPanel panelButtons = new JPanel(new ButtonAreaLayout(true, 1));
-    private CardLayout cardLayout = new CardLayout();
-    private GridBagConstraints constraints = new GridBagConstraints();
-
+    private final JPanel panelButtons = new JPanel(new ButtonAreaLayout(true, 1));
+    private final CardLayout cardLayout = new CardLayout();
+    private final GridBagConstraints constraints = new GridBagConstraints();
 
     SistemaBancario() {
         super("BANCO PARADIGMAS");
 
-        rootPanel = new JPanel();
-        rootPanel.setLayout(cardLayout);
-        add(rootPanel);
-
-        constraints.insets=new Insets(2,2,2,2);
-        constraints.gridwidth=10;
+        //cardLayout.maximumLayoutSize(this);
+        rootPanel = new JPanel(cardLayout);
+        getContentPane().add(rootPanel);
+        addListeners();
+        constraints.insets=new Insets(1,1,1,1);
+        constraints.ipadx=100;
         constraints.ipady=10;
         constraints.gridx=0;
-        Gerente.criarConta("iago", "1234", "1234".toCharArray(), Gerente.ACC_SPECIAL, 200);
-        Gerente.criarConta("iago", "4321", "4321".toCharArray(), Gerente.ACC_SIMPLE, 2200);
-        Gerente.criarConta("iago", "1423", "1423".toCharArray(), Gerente.ACC_POUPANCA, 21100);
+
+        Gerente.criarConta("Alfredo", "1234", "1234".toCharArray(), Gerente.ACC_SPECIAL, 200);
+        Gerente.criarConta("Leopoldo", "4321", "4321".toCharArray(), Gerente.ACC_SIMPLE, 0);
+        Gerente.criarConta("Marilza", "1423", "1423".toCharArray(), Gerente.ACC_POUPANCA, 10);
 
     }
 
+    private void addListeners() {
+
+        buttonBackGerente.addActionListener(GerenteListener);
+
+        buttonOKCriarConta.addActionListener(CriarContaListener);
+        buttonBackCriarConta.addActionListener(CriarContaListener);
+
+        buttonOkInfoConta.addActionListener(InfoContaListener);
+        buttonBackInfoConta.addActionListener(InfoContaListener);
+
+        buttonOKJuros.addActionListener(JurosListener);
+        buttonBackJuros.addActionListener(JurosListener);
+
+        buttonBackInfoAllConta.addActionListener(InfoAllContaListener);
+
+        buttonBackLogin.addActionListener(LoginListener);
+        buttonOKLogin.addActionListener(LoginListener);
+
+        buttonOKSacar.addActionListener(SacarListener);
+        buttonBackSacar.addActionListener(SacarListener);
+
+        buttonOKDepositar.addActionListener(DepositarListener);
+        buttonBackDepositar.addActionListener(DepositarListener);
+
+        buttonBackMyAcc.addActionListener(MyAccListener);
+
+        buttonOKAlterSenha.addActionListener(AlterSenhaListener);
+        buttonBackAlterSenha.addActionListener(AlterSenhaListener);
+
+    }
 
     //Menu Home
     void menuHome() {
         setTitle("Banco Paradigmas");
-        panelHome = new JPanel();
+        JPanel panelHome = new JPanel();
         panelHome.setLayout(new GridBagLayout());
-        rootPanel.add("Home",panelHome);
+        rootPanel.add("Home", panelHome);
         constraints.fill = GridBagConstraints.BOTH;
 
 
@@ -157,15 +174,15 @@ class SistemaBancario extends JFrame {
         buttonExit.addActionListener(HomeListener);
         buttonGerente.addActionListener(HomeListener);
         buttonCliente.addActionListener(HomeListener);
-    }
 
+    }
 
     //Menu de login
     private void menuLoginCliente() {
         setTitle("Login");
-        panelLoginCliente = new JPanel();
+        JPanel panelLoginCliente = new JPanel();
         panelLoginCliente.setLayout(new GridBagLayout());
-        rootPanel.add("Login",panelLoginCliente);
+        rootPanel.add("Login", panelLoginCliente);
         constraints.fill = GridBagConstraints.HORIZONTAL;
 
 
@@ -192,8 +209,6 @@ class SistemaBancario extends JFrame {
 
         contaFieldCliente.addKeyListener(NumberListener);
 
-        buttonOKLogin.addActionListener(LoginListener);
-        buttonBackLogin.addActionListener(LoginListener);
 
         cardLayout.show(rootPanel, "Login");
 
@@ -202,9 +217,9 @@ class SistemaBancario extends JFrame {
     //Submenu de cliente
     private void menuDashboard() {
         setTitle("Minha Conta: " + contaAtual.getnConta());
-        panelDashboard = new JPanel();
+        JPanel panelDashboard = new JPanel();
         panelDashboard.setLayout(new GridBagLayout());
-        rootPanel.add("Dashboard",panelDashboard);
+        rootPanel.add("Dashboard", panelDashboard);
         constraints.fill = GridBagConstraints.BOTH;
 
 
@@ -237,9 +252,9 @@ class SistemaBancario extends JFrame {
     //Submenus da conta
     private void menuSacar() {
         setTitle("SAQUE");
-        panelSacar = new JPanel();
+        JPanel panelSacar = new JPanel();
         panelSacar.setLayout(new GridBagLayout());
-        rootPanel.add("Sacar",panelSacar);
+        rootPanel.add("Sacar", panelSacar);
         constraints.fill = GridBagConstraints.BOTH;
 
         JLabel labelSacar = new JLabel("Digite o valor do saque");
@@ -252,37 +267,34 @@ class SistemaBancario extends JFrame {
 
         cardLayout.show(rootPanel,"Sacar");
 
-        buttonOKSacar.addActionListener(SacarListener);
-        buttonBackSacar.addActionListener(SacarListener);
+
 
     }
 
     private void menuDepositar() {
         setTitle("DEPÓSITO");
-        panelDepositar = new JPanel();
+        JPanel panelDepositar = new JPanel();
         panelDepositar.setLayout(new GridBagLayout());
-        rootPanel.add("Depositar",panelDepositar);
+        rootPanel.add("Depositar", panelDepositar);
         constraints.fill = GridBagConstraints.BOTH;
 
-        JLabel labelDepositar = new JLabel("Digite o valor do deposito");
+        JLabel labelDepositar = new JLabel("Digite o valor do depósito");
         valueFieldDepositar = new JTextField();
         valueFieldDepositar.addKeyListener(NumberListener);
         panelDepositar.add(labelDepositar);
         panelDepositar.add(valueFieldDepositar,constraints);
         panelDepositar.add(buttonOKDepositar,constraints);
         panelDepositar.add(buttonBackDepositar,constraints);
-        panelDepositar.updateUI();
 
         cardLayout.show(rootPanel,"Depositar");
-        buttonOKDepositar.addActionListener(DepositarListener);
-        buttonBackDepositar.addActionListener(DepositarListener);
+
     }
 
     private void menuMinhaConta() {
         setTitle("MINHA CONTA");
-        panelMyAcc = new JPanel();
-        panelMyAcc.setLayout(new GridBagLayout());
-        rootPanel.add("MyAcc",panelMyAcc);
+        JPanel panelMyAcc = new JPanel();
+        panelMyAcc.setLayout(new BorderLayout());
+        rootPanel.add("MyAcc", panelMyAcc);
         constraints.fill = GridBagConstraints.BOTH;
 
         JLabel labelMyAcc = new JLabel("Informaçoes da sua conta");
@@ -290,24 +302,24 @@ class SistemaBancario extends JFrame {
         myAccTextArea.append(contaAtual.info());
         myAccTextArea.setEditable(false);
         JScrollPane myAccScrollPane = new JScrollPane(myAccTextArea);
-        panelMyAcc.add(labelMyAcc,constraints);
-        panelMyAcc.add(myAccScrollPane,constraints);
+        panelMyAcc.add(labelMyAcc,BorderLayout.PAGE_START);
+        panelMyAcc.add(myAccScrollPane);
 
         buttonExtrato = new JButton("Gerar extrato na tela");
-        panelButtons.add(buttonExtrato,constraints);
+        panelButtons.add(buttonExtrato);
         panelButtons.add(buttonBackMyAcc);
-        panelMyAcc.add(panelButtons,constraints);
+        panelMyAcc.add(panelButtons,BorderLayout.PAGE_END);
 
         cardLayout.show(rootPanel,"MyAcc");
         buttonExtrato.addActionListener(MyAccListener);
-        buttonBackMyAcc.addActionListener(MyAccListener);
+
     }
 
     private void menuAlteraSenha() {
         setTitle("ALTERAR SENHA");
-        panelAlterSenha = new JPanel();
+        JPanel panelAlterSenha = new JPanel();
         panelAlterSenha.setLayout(new GridBagLayout());
-        rootPanel.add("AlterSenha",panelAlterSenha);
+        rootPanel.add("AlterSenha", panelAlterSenha);
         constraints.fill = GridBagConstraints.BOTH;
 
         JLabel labelAlterSenha1 = new JLabel("Digite a senha atual");
@@ -324,8 +336,7 @@ class SistemaBancario extends JFrame {
 
         cardLayout.show(rootPanel,"AlterSenha");
 
-        buttonOKAlterSenha.addActionListener(AlterSenhaListener);
-        buttonBackAlterSenha.addActionListener(AlterSenhaListener);
+
 
 
     }
@@ -334,9 +345,9 @@ class SistemaBancario extends JFrame {
     //Menu de gerencia
     private void menuGerente() {
         setTitle("GERENTE");
-        panelGerente= new JPanel();
+        JPanel panelGerente = new JPanel();
         panelGerente.setLayout(new GridBagLayout());
-        rootPanel.add("Gerente",panelGerente);
+        rootPanel.add("Gerente", panelGerente);
         constraints.fill = GridBagConstraints.BOTH;
 
         panelGerente.add(label,constraints);
@@ -360,21 +371,23 @@ class SistemaBancario extends JFrame {
 
         panelGerente.add(buttonBackGerente,constraints);
 
-        cardLayout.show(rootPanel,"Gerente");
-
         buttonCriarConta.addActionListener(GerenteListener);
-        buttonInfoConta.addActionListener(GerenteListener);
+        buttonResumo.addActionListener(GerenteListener);
         buttonRender.addActionListener(GerenteListener);
         buttonJuros.addActionListener(GerenteListener);
+        buttonInfoConta.addActionListener(GerenteListener);
         buttonInfoAll.addActionListener(GerenteListener);
-        buttonResumo.addActionListener(GerenteListener);
-        buttonBackGerente.addActionListener(GerenteListener);
 
+
+        cardLayout.show(rootPanel,"Gerente");
 
     }
 
     //Submenus gerencia
     private void menuCriarConta() {
+        JPanel panelCriarConta = new JPanel();
+        panelCriarConta.setLayout(new BoxLayout(panelCriarConta, BoxLayout.Y_AXIS));
+        rootPanel.add("Criar Conta", panelCriarConta);
         JLabel labelCreateAcc = new JLabel("Criar conta:");
         JLabel labelName = new JLabel("Nome do correntista");
         nameFieldGerente = new JTextField();
@@ -425,8 +438,7 @@ class SistemaBancario extends JFrame {
         radioButtonSpecialAcc.addItemListener(TipoContaListener);
         radioButtonPoupancaAcc.addItemListener(TipoContaListener);
         contaFieldGerente.addKeyListener(NumberListener);
-        buttonOKCriarConta.addActionListener(CriarContaListener);
-        buttonBackCriarConta.addActionListener(CriarContaListener);
+
 
         cardLayout.show(rootPanel,"Criar Conta");
     }
@@ -448,16 +460,15 @@ class SistemaBancario extends JFrame {
         panelInfoConta.add(buttonBackInfoConta,constraints);
 
         cardLayout.show(rootPanel,"InfoConta");
-        buttonBackInfoConta.addActionListener(InfoContaListener);
-        buttonOkInfoConta.addActionListener(InfoContaListener);
+
 
     }
 
     private void menuJuros() {
         setTitle("COBRAR JUROS");
-        panelJuros = new JPanel();
+        JPanel panelJuros = new JPanel();
         panelJuros.setLayout(new GridBagLayout());
-        rootPanel.add("Juros",panelJuros);
+        rootPanel.add("Juros", panelJuros);
         constraints.fill = GridBagConstraints.BOTH;
 
         JLabel labelJuros = new JLabel("Digite a taxa");
@@ -469,17 +480,15 @@ class SistemaBancario extends JFrame {
         panelJuros.add(buttonOKJuros,constraints);
         panelJuros.add(buttonBackJuros,constraints);
 
-        buttonOKJuros.addActionListener(JurosListener);
-        buttonBackJuros.addActionListener(JurosListener);
 
         cardLayout.show(rootPanel,"Juros");
     }
 
     private void menuInfoAll() {
         setTitle("INFO DE TODAS AS CONTAS");
-        panelInfoAllConta= new JPanel();
+        JPanel panelInfoAllConta = new JPanel();
         panelInfoAllConta.setLayout(new BorderLayout());
-        rootPanel.add("InfoAllConta",panelInfoAllConta);
+        rootPanel.add("InfoAllConta", panelInfoAllConta);
         constraints.fill = GridBagConstraints.BOTH;
 
         JLabel labelInfoAll = new JLabel("Informações de todas as contas");
@@ -491,23 +500,22 @@ class SistemaBancario extends JFrame {
                 infoAllTextArea.append(Conta.contas[i].info() + "-------\n\n");
         }
         infoAllTextArea.setEditable(false);
-        JScrollPane myAccScrollPane = new JScrollPane(infoAllTextArea);//fixme: Layout fica "colapsado" e nao da pra ver nada
+        JScrollPane myAccScrollPane = new JScrollPane(infoAllTextArea);
 
         panelInfoAllConta.add(labelInfoAll,BorderLayout.PAGE_START);
         panelInfoAllConta.add(myAccScrollPane);
         panelInfoAllConta.add(buttonBackInfoAllConta,BorderLayout.PAGE_END);
-
-        buttonBackInfoAllConta.addActionListener(InfoAllContaListener);
 
         cardLayout.show(rootPanel,"InfoAllConta");
     }
 
     private void menuResumo() {
         setTitle("STATUS DO SISTEMA");
-        panelResumo= new JPanel();
+        JPanel panelResumo = new JPanel();
         panelResumo.setLayout(new GridBagLayout());
-        rootPanel.add("Resumo",panelResumo);
+        rootPanel.add("Resumo", panelResumo);
         constraints.fill = GridBagConstraints.BOTH;
+        constraints.ipadx=0;
 
         JLabel labelResumo = new JLabel("Status do banco");
         JTextArea resumoTextArea = new JTextArea();
@@ -524,11 +532,10 @@ class SistemaBancario extends JFrame {
         buttonBackResumo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                remove(panelResumo);
-                buttonBackResumo.removeActionListener(this);
                 menuGerente();
             }
         });
+        constraints.ipadx=100;
     }
 
     //Listeners
@@ -560,9 +567,7 @@ class SistemaBancario extends JFrame {
         public void actionPerformed(ActionEvent e) {
 
             if (e.getSource() == buttonCriarConta) {
-                panelCriarConta = new JPanel();
-                panelCriarConta.setLayout(new BoxLayout(panelCriarConta, BoxLayout.Y_AXIS));
-                rootPanel.add("Criar Conta",panelCriarConta);
+
                 menuCriarConta();
             } else if (e.getSource() == buttonInfoConta) {
                 menuInfoConta();
@@ -744,6 +749,7 @@ class SistemaBancario extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
 
+
             if (e.getSource() == buttonOKLogin) {
                 try {
                     contaAtual = Gerente.contaExiste(contaFieldCliente.getText());
@@ -800,7 +806,7 @@ class SistemaBancario extends JFrame {
                     JOptionPane.showMessageDialog(null, "SAQUE EFETUADO\nSALDO ATUAL = R$ " + Double.toString(contaAtual.getSaldo()), "INFO", JOptionPane.INFORMATION_MESSAGE);
                     menuDashboard();
                 } catch (SaldoInsuficienteException semGrana) {
-                    JOptionPane.showMessageDialog(null, "X    NAO EFETUADO\n" + semGrana.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "SAQUE NãO EFETUADO\n" + semGrana.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
                 } catch (ValorInvalidoException invalido) {
                     JOptionPane.showMessageDialog(null, "DIGITE UM VALOR VÁLIDO!", "ERRO", JOptionPane.ERROR_MESSAGE);
                 }

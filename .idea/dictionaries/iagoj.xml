@@ -2,24 +2,34 @@
   <dictionary name="iagoj">
     <words>
       <w>abertura</w>
+      <w>absoluto</w>
       <w>acho</w>
       <w>affero</w>
+      <w>aleatório</w>
+      <w>algum</w>
       <w>altera</w>
       <w>alterar</w>
       <w>alturas</w>
       <w>anao</w>
       <w>aplicada</w>
       <w>aplicado</w>
+      <w>aplicação</w>
       <w>aqui</w>
+      <w>arquivo</w>
       <w>atual</w>
+      <w>aula</w>
       <w>automaticamente</w>
+      <w>avaliação</w>
       <w>baixo</w>
       <w>bancario</w>
       <w>banco</w>
+      <w>bancário</w>
       <w>cada</w>
+      <w>caminho</w>
       <w>campo</w>
       <w>caracters</w>
       <w>carteira</w>
+      <w>caso</w>
       <w>certeza</w>
       <w>certo</w>
       <w>cheia</w>
@@ -28,23 +38,31 @@
       <w>cobranca</w>
       <w>cobrança</w>
       <w>cobrar</w>
+      <w>comando</w>
+      <w>computador</w>
       <w>conferem</w>
       <w>confirma</w>
       <w>confirme</w>
+      <w>consiga</w>
+      <w>consiste</w>
       <w>continuar</w>
       <w>convertida</w>
       <w>correntista</w>
       <w>criada</w>
+      <w>criação</w>
       <w>deixado</w>
       <w>depositar</w>
       <w>depósito</w>
+      <w>descrição</w>
       <w>deseja</w>
       <w>detectada</w>
       <w>devedoras</w>
       <w>devedores</w>
       <w>diferem</w>
       <w>digitado</w>
+      <w>disciplina</w>
       <w>disponivel</w>
+      <w>disponíveis</w>
       <w>disponível</w>
       <w>dividas</w>
       <w>divisão</w>
@@ -52,20 +70,36 @@
       <w>efetuados</w>
       <w>efetuar</w>
       <w>encontra</w>
+      <w>entre</w>
       <w>errada</w>
       <w>erro</w>
       <w>especiais</w>
+      <w>especias</w>
+      <w>específica</w>
+      <w>espelho</w>
       <w>estiver</w>
+      <w>executa</w>
+      <w>executar</w>
       <w>existe</w>
       <w>existente</w>
+      <w>extrato</w>
       <w>fala</w>
       <w>fazer</w>
+      <w>faça</w>
       <w>ficar</w>
+      <w>foram</w>
+      <w>funções</w>
       <w>futura</w>
+      <w>futuramente</w>
       <w>gerado</w>
       <w>gerar</w>
+      <w>gerarei</w>
+      <w>geração</w>
       <w>gerencia</w>
       <w>grana</w>
+      <w>herança</w>
+      <w>humano</w>
+      <w>ignorado</w>
       <w>imprimir</w>
       <w>incrementar</w>
       <w>individuo</w>
@@ -73,7 +107,10 @@
       <w>informaçoes</w>
       <w>informações</w>
       <w>inicia</w>
+      <w>instalado</w>
+      <w>instale</w>
       <w>instanciaçao</w>
+      <w>instanciação</w>
       <w>insuficiente</w>
       <w>invalido</w>
       <w>inválido</w>
@@ -81,44 +118,61 @@
       <w>knowed</w>
       <w>licensors</w>
       <w>limite</w>
+      <w>linguagem</w>
+      <w>linha</w>
       <w>lourenço</w>
       <w>mais</w>
+      <w>marilza</w>
+      <w>mecanismos</w>
       <w>mensal</w>
       <w>noncommercially</w>
       <w>noninfringement</w>
       <w>novamente</w>
+      <w>numa</w>
       <w>número</w>
+      <w>objeto</w>
       <w>opcoes</w>
+      <w>operações</w>
       <w>opção</w>
       <w>oupanca</w>
       <w>outro</w>
       <w>pagar</w>
       <w>paradigmas</w>
+      <w>parametro</w>
       <w>pegar</w>
+      <w>pela</w>
       <w>pode</w>
+      <w>polimorfismo</w>
       <w>poupancas</w>
       <w>poupança</w>
       <w>preencha</w>
       <w>primeiro</w>
       <w>procura</w>
+      <w>procurada</w>
+      <w>programação</w>
+      <w>projeto</w>
       <w>qualquer</w>
       <w>quando</w>
       <w>quantia</w>
       <w>quantidade</w>
+      <w>quer</w>
       <w>realizar</w>
       <w>relicensing</w>
       <w>rendidas</w>
       <w>rendimento</w>
       <w>rendimentos</w>
+      <w>requisitada</w>
       <w>restauro</w>
       <w>resumo</w>
       <w>retorna</w>
       <w>risco</w>
       <w>sacar</w>
       <w>sair</w>
+      <w>sala</w>
       <w>saldo</w>
       <w>saque</w>
       <w>senha</w>
+      <w>simula</w>
       <w>sistema</w>
       <w>sitema</w>
       <w>sito</w>
@@ -127,12 +181,19 @@
       <w>sublicensing</w>
       <w>sucesso</w>
       <w>taxa</w>
+      <w>tela</w>
       <w>tenha</w>
+      <w>tente</w>
       <w>todas</w>
       <w>todos</w>
       <w>tratando</w>
       <w>tudo</w>
+      <w>usada</w>
       <w>usado</w>
+      <w>usará</w>
+      <w>verificada</w>
+      <w>vistos</w>
+      <w>você</w>
       <w>voltar</w>
       <w>válido</w>
       <w>wipo</w>
