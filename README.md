@@ -23,7 +23,7 @@ Verifique se o JRE esta realmente instalado com o comando:
     
 Caso não apareça a versão atual da JRE, reinstale.
     
-    Execute pela linha de comando, assim:
+Execute pela linha de comando, assim:
     
      java -jar .../Banco-Paradigmas-____X.X.jar 
 
