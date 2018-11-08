@@ -140,6 +140,5 @@ abstract class Conta {
 
     abstract String getLog();
 
-    
 
 }
