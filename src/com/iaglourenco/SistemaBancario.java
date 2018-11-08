@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Iago Lourenço, 2018.
+ * Copyright (c) Iago LourenÃ§o, 2018.
  *
  */
 
@@ -17,7 +17,7 @@ import static com.iaglourenco.Gerente.*;
 
 class SistemaBancario extends JFrame {
 
-    //Instanciação dos listeners
+    //InstanciaÃ§Ã£o dos listeners
     private final HomeButtonListener HomeListener = new HomeButtonListener();
     private final GerenteButtonListener GerenteListener = new GerenteButtonListener();
     private final DashboardButtonListener DashboardListener = new DashboardButtonListener();
@@ -54,7 +54,7 @@ class SistemaBancario extends JFrame {
     private final JButton buttonOKAlterSenha = new JButton("OK");//Button de uso geral, confirma
     private final JButton buttonBackAlterSenha = new JButton("Voltar");//Button de uso geral, volta um menu
     //Label usado por todos
-    private final JLabel label = new JLabel("Escolha uma opção:");
+    private final JLabel label = new JLabel("Escolha uma opÃ§Ã£o:");
     private Conta contaAtual;
     //Buttons do primeiro menu, Home
     private JButton buttonGerente;
@@ -99,8 +99,10 @@ class SistemaBancario extends JFrame {
     private final JPanel panelButtons = new JPanel(new ButtonAreaLayout(true, 1));
     private final CardLayout cardLayout = new CardLayout();
     private final GridBagConstraints constraints = new GridBagConstraints();
+    private Gerente gerente = Gerente.getInstance();
+    private static SistemaBancario instance;
 
-    SistemaBancario() {
+    private SistemaBancario() {
         super("BANCO PARADIGMAS");
 
         //cardLayout.maximumLayoutSize(this);
@@ -112,12 +114,19 @@ class SistemaBancario extends JFrame {
         constraints.ipady=10;
         constraints.gridx=0;
 
-        Gerente.criarConta("Alfredo", "1234", "1234".toCharArray(), Gerente.ACC_SPECIAL, 200);
-        Gerente.criarConta("Leopoldo", "4321", "4321".toCharArray(), Gerente.ACC_SIMPLE, 0);
-        Gerente.criarConta("Marilza", "1423", "1423".toCharArray(), Gerente.ACC_POUPANCA, 10);
-
+        gerente.criarConta("Alfredo", "1234", "1234".toCharArray(), Gerente.ACC_SPECIAL, 200);
+        gerente.criarConta("Leopoldo", "4321", "4321".toCharArray(), Gerente.ACC_SIMPLE, 0);
+        gerente.criarConta("Marilza", "1423", "1423".toCharArray(), Gerente.ACC_POUPANCA, 10);
+        
     }
 
+    
+    public static synchronized SistemaBancario getInstance() {
+    	if(instance == null) 
+    		instance = new SistemaBancario();
+    	return instance;
+    	
+    }
     private void addListeners() {
 
         buttonBackGerente.addActionListener(GerenteListener);
@@ -223,7 +232,7 @@ class SistemaBancario extends JFrame {
         constraints.fill = GridBagConstraints.BOTH;
 
 
-        JLabel welcomeLabel = new JLabel("Olá, " + contaAtual.getNomeCorrentista().toUpperCase());
+        JLabel welcomeLabel = new JLabel("OlÃ¡, " + contaAtual.getNomeCorrentista().toUpperCase());
         JLabel welcomeLabel1 = new JLabel("O que deseja fazer?");
         buttonSacar = new JButton("Sacar");
         buttonDepositar = new JButton("Depositar");
@@ -272,13 +281,13 @@ class SistemaBancario extends JFrame {
     }
 
     private void menuDepositar() {
-        setTitle("DEPÓSITO");
+        setTitle("DEPÃ“SITO");
         JPanel panelDepositar = new JPanel();
         panelDepositar.setLayout(new GridBagLayout());
         rootPanel.add("Depositar", panelDepositar);
         constraints.fill = GridBagConstraints.BOTH;
 
-        JLabel labelDepositar = new JLabel("Digite o valor do depósito");
+        JLabel labelDepositar = new JLabel("Digite o valor do depÃ³sito");
         valueFieldDepositar = new JTextField();
         valueFieldDepositar.addKeyListener(NumberListener);
         panelDepositar.add(labelDepositar);
@@ -297,7 +306,7 @@ class SistemaBancario extends JFrame {
         rootPanel.add("MyAcc", panelMyAcc);
         constraints.fill = GridBagConstraints.BOTH;
 
-        JLabel labelMyAcc = new JLabel("Informaçoes da sua conta");
+        JLabel labelMyAcc = new JLabel("InformaÃ§oes da sua conta");
         JTextArea myAccTextArea = new JTextArea();
         myAccTextArea.append(contaAtual.info());
         myAccTextArea.setEditable(false);
@@ -409,7 +418,7 @@ class SistemaBancario extends JFrame {
         JLabel labelTConta = new JLabel("Tipo de conta");
         radioButtonSimpleAcc = new JRadioButton("Conta Simples");
         radioButtonSpecialAcc = new JRadioButton("Conta Especial");
-        radioButtonPoupancaAcc = new JRadioButton("Conta Poupança");
+        radioButtonPoupancaAcc = new JRadioButton("Conta PoupanÃ§a");
 
         radioGroup.add(radioButtonSimpleAcc);
         radioGroup.add(radioButtonSpecialAcc);
@@ -494,11 +503,7 @@ class SistemaBancario extends JFrame {
         JLabel labelInfoAll = new JLabel("Informações de todas as contas");
         JTextArea infoAllTextArea = new JTextArea();
 
-        infoAllTextArea.setText("Quantidade de contas cadastradas= " + Integer.toString(Conta.getContasCadastradas()) + "\n\n");
-        for (int i = 0; i < Gerente.MAX_CONTAS; i++) {
-            if (Conta.contas[i] != null)
-                infoAllTextArea.append(Conta.contas[i].info() + "-------\n\n");
-        }
+        infoAllTextArea.append(gerente.getAllInfo());
         infoAllTextArea.setEditable(false);
         JScrollPane myAccScrollPane = new JScrollPane(infoAllTextArea);
 
@@ -519,7 +524,7 @@ class SistemaBancario extends JFrame {
 
         JLabel labelResumo = new JLabel("Status do banco");
         JTextArea resumoTextArea = new JTextArea();
-        resumoTextArea.append(Conta.getStatusOfSystem());
+        resumoTextArea.append(gerente.getStatusOfSystem());
         resumoTextArea.setEditable(false);
         JScrollPane resumoScrollPane = new JScrollPane(resumoTextArea);
 
@@ -575,7 +580,7 @@ class SistemaBancario extends JFrame {
 
                 int resp = JOptionPane.showOptionDialog(null, "DESEJA EFETUAR OS RENDIMENTOS NAS CONTAS POUPANÇA?", "EFETUAR RENDIMENTOS", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
                 if (resp == JOptionPane.YES_OPTION) {
-                    int accRendidas = Gerente.incrementarJuros();
+                    int accRendidas = gerente.incrementarJuros();
 
                     JOptionPane.showMessageDialog(null, "RENDIMENTOS EFETUADOS EM " + Integer.toString(accRendidas) + " CONTAS POUPANÇA", "SUCESSO", JOptionPane.INFORMATION_MESSAGE);
                 }
@@ -601,7 +606,7 @@ class SistemaBancario extends JFrame {
 
 
                 try {
-                    if (Conta.getContasCadastradas() >= Gerente.MAX_CONTAS)
+                    if (gerente.getContasCadastradas()>= Gerente.MAX_CONTAS)
                         throw new MaxContasException("MAXIMO DE CONTAS ATINGIDO");
 
                     if (contaFieldGerente.getText().isEmpty()) throw new CampoVazioException("CAMPO(S) VAZIO(S)");
@@ -612,7 +617,7 @@ class SistemaBancario extends JFrame {
 
 
                     if (radioAccType == ACC_SIMPLE) {
-                        Gerente.criarConta(nameFieldGerente.getText(), contaFieldGerente.getText(), passwordFieldGerente.getPassword(), ACC_SIMPLE, 0);
+                        gerente.criarConta(nameFieldGerente.getText(), contaFieldGerente.getText(), passwordFieldGerente.getPassword(), ACC_SIMPLE, 0);
                         JOptionPane.showMessageDialog(null, "CONTA CRIADA", "SUCESSO", JOptionPane.INFORMATION_MESSAGE);
                         menuGerente();
                     } else if (radioAccType == ACC_POUPANCA) {
@@ -622,7 +627,7 @@ class SistemaBancario extends JFrame {
                             if (rend < 0) {
                                 throw new ValorInvalidoException("VALOR INVALIDO");
                             }
-                            Gerente.criarConta(nameFieldGerente.getText(), contaFieldGerente.getText(), passwordFieldGerente.getPassword(), ACC_POUPANCA, rend);
+                            gerente.criarConta(nameFieldGerente.getText(), contaFieldGerente.getText(), passwordFieldGerente.getPassword(), ACC_POUPANCA, rend);
                             JOptionPane.showMessageDialog(null, "CONTA CRIADA", "SUCESSO", JOptionPane.INFORMATION_MESSAGE);
                             menuGerente();
                         } catch (NumberFormatException num) {
@@ -635,7 +640,7 @@ class SistemaBancario extends JFrame {
                             if (lim < 0) {
                                 throw new ValorInvalidoException("VALOR INVALIDO");
                             }
-                            Gerente.criarConta(nameFieldGerente.getText(), contaFieldGerente.getText(), passwordFieldGerente.getPassword(), ACC_SPECIAL, lim);
+                            gerente.criarConta(nameFieldGerente.getText(), contaFieldGerente.getText(), passwordFieldGerente.getPassword(), ACC_SPECIAL, lim);
                             JOptionPane.showMessageDialog(null, "CONTA CRIADA", "SUCESSO", JOptionPane.INFORMATION_MESSAGE);
                             menuGerente();
                         } catch (NumberFormatException num) {
@@ -690,7 +695,7 @@ class SistemaBancario extends JFrame {
             if (e.getSource() == buttonOkInfoConta) {
 
                 try {
-                    Conta acc = Gerente.contaExiste(textFieldInfoConta.getText());
+                    Conta acc = gerente.contaExiste(textFieldInfoConta.getText());
 
                     panelInfoConta = new JPanel(new GridBagLayout());
                     rootPanel.add("InfoConta2",panelInfoConta);
@@ -730,7 +735,7 @@ class SistemaBancario extends JFrame {
 
             if (e.getSource() == buttonOKJuros) {
 
-                int accJuros = Gerente.cobrarJuros(Double.parseDouble(textFieldJuros.getText()));
+                int accJuros = gerente.cobrarJuros(Double.parseDouble(textFieldJuros.getText()));
 
                 JOptionPane.showMessageDialog(null, "JUROS COBRADOS DE " + Integer.toString(accJuros) + " CONTAS ESPECIAIS", "SUCESSO", JOptionPane.INFORMATION_MESSAGE);
                 menuGerente();
@@ -752,7 +757,7 @@ class SistemaBancario extends JFrame {
 
             if (e.getSource() == buttonOKLogin) {
                 try {
-                    contaAtual = Gerente.contaExiste(contaFieldCliente.getText());
+                    contaAtual = gerente.contaExiste(contaFieldCliente.getText());
                     contaAtual.verificaSenha(passwordField.getPassword());
                     menuDashboard();
 
@@ -802,11 +807,11 @@ class SistemaBancario extends JFrame {
                         throw new ValorInvalidoException("VALOR INVALIDO");
                     }
 
-                    contaAtual.sacar(Double.parseDouble(valueFieldSacar.getText()));
+                    gerente.sacar(contaAtual.getnConta(),Double.parseDouble(valueFieldSacar.getText()));
                     JOptionPane.showMessageDialog(null, "SAQUE EFETUADO\nSALDO ATUAL = R$ " + Double.toString(contaAtual.getSaldo()), "INFO", JOptionPane.INFORMATION_MESSAGE);
                     menuDashboard();
                 } catch (SaldoInsuficienteException semGrana) {
-                    JOptionPane.showMessageDialog(null, "SAQUE NãO EFETUADO\n" + semGrana.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "SAQUE NÃ£O EFETUADO\n" + semGrana.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
                 } catch (ValorInvalidoException invalido) {
                     JOptionPane.showMessageDialog(null, "DIGITE UM VALOR VÁLIDO!", "ERRO", JOptionPane.ERROR_MESSAGE);
                 }
@@ -830,15 +835,15 @@ class SistemaBancario extends JFrame {
                         throw new ValorInvalidoException("VALOR INVALIDO");
                     }
 
-                    contaAtual.depositar(Double.parseDouble(valueFieldDepositar.getText()));
-                    JOptionPane.showMessageDialog(null, "DEPÓSITO EFETUADO\nSALDO ATUAL = R$ " + Double.toString(contaAtual.getSaldo()), "INFO", JOptionPane.INFORMATION_MESSAGE);
+                    gerente.depositar(contaAtual.getnConta(),Double.parseDouble(valueFieldDepositar.getText()));
+                    JOptionPane.showMessageDialog(null, "DEPÃ“SITO EFETUADO\nSALDO ATUAL = R$ " + Double.toString(contaAtual.getSaldo()), "INFO", JOptionPane.INFORMATION_MESSAGE);
                     menuDashboard();
 
                 } catch (ValorInvalidoException invalido) {
                     JOptionPane.showMessageDialog(null, "DIGITE UM VALOR VÁLIDO!", "ERRO", JOptionPane.ERROR_MESSAGE);
                     menuDepositar();
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "DEPÓSITO NÃO EFETUADO " + ex.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "DEPÃ“SITO NÃƒO EFETUADO " + ex.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
                 }
             } else if (e.getSource() == buttonBackDepositar) {
                 menuDashboard();

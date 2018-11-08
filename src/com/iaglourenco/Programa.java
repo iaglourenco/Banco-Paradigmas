@@ -15,7 +15,7 @@ class Programa {
 
     public static void main(String[] args){
 
-        SistemaBancario sys = new SistemaBancario();
+        SistemaBancario sys = SistemaBancario.getInstance();
         sys.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         sys.addWindowListener(new WindowAdapter() {
             @Override

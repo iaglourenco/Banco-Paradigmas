@@ -16,9 +16,7 @@ abstract class Conta {
     private String nConta;
     private double saldo;
     private char[] senha;
-    private static int contasCadastradas=0;
-    static final Conta[] contas = new Conta[Gerente.MAX_CONTAS];//array de Objects Conta
-    static final char[] KEY_PADRAO = "0000".toCharArray();
+    
 
 
     Conta(String nomeCorrentista,String nConta){
@@ -26,8 +24,8 @@ abstract class Conta {
         setnConta(nConta);
         setNomeCorrentista(nomeCorrentista);
         saldo=0.0;
-        senha = KEY_PADRAO;
-        contasCadastradas++;
+        senha = "0000".toCharArray();
+        
     }
 
     /**
@@ -95,7 +93,7 @@ abstract class Conta {
      * @return <tt>true</tt> caso o saque foi efetuado <tt>throw</tt>,caso contrario.
      * @throws ValorInvalidoException caso se tenha digitado um valor abaixo de 0
      */
-    public boolean sacar(double valor)throws ValorInvalidoException {
+    boolean sacar(double valor)throws ValorInvalidoException {
 
         if (valor>0) {
 
@@ -111,7 +109,8 @@ abstract class Conta {
      * @param valor valor a ser depositado
      * @return  <tt>true</tt> caso o deposito seja efetuado,<tt>false</tt>,caso contrario.
      */
-    public boolean depositar(double valor)throws ValorInvalidoException{
+    
+    boolean depositar(double valor)throws ValorInvalidoException{
 
         if(valor<=0) { // depositar negativo tem outro nome, e nao vale depositar nada
             throw new ValorInvalidoException("VALOR INVALIDO");
@@ -141,61 +140,6 @@ abstract class Conta {
 
     abstract String getLog();
 
-    static int getContasCadastradas() {
-        return contasCadastradas;
-    }
-
-    /**
-     * Gera uma <tt>String</tt>, com todas as informaçoes do sistema,
-     * como: quantidade de contas cadastradas, total de dinheiro depositado para cada tipo de conta,numero de contas negativadas e o valor.
-     *
-     * @return a String com as informaçoes
-     */
-    static String getStatusOfSystem(){
-
-        int counterPoupanca=0,counterEspecial=0,counterSimples=0,counterDevedores=0;
-        double totalMoneyPoupanca=0;
-        double totalMoneyEspecial=0;
-        double totalMoneySimples=0;
-        double totalDividasEspecial=0;
-
-        for(int i=0;i<Conta.getContasCadastradas();i++){
-            if(contas[i] instanceof ContaSimples) {
-                totalMoneySimples+= contas[i].getSaldo();
-                counterSimples++;
-            }
-            if(contas[i] instanceof ContaPoupanca) {
-                totalMoneyPoupanca+=contas[i].getSaldo();
-                counterPoupanca++;
-            }
-            if(contas[i] instanceof ContaEspecial) {
-                counterEspecial++;
-                if(contas[i].getSaldo()<0){
-                    totalDividasEspecial += contas[i].getSaldo();
-                    counterDevedores++;
-                }else {
-                    totalMoneyEspecial += contas[i].getSaldo();
-                }
-            }
-
-        }
-
-        return
-                "TOTAL DE CONTAS CADASTRADAS= "+Integer.toString(Conta.getContasCadastradas())+"\n"+
-
-                        ">>CONTAS SIMPLES CADASTRADAS= " + Integer.toString(counterSimples)+"\n"+
-                        "\t|-QUANTIA TOTAL APLICADA NO BANCO= R$ "+Double.toString(totalMoneySimples)+"\n\n"+
-                        ">>CONTAS POUPANCA CADASTRADAS = "+Integer.toString(counterPoupanca)+"\n"+
-                        "\t|-QUANTIA TOTAL APLICADA NO BANCO= R$ "+Double.toString(totalMoneyPoupanca)+"\n\n"+
-                        ">>CONTAS ESPECIAL CADASTRADAS = "+Integer.toString(counterEspecial)+"\n"+
-                        "\t|-QUANTIA TOTAL APLICADA NO BANCO= R$ "+Double.toString(totalMoneyEspecial)+"\n\n"+
-                        "TOTAL APLICADO NO BANCO= R$ "+Double.toString(totalMoneyEspecial+totalMoneyPoupanca+totalMoneySimples)+"\n\n"+
-                        ">>CONTAS ESPECIAIS DEVEDORAS= R$ "+Integer.toString(counterDevedores)+"\n"+
-                        "\t|-QUANTIA TOTAL DE DIVIDAS= "+Double.toString(totalDividasEspecial);
-
-
-
-
-    }
+    
 
 }

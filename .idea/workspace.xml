@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30b6c9e3-90ac-4272-848b-2b8f22c98e39" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/iagoj.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/iagoj.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/iaglourenco/Conta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iaglourenco/Conta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/iaglourenco/ContaEspecial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iaglourenco/ContaEspecial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/iaglourenco/ContaPoupanca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iaglourenco/ContaPoupanca.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/iaglourenco/ContaSimples.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iaglourenco/ContaSimples.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/iaglourenco/Gerente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iaglourenco/Gerente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/iaglourenco/Programa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iaglourenco/Programa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/iaglourenco/SistemaBancario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/iaglourenco/SistemaBancario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,7 +15,7 @@
     <session id="-1436199269">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="23" />
+          <entry key="project.closed" value="24" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.23" value="1" />
@@ -37,11 +30,12 @@
           <entry key="project.open.time.45" value="2" />
           <entry key="project.open.time.47" value="1" />
           <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.61" value="1" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.80" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="24" />
+          <entry key="project.opened" value="25" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -86,38 +80,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/iaglourenco/SistemaBancario.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
+            <state relative-caret-position="52">
               <caret line="105" column="10" selection-start-line="105" selection-start-column="10" selection-end-line="105" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5864#6972#0" />
-                <element signature="e#6978#7780#0" />
-                <element signature="e#7786#8989#0" />
-                <element signature="e#8995#10492#0" />
-                <element signature="e#10498#11191#0" />
-                <element signature="e#11197#11926#0" />
-                <element signature="e#11932#12881#0" />
-                <element signature="e#12887#13834#0" />
-                <element signature="e#13841#15306#0" />
-                <element signature="e#15312#17908#0" />
-                <element signature="e#17914#18649#0" />
-                <element signature="e#18655#19317#0" />
-                <element signature="e#19323#20427#0" />
-                <element signature="e#20433#21455#0" />
-                <element signature="e#21461#22149#0" />
-                <element signature="e#22230#23517#0" />
-                <element signature="e#23523#27677#0" />
-                <element signature="e#27683#28167#0" />
-                <element signature="e#28173#29442#0" />
-                <element signature="e#29448#29708#0" />
-                <element signature="e#29714#30322#0" />
-                <element signature="e#30403#31344#0" />
-                <element signature="e#31350#32182#0" />
-                <element signature="e#32188#33379#0" />
-                <element signature="e#33385#34614#0" />
-                <element signature="e#34620#35447#0" />
-                <element signature="e#35453#36203#0" />
-                <element signature="e#36209#36643#0" />
               </folding>
             </state>
           </provider>
@@ -464,7 +430,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.29425114" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -909,38 +874,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/iaglourenco/SistemaBancario.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
+        <state relative-caret-position="52">
           <caret line="105" column="10" selection-start-line="105" selection-start-column="10" selection-end-line="105" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5864#6972#0" />
-            <element signature="e#6978#7780#0" />
-            <element signature="e#7786#8989#0" />
-            <element signature="e#8995#10492#0" />
-            <element signature="e#10498#11191#0" />
-            <element signature="e#11197#11926#0" />
-            <element signature="e#11932#12881#0" />
-            <element signature="e#12887#13834#0" />
-            <element signature="e#13841#15306#0" />
-            <element signature="e#15312#17908#0" />
-            <element signature="e#17914#18649#0" />
-            <element signature="e#18655#19317#0" />
-            <element signature="e#19323#20427#0" />
-            <element signature="e#20433#21455#0" />
-            <element signature="e#21461#22149#0" />
-            <element signature="e#22230#23517#0" />
-            <element signature="e#23523#27677#0" />
-            <element signature="e#27683#28167#0" />
-            <element signature="e#28173#29442#0" />
-            <element signature="e#29448#29708#0" />
-            <element signature="e#29714#30322#0" />
-            <element signature="e#30403#31344#0" />
-            <element signature="e#31350#32182#0" />
-            <element signature="e#32188#33379#0" />
-            <element signature="e#33385#34614#0" />
-            <element signature="e#34620#35447#0" />
-            <element signature="e#35453#36203#0" />
-            <element signature="e#36209#36643#0" />
           </folding>
         </state>
       </provider>
