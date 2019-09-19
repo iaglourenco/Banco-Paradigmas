@@ -49,5 +49,5 @@ Número conta 3 = **1423**  Senha= **1423**
 
 ## Licença
 
-Este projeto esta licenciado pela General Public License v3.0 - veja [LICENSE.md](LICENSE.md) para mais detalhes.
+Este projeto esta licenciado pela General Public License v3.0 - veja [LICENSE](LICENSE) para mais detalhes.
 
